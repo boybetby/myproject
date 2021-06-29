@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,10 +48,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -171,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DAL\ProductContext.cs" />
     <Compile Include="DAL\ProductInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,13 +190,319 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\icon\95039-free-social-media-icons_social-media-icons-all.svg" />
+    <Content Include="Content\css\icon\95039-free-social-media-icons_social-media-icons-newest-preview.png" />
+    <Content Include="Content\css\splide-2.4.21\.gitignore" />
+    <Content Include="Content\css\splide-2.4.21\build\banner.js" />
+    <Content Include="Content\css\splide-2.4.21\build\complete\complete.js" />
+    <Content Include="Content\css\splide-2.4.21\build\complete\config-min.js" />
+    <Content Include="Content\css\splide-2.4.21\build\complete\config.js" />
+    <Content Include="Content\css\splide-2.4.21\build\module\config.js" />
+    <Content Include="Content\css\splide-2.4.21\build\module\module.js" />
+    <Content Include="Content\css\splide-2.4.21\dist\css\splide-core.min.css" />
+    <Content Include="Content\css\splide-2.4.21\dist\css\splide.min.css" />
+    <Content Include="Content\css\splide-2.4.21\dist\css\themes\splide-default.min.css" />
+    <Content Include="Content\css\splide-2.4.21\dist\css\themes\splide-sea-green.min.css" />
+    <Content Include="Content\css\splide-2.4.21\dist\css\themes\splide-skyblue.min.css" />
+    <Content Include="Content\css\splide-2.4.21\dist\js\splide.esm.js" />
+    <Content Include="Content\css\splide-2.4.21\dist\js\splide.js" />
+    <Content Include="Content\css\splide-2.4.21\dist\js\splide.min.js" />
+    <Content Include="Content\css\splide-2.4.21\gulpfile.js" />
+    <Content Include="Content\css\splide-2.4.21\images\hero.png" />
+    <Content Include="Content\css\splide-2.4.21\images\react-logo.png" />
+    <Content Include="Content\css\splide-2.4.21\images\splide-logo.png" />
+    <Content Include="Content\css\splide-2.4.21\images\splide.png" />
+    <Content Include="Content\css\splide-2.4.21\images\vue-logo.png" />
+    <Content Include="Content\css\splide-2.4.21\jest.config.js" />
+    <Content Include="Content\css\splide-2.4.21\src\assets\svg\arrow.svg" />
+    <Content Include="Content\css\splide-2.4.21\src\assets\svg\_arrow.svg" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\a11y\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\arrows\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\arrows\path.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\autoplay\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\breakpoints\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\click\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\clones\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\controller\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\cover\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\drag\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\elements\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\elements\slide.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\keyboard\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\layout\directions\horizontal.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\layout\directions\vertical.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\layout\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\lazyload\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\options\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\pagination\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\sync\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\components\track\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\constants\a11y.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\constants\classes.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\constants\defaults.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\constants\directions.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\constants\i18n.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\constants\states.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\constants\types.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\core\composer.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\core\event.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\core\state.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\splide.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\transitions\fade\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\transitions\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\transitions\slide\index.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\utils\dom.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\utils\error.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\utils\object.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\utils\time.js" />
+    <Content Include="Content\css\splide-2.4.21\src\js\utils\utils.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\core\events.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\core\splide.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\data\html.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\a11y.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\autoplay.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\autowidth.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\controller.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\focus.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\keyboard.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\layout.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\loop.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\rewind.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\slide.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\functionality\sync.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\utils\dom.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\utils\object.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\utils\time.test.js" />
+    <Content Include="Content\css\splide-2.4.21\tests\utils\utils.test.js" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap.min.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\mixins\_badge.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\mixins\_box-shadow.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\mixins\_float.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\mixins\_nav-divider.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\mixins\_reset-text.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\mixins\_text-hide.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap\_media.css" />
+    <Content Include="Content\css\website-menu-07\css\owl.carousel.min.css" />
+    <Content Include="Content\css\website-menu-07\css\style.css" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\demo-files\demo.css" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\demo-files\demo.js" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\demo.html" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\fonts\icomoon.svg" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\Read Me.txt" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\style.css" />
+    <Content Include="Content\css\website-menu-07\images\hero_1.jpg" />
+    <Content Include="Content\css\website-menu-07\images\hero_3.jpg" />
+    <Content Include="Content\css\website-menu-07\index.html" />
+    <Content Include="Content\css\website-menu-07\js\bootstrap.min.js" />
+    <Content Include="Content\css\website-menu-07\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\css\website-menu-07\js\jquery.sticky.js" />
+    <Content Include="Content\css\website-menu-07\js\main.js" />
+    <Content Include="Content\css\website-menu-07\js\owl.carousel.min.js" />
+    <Content Include="Content\css\website-menu-07\js\popper.min.js" />
+    <Content Include="Content\css\website-menu-07\main.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\bg1.jpg" />
+    <Content Include="images\bg1.png" />
+    <Content Include="images\bg2.jpg" />
+    <Content Include="images\bg2.png" />
+    <Content Include="images\bg3.png" />
+    <Content Include="images\cart.png" />
+    <Content Include="images\carticon.png" />
+    <Content Include="images\furniture\bg.jpg" />
+    <Content Include="images\furniture\bg2.jpg" />
+    <Content Include="images\furniture\furniture_1.png" />
+    <Content Include="images\furniture\img1.png" />
+    <Content Include="images\furniture\img2.png" />
+    <Content Include="images\furniture\img3.png" />
+    <Content Include="images\furniture\img4.png" />
+    <Content Include="images\furniture\img5.png" />
+    <Content Include="images\furniture\img6.png" />
+    <Content Include="images\pngwing.png" />
     <Content Include="images\products\pd_1.png" />
+    <Content Include="images\products\pd_10.png" />
+    <Content Include="images\products\pd_11.png" />
+    <Content Include="images\products\pd_12.png" />
+    <Content Include="images\products\pd_13.png" />
+    <Content Include="images\products\pd_14.png" />
+    <Content Include="images\products\pd_15.png" />
+    <Content Include="images\products\pd_16.png" />
+    <Content Include="images\products\pd_2.png" />
+    <Content Include="images\products\pd_3.png" />
+    <Content Include="images\products\pd_4.png" />
+    <Content Include="images\products\pd_5.png" />
+    <Content Include="images\products\pd_6.png" />
+    <Content Include="images\products\pd_7.png" />
+    <Content Include="images\products\pd_8.png" />
+    <Content Include="images\products\pd_9.png" />
+    <Content Include="images\product_bg1.jpg" />
+    <Content Include="images\search.png" />
+    <Content Include="images\searchicon.png" />
+    <Content Include="images\signature_bg.png" />
+    <Content Include="images\workshop_bg.jpg" />
+    <Content Include="images\yen.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\css\icon\free-social-media-icons-vector.eps" />
+    <Content Include="Content\css\icon\Vecteezy-License-Information.pdf" />
+    <Content Include="Content\css\splide-2.4.21\.babelrc" />
+    <Content Include="Content\css\splide-2.4.21\.editorconfig" />
+    <Content Include="Content\css\splide-2.4.21\.eslintrc" />
+    <Content Include="Content\css\splide-2.4.21\.npmignore" />
+    <Content Include="Content\css\splide-2.4.21\dist\js\splide.min.js.gz" />
+    <Content Include="Content\css\splide-2.4.21\LICENSE" />
+    <Content Include="Content\css\splide-2.4.21\package-lock.json" />
+    <Content Include="Content\css\splide-2.4.21\package.json" />
+    <Content Include="Content\css\splide-2.4.21\README.md" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\foundation\_animations.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\foundation\_variables.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\modifiers\_draggable.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\modifiers\_fade.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\modifiers\_rtl.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\modifiers\_ttb.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\objects\_container.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\objects\_list.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\objects\_pagination.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\objects\_root.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\objects\_slide.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\objects\_slider.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\objects\_spinner.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\object\objects\_track.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\core\splide-core.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\default\foundation\_variables.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\default\object\modifiers\_nav.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\default\object\modifiers\_rtl.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\default\object\modifiers\_ttb.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\default\object\objects\_arrow.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\default\object\objects\_pagination.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\default\object\objects\_progress.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\default\splide-default.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\foundation\_variables.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\modifiers\_nav.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\modifiers\_rtl.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\modifiers\_ttb.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\objects\_arrow.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\objects\_pagination.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\objects\_progress.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\objects\_root.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\objects\_slide.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\object\objects\_spinner.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sea-green\splide-sea-green.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\foundation\_variables.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\object\modifiers\_nav.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\object\modifiers\_rtl.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\object\modifiers\_ttb.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\object\objects\_arrow.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\object\objects\_pagination.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\object\objects\_progress.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\object\objects\_spinner.scss" />
+    <Content Include="Content\css\splide-2.4.21\src\sass\themes\sky-blue\splide-sky-blue.scss" />
+    <Content Include="Content\css\website-menu-07\.DS_Store" />
+    <Content Include="Content\css\website-menu-07\css\.DS_Store" />
+    <Content Include="Content\css\website-menu-07\css\bootstrap.min.css.map" />
+    <Content Include="Content\css\website-menu-07\fonts\.DS_Store" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\fonts\icomoon.eot" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\fonts\icomoon.woff" />
+    <Content Include="Content\css\website-menu-07\fonts\icomoon\selection.json" />
+    <Content Include="Content\css\website-menu-07\images\.DS_Store" />
+    <Content Include="Content\css\website-menu-07\scss\.DS_Store" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\bootstrap.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_stretched-link.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\vendor\_rfs.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_alert.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_badge.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_button-group.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_buttons.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_card.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_carousel.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_close.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_code.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_dropdown.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_forms.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_functions.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_grid.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_images.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_input-group.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_list-group.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_media.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_mixins.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_modal.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_nav.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_navbar.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_pagination.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_popover.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_print.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_progress.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_reboot.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_root.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_spinners.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_tables.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_toasts.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_tooltip.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_transitions.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_type.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_utilities.scss" />
+    <Content Include="Content\css\website-menu-07\scss\bootstrap\_variables.scss" />
+    <Content Include="Content\css\website-menu-07\scss\style.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -240,9 +548,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\css\website-menu-07\script\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -257,11 +571,18 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\css\splide-2.4.21\src\js\splide.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
@@ -290,10 +611,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
