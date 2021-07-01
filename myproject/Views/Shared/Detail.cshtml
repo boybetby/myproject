@@ -22,65 +22,62 @@
     </style>
 </head>
 <body>
-    <div class="wrapper" style="background-image: url('../../images/product_bg1.jpg'); height: 120px;">
+    <div class="wrapper" style="background-image:url('img/bg1.png');height:120px;">
         <header style="padding-left:40px; position: absolute;">
             <nav>
                 <div class="menu-icon">
                     <i class="fa fa-bars fa-2x"></i>
                 </div>
                 <div class="logo" style="margin-top: 0;">
-                    <a href="#"><img src="../../images/yen.png" class="yen"></a>
+                    <a href="#"><img src="img/yen.png" class="yen"></a>
                 </div>
                 <div class="menu">
                     <ul style="display:inline-block">
-                        <li>@Html.ActionLink("PRODUCT", "Index", "Products")</li>
-                        <li>@Html.ActionLink("GREEN PRODUCTION", "Index", "Furniture")</li>
-                        <li>@Html.ActionLink("WORKSHOP", "Index", "Workshop")</li>
-                        <li>@Html.ActionLink("ABOUT US", "About", "Home")</li>
-                        <li style="margin-left:200px;"><a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a></li>
-                        <li><a href="#"><img src="../../images/pngwing.png" style="width:24px;height: 24px;"></a></li>
+                        <li><a href="product.html">PRODUCT</a></li>
+                        <li><a href="greendecoration.html">GREEN PRODUCTION</a></li>
+                        <li><a href="workshop.html">WORKSHOP</a></li>
+                        <li><a href="#">ABOUT US</a></li>
+                        <li style="margin-left:200px;"><a href="cart.html" style="color:white;"><img src="img/carticon.png" style="width:40px;height: 40px;"></a></li>
+                        <li><a href="#"><img src="img/pngwing.png" style="width:24px;height: 24px;"></a></li>
                     </ul>
                 </div>
             </nav>
         </header>
     </div>
     <main class="detail">
-        @using (Html.BeginForm("AddtoCart", "Cart", FormMethod.Post))
-        {
-            <div style="margin-top:100px;" class="container">
-                <div class="row">
-                    <div class="col col-lg-6">
-                        <img src="@Html.DisplayFor(model => model.image)">
+        <div style="margin-top:100px;" class="container">
+            <div class="row">
+                <div class="col col-lg-6">
+                    <img src="@Html.DisplayFor(model => model.image)">
+                </div>
+                <div class="col-lg-4" style="margin-left: 50px;padding-top:60px; ">
+                    <div style="display:inline;height:40px;">
+                        <p style="float:left">
+                            @Html.DisplayFor(model => model.productname)
+                        </p>
+                        <p style="float:right">
+                            @Html.DisplayFor(model => model.price)
+                        </p>
                     </div>
-                    <div class="col-lg-4" style="margin-left: 80px;padding-top:60px; ">
-                        <div style="display:inline;height:40px;">
-                            <p style="float:left">
-                                @Html.DisplayFor(model => model.productname)
-                            </p>
-                            <p style="float:right">
-                                @Html.DisplayFor(model => model.price)
-                            </p>
-                        </div>
 
-                        <div class="description" style="width:350px;word-wrap:break-word;margin-top:80px;">
-                            <p>
-                                @Html.DisplayFor(model => model.description)
-                            </p>
-                        </div>
-                        <div style="margin-top:90px;width:230px;">
-                            <input type="number" value="1" min="1" max="100" step="1"  name="amount" id="amount"/>
-                            <script src="../../Content/scripts/bootstrap-input-spinner.js"></script>
-                            <script>
-                                $("input[type='number']").inputSpinner();
-                            </script>
-                        </div>
-                        <div class="addtocart" style="margin-top: 50px;">
-                            <button type="submit" value="AddtoCart">ADD TO CART</button>
-                        </div>
+                    <div class="description" style="width:350px;word-wrap:break-word;margin-top:80px;">
+                        <p>
+                            @Html.DisplayFor(model => model.description)
+                        </p>
+                    </div>
+                    <div style="margin-top:90px;width:230px;">
+                        <input type="number" value="1" min="1" max="100" step="1" />
+                        <script src="../../Content/scripts/bootstrap-input-spinner.js"></script>
+                        <script>
+                            $("input[type='number']").inputSpinner();
+                        </script>
+                    </div>
+                    <div class="addtocart" style="margin-top: 50px;">
+                        <button>ADD TO CART</button>
                     </div>
                 </div>
             </div>
-        }
+        </div>
     </main>
     <div style="width:800px;display:table;margin:0 auto;"><p class="divided"></p></div>
     <footer style="display: flex;margin-top:100px;margin-left:220px;margin-bottom:140px;">

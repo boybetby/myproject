@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<myproject.Models.Product>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Yen</title>
     <meta charset="utf-8">
@@ -17,12 +18,11 @@
     <style>
         @@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
     </style>
-
 </head>
 <body>
     <main>
         <div>
-            <div class="wrapper_product" style="background-image:url('../../images/product_bg1.jpg');">
+            <div class="wrapper_greendecoration" style="background-image: url('../../images/furniture/bg.jpg');">
                 <header style="padding-left:40px; position: absolute;">
                     <nav>
                         <div class="menu-icon">
@@ -43,29 +43,48 @@
                         </div>
                     </nav>
                 </header>
-                <div class="sologan" style="padding-top:300px;">
-                    <h1 style="font-weight:bold;font-size: 50px;margin-bottom:20px;">GET YOUR GREEN</h1>
+                <div class="sologan">
+                    <h1 style="font-weight:bold;font-size: 50px;margin-bottom:20px;">Green Decoration</h1>
+                    <h1 style="font-size:30px;">Furniture Collection 2021</h1>
+                </div>
+            </div>
+            <div class="introduce" style="text-align: center;margin-top:100px;">
+                <h1>
+                    Be Inspired
+                </h1>
+                <p>
+                    Khao khát mang đến cho mọi người những phút giây tĩnh để ngẫm và để trân quý hơn sợi dây kết nối giữa con người và thiên nhiên, ngoài mô hình khu vườn cây xanh, <br> Yên còn tiếp tục hiện thực hoá ấp ủ về một không gian sống trong lành nhưng không kém phần sang trọng, đẹp mắt từ những thiết kế nội thất kết hợp gần gũi, tối giản.
+                </p>
+                <p>
+                    Đến với BST Nội Thất Xanh - Green Decoration lần này, Yên hứa hẹn sẽ mang đến giải pháp tối ưu cho căn nhà của bạn trong <br> việc trang hoàn không gian sống mà vẫn đáp ứng nhu cầu về mặt thẩm mỹ, chất lượng và giá thành sản phẩm.
+                </p>
+            </div>
+        </div>
+        <div class="furniture">
+            <div class="container-fluid" style="margin-top:100px;">
+                <div class="row gx-5" style="text-align: center">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-6" style="margin-bottom:250px;justify-content: center;display: flex;">
+                            <div style="height:900px;width:600px">
+                                <a href='@Url.Action("Details", "Products", new { id=item.productID })'><img style="width: 600px;" src="@Html.DisplayFor(modelItem => item.image)"></a>
+                                <a href='@Url.Action("Details", "Products", new { id=item.productID })'><p style="font-size: 24px; margin-bottom: -8px; font-weight: 400; color: black;">@Html.DisplayFor(modelItem => item.productname)</p></a>
+                                <div style="width:500px;word-wrap:break-word;margin-top:10px; height: 120px;">
+                                    <p style="font-size:17px">@Html.DisplayFor(modelItem => item.description)</p>
+                                </div>
+                                <p style="font-size:20px; margin-top: 10px; font-weight: 400;">Giá: @Html.DisplayFor(modelItem => item.price)</p>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
-        <div class="container-fluid" style="margin-top:200px;">
-            <div class="row gx-6">
-                @foreach (var item in Model)
-                {
-                    <div class="col-lg-3" style="margin-bottom:130px;justify-content: center;display: flex;">
-                        <div style="height:450px;width:350px;">
-                            <a href='@Url.Action("Details", "Products", new { id=item.productID })'><img src="@Html.DisplayFor(modelItem => item.image)"></a>
-                            <a href='@Url.Action("Details", "Products", new { id=item.productID })'><p class="productname">@Html.DisplayFor(modelItem => item.productname)</p></a>
-                            <p class="productprice">Giá: @Html.DisplayFor(modelItem => item.price)</p>
-                        </div>
-                    </div>
-                }
-            </div>
-            <div style="text-align:center">
-                <button>DISCOVER MORE</button>
+        <div style="text-align:center;  margin-top:100px;">
+            <h1 style="font-family:Montserrat;font-weight:bold">A Green Solution you've been looking for</h1>
+            <div class="furniture_bg2" style="background-image: url('../../images/furniture/bg2.jpg')">
+
             </div>
         </div>
-
         <footer class="viewfooter">
             <div style="display: inline;">
                 <h1>
