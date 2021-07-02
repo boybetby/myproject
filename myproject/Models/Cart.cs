@@ -9,7 +9,7 @@ namespace myproject.Models
     public class Cart : Product
     {
         Product product { get; set; }
-        int? amount;
+        public int? amount { get; set; }
         public Cart(Product product, int? amount)
         {
             this.product = product;
