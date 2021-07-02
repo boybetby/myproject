@@ -15,13 +15,12 @@ namespace myproject.Controllers
     {
 
         private ProductContext db = new ProductContext();
-        CartList cartlist = new CartList();
+        List<Cart> cartlist = new List<Cart>();
         // GET: Cart
         public ActionResult Index()
         {
-
-            return View(cartlist);
-            
+            ViewData["mycart"] = cartlist;
+            return View(cartlist);      
         }
         [HttpPost]
         public ActionResult AddtoCart(Product product, int? amount)
@@ -35,7 +34,7 @@ namespace myproject.Controllers
                 return HttpNotFound();
             }
             Cart cart = new Cart(product, amount);
-            cartlist.AddCart(cart);
+            cartlist.Add(cart);
             return RedirectToAction("Index", "Cart");
         }
     }
