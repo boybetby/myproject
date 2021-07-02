@@ -24,7 +24,6 @@ body {
     
 }
 
-
 .splide__track{
     margin-top:70px;
 }
@@ -37,15 +36,12 @@ body {
 }
 
 .bg2 {
-    
-    background-image: url('../../img/bg2.jpg');
+    background-image: url('../../images/bg2.jpg');
     height: 940px;
     width: auto;
     background-repeat: no-repeat;
     background-position: center;
 }
-
-
 
 .bg2 button{
     background-color: Transparent;
@@ -82,7 +78,7 @@ body {
 
 
 .bg3{
-    background-image: url('../img/bg3.png');
+    background-image: url('../../images/bg3.png');
     
     display: table;
     margin: 0 auto;
@@ -107,54 +103,6 @@ body {
 .credit h1{
     font-size: 15px;
 }
-
-
-
-.yen {
-    position: absolute;
-    left: 2.02%;
-    right: 91.04%;
-    top: 21.35%;
-    bottom: 0%;
-    height: 70px;
-    width: 93px;
-}
-
-
-.splide__track{
-    margin-top:70px;
-}
-
-
-
-.splide__track img{
-    height: 370.74px;
-    width: 303.68px;
-}
-
-.bg2 {
-    background-image: url('../../img/bg2.jpg');
-    height: 940px;
-    width: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.bg2 button{
-     background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    border: 2px solid black;
-    border-radius: 23px;
-    color:white;
-    border-color:white;
-    padding: 7px 15px 7px 15px;
-}
-
-
 
 .content {
     width: 94%;
@@ -222,9 +170,6 @@ nav ul li a {
     display: none;
 }
 
-
-
-
 .wrapper {
     object-fit: cover;
     object-position: 0% 24%; 
@@ -260,15 +205,9 @@ nav ul li a {
     overflow: hidden;
     width: 588px;
     height: 730.17px;
-    background-image:url('../img/workshop_bg.jpg');
+    background-image:url('../../images/workshop_bg.jpg');
     background-repeat:no-repeat;
 }
-
-
-
-
-
-
 .midbg1 h1 {
     margin-left:30px;
     font-family: Montserrat;
@@ -294,8 +233,6 @@ nav ul li a {
     vertical-align: middle;
 }
 
-
-
 .wrapper_product{
     object-fit: cover;
     height: 520px;
@@ -304,17 +241,8 @@ nav ul li a {
     background-size: cover;
 }
 
-
-
-
-.col-lg-3 img {
-    max-width: 100%;
-    height: auto;
-}
-
-
-col-lg-3 p {
-    font-family: Montserrat;
+.col-lg-3 img{
+    height: 400px;
 }
 
 .col-3 p {
@@ -337,20 +265,19 @@ col-lg-3 p {
     font-weight: bold;
 }
 
-.introduce h1{
+.introduce h1 {
     font-family: Poppins;
     font-weight: bold;
+    font-size: 30px;
 }
 
-.introduce  p{
+.introduce p {
     font-family: Montserrat;
-    color:black;
-    font-weight:bold;
-    margin-top:20px;
+    color: black;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 17px;
 }
-
-
-
 
 .col-md-6 img{
     height: 900px;
@@ -369,4 +296,93 @@ col-lg-3 p {
     background-position: bottom;
     background-size: cover;
     object-position: 0% 24%; 
+}
+
+.divided{
+    margin-top: 150px ;
+    border-bottom: 1px solid black;
+}
+
+.detail p{
+    color:black;
+    font-size: 25px;
+    font-family: Montserrat;
+    font-weight: 600;
+}
+
+.detail img{
+  border-radius: 20px;
+
+}
+
+.description p{
+    font-size:17px;
+    font-family: Montserrat;
+    color:black;
+}
+
+.addtocart button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    border: 1px solid black;
+    border-radius: 40px;
+    color:#222020;
+    border-color:#222020;
+    padding: 7px 50px 7px 50px;
+    font-size:20px;
+    font-weight: 500;
+}
+
+.cart{
+    margin:15px;
+    background-color:lightgray;
+}
+
+.cart p{
+    font-family: Montserrat;
+    color: black;
+    font-size:25px;
+}
+
+.remove a{
+    transition: color 1s; /* For modern browsers */
+}
+
+.remove a:hover{
+    color: pink;
+}
+
+.checkout button{
+    font-family: Lato;
+    font-weight: bold;
+    color:white;
+    background-color:black;
+    border:none;
+    font-size: 20px;
+    border-radius:10px;
+}
+
+.productname {
+    font-size: 23px;
+    margin-bottom: -8px;
+    color: black;
+    margin-top: 5px;
+    font-family: Montserrat;
+    display: inline-block;
+    font-weight: 600;
+}
+.productprice {
+    font-size: 18px;
+    color: black;
+    font-family: Montserrat;
+    margin-top: 8px;
+}
+.viewfooter {
+    display: flex;
+    margin-top: 100px;
+    margin-left: 140px;
 }

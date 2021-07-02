@@ -58,14 +58,6 @@ a:hover {
     width: 303.68px;
 }
 
-.bg2 {
-    background-image: url('../../img/bg2.jpg');
-    height: 940px;
-    width: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .bg2 button{
      background-color: Transparent;
     background-repeat:no-repeat;
@@ -79,8 +71,6 @@ a:hover {
     border-color:white;
     padding: 7px 15px 7px 15px;
 }
-
-
 
 .content {
     width: 94%;

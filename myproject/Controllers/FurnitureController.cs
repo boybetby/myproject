@@ -11,21 +11,21 @@ using myproject.Models;
 
 namespace myproject.Controllers
 {
-    public class ProductsController : Controller
+    public class FurnitureController : Controller
     {
         private ProductContext db = new ProductContext();
 
-        // GET: Products
+        // GET: Furniture
         public ActionResult Index()
         {
             var products = from s in db.Products
                            select s;
-            products = products.Where(s =>s.category.ToString() == "product");
+            products = products.Where(s => s.category.ToString() == "furniture");
 
             return View(products.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: Furniture/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,13 +40,13 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
+        // GET: Furniture/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Furniture/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -63,7 +63,7 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        // GET: Furniture/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,7 +78,7 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
+        // POST: Furniture/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -94,7 +94,7 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        // GET: Furniture/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
+        // POST: Furniture/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
