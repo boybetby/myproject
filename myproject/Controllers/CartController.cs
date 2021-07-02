@@ -15,27 +15,38 @@ namespace myproject.Controllers
     {
 
         private ProductContext db = new ProductContext();
-        List<Cart> cartlist = new List<Cart>();
+        public List<Cart> setCart()
+        {
+            List<Cart> cartlist = Session["Cart"] as List<Cart>;
+            if(cartlist == null)
+            {
+                cartlist = new List<Cart>();
+                Session["Cart"] = cartlist;
+            }
+            return cartlist;
+        }
         // GET: Cart
         public ActionResult Index()
         {
-            ViewData["mycart"] = cartlist;
+            List<Cart> cartlist = setCart();
             return View(cartlist);      
         }
         [HttpPost]
-        public ActionResult AddtoCart(Product product, int? amount)
+        public ActionResult AddtoCart(int id, int amount)
         {
-            if (amount == null)
-            {
-                return HttpNotFound();
+            List<Cart> cartlist = setCart();
+            Cart product = cartlist.Find(n => n.productID ==id);
+            
+            if(product == null){
+                product = new Cart(id, amount);
+                cartlist.Add(product);
+                return RedirectToAction("Index","Home");
             }
-            if (product == null)
-            {
-                return HttpNotFound();
+            else {
+                product.amount += amount;
+                return RedirectToAction("Index", "Home");
             }
-            Cart cart = new Cart(product, amount);
-            cartlist.Add(cart);
-            return RedirectToAction("Index", "Cart");
+            
         }
     }
 }

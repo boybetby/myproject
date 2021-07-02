@@ -1,4 +1,6 @@
-﻿@model List<myproject.Models.Cart>
+﻿@using myproject.Models
+
+@model List<Cart>
 @{
     long? money = 0;
 }
@@ -80,11 +82,12 @@
                                         @{
 
                                             money += item.price * item.amount;
+                                            long totalitemprice = item.amount * item.price;
                                         }
                                         <div class="col col-sm-5">
                                             <div style="display:inline;width:100%">
-                                                <input type="number" value="1" min="1" max="100" step="1" style="background-color:white;width:50px;border:none;" />
-                                                <p style="display:inline;margin-left:15px">@Html.DisplayFor(modelItem => item.price)</p>
+                                                <input type="number" value="@Html.DisplayFor(modelItem => item.amount)" min="1" max="100" step="1" style="background-color:white;width:50px;border:none;" />
+                                                <p style="display:inline;margin-left:15px">@totalitemprice</p>
                                             </div>
                                         </div>
                                     </div>

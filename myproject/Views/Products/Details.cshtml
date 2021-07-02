@@ -45,7 +45,7 @@
         </header>
     </div>
     <main class="detail">
-        @using (Html.BeginForm("AddtoCart", "Cart", FormMethod.Post))
+        @using (Html.BeginForm("AddtoCart", "Cart", new { id = Model.productID }, FormMethod.Post))
         {
             <div style="margin-top:100px;" class="container">
                 <div class="row">
