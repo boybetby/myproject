@@ -19,5 +19,7 @@ namespace myproject.Models
         public long price { get; set; }
         public Category? category { get; set; }
         public string image { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
     }
 }
