@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using myproject.Models;
 using myproject.DAL;
+using System.Net.Mail;
+using System.IO;
 
 namespace myproject.Controllers
 {
@@ -49,7 +51,7 @@ namespace myproject.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-        
+
         public ActionResult Info()
         {
             return View();
@@ -67,8 +69,7 @@ namespace myproject.Controllers
             addorder.PhoneNumber = order.PhoneNumber;
             addorder.Address = order.Address;
             addorder.OrderID = orderID;
-
-            foreach(var items in cartlist) 
+            foreach (var items in cartlist)
             {
                 totalprice += items.amount * items.price;
 
@@ -82,6 +83,30 @@ namespace myproject.Controllers
                 orderdetails.ProductID = item.productID;
                 orderdetails.amount = item.amount;
                 db.OrderDetails.Add(orderdetails);
+            }
+            string MailSend = "matocdo828@gmail.com";
+            string Password = "0968286296";
+            using (MailMessage m = new MailMessage(MailSend, order.Email))
+            {
+                m.Subject = "Thank You To Ordered";
+                m.Body = ("Orders will be delivery to the " + order.Address + " within 3 to 4 days");                
+                //if (emailInfo.Attacment.ContentLength > 0)
+                //{
+                //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);
+                //    m.Attachments.Add(new Attachment(emailInfo.Attacment.InputStream, filename));
+                //}
+                m.IsBodyHtml = true;
+                using (SmtpClient smtp = new SmtpClient())
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    NetworkCredential networkCred = new NetworkCredential(MailSend, Password);
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = networkCred;
+                    smtp.Port = 587;
+                    smtp.Send(m);
+                    ViewBag.Message = "Email sent";
+                }
             }
             db.SaveChanges();
             cartlist.Clear();

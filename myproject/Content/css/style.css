@@ -29,10 +29,10 @@ body {
 
 
 
-    .splide__track img {
-        height: 370.74px;
-        width: 303.68px;
-    }
+.splide__track img {
+    height: 370.74px;
+    width: 303.68px;
+}
 
 .bg2 {
     background-image: url('../../images/bg2.jpg');
@@ -42,20 +42,20 @@ body {
     background-position: center;
 }
 
-    .bg2 button {
-        background-color: Transparent;
-        background-repeat: no-repeat;
-        border: none;
-        cursor: pointer;
-        overflow: hidden;
-        outline: none;
-        border: 2px solid black;
-        border-radius: 40px;
-        color: white;
-        border-color: white;
-        padding: 7px 15px 7px 15px;
-        font-size: 30px;
-    }
+.bg2 button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 40px;
+    color: white;
+    border-color: white;
+    padding: 7px 15px 7px 15px;
+    font-size: 30px;
+}
 
 
 .midcontent button {
@@ -86,15 +86,15 @@ body {
     background-size: cover;
 }
 
-    .bg3 h1 {
-        color: white;
-        font-size: 50px;
-    }
+.bg3 h1 {
+    color: white;
+    font-size: 50px;
+}
 
-    .bg3 h2 {
-        color: white;
-        font-size: 40px;
-    }
+.bg3 h2 {
+    color: white;
+    font-size: 40px;
+}
 
 
 .credit h1 {
@@ -124,33 +124,33 @@ nav {
     line-height: 60px;
 }
 
-    nav ul {
-        line-height: 60px;
-        list-style: none;
-        background: rgba(0, 0, 0, 0);
-        overflow: hidden;
-        color: #fff;
-        padding: 0;
-        text-align: left;
-        margin: 0;
-        padding-left: 100px;
-        transition: 1s;
-    }
+nav ul {
+    line-height: 60px;
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: left;
+    margin: 0;
+    padding-left: 100px;
+    transition: 1s;
+}
 
-    nav.black ul {
-        background: #000;
-    }
+nav.black ul {
+    background: #000;
+}
 
-    nav ul li {
-        display: inline-block;
-        padding: 16px 40px;
-    }
+nav ul li {
+    display: inline-block;
+    padding: 16px 40px;
+}
 
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 20px;
-        }
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
 
 .menu-icon {
     line-height: 60px;
@@ -222,11 +222,11 @@ nav {
     padding-top: 400px;
 }
 
-    .sologan h1 {
-        font-family: Montserrat;
-        color: white;
-        vertical-align: middle;
-    }
+.sologan h1 {
+    font-family: Montserrat;
+    color: white;
+    vertical-align: middle;
+}
 
 .wrapper_product {
     object-fit: cover;
@@ -336,19 +336,19 @@ nav {
     background-color: lightgray;
 }
 
-    .cart p {
-        font-family: Montserrat;
-        color: black;
-        font-size: 25px;
-    }
+.cart p {
+    font-family: Montserrat;
+    color: black;
+    font-size: 25px;
+}
 
 .remove a {
     transition: color 1s; /* For modern browsers */
 }
 
-    .remove a:hover {
-        color: pink;
-    }
+.remove a:hover {
+    color: pink;
+}
 
 .checkout button {
     font-family: Lato;
@@ -445,5 +445,4 @@ nav {
     background-color: black;
     font-family: Lato;
     font-weight: 500;
-
 }
