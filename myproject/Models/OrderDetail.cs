@@ -11,7 +11,7 @@ namespace myproject.Models
         [Key]
         public int STT { get; set; }
         public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public int ProductID { get; set; }
         public int amount { get; set; }
     }
 }
