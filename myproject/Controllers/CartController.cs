@@ -52,6 +52,11 @@ namespace myproject.Controllers
             }
         }
 
+        public ActionResult Thanks()
+        {
+            return View();
+        }
+
         public ActionResult Info()
         {
             return View();
@@ -84,12 +89,13 @@ namespace myproject.Controllers
                 orderdetails.amount = item.amount;
                 db.OrderDetails.Add(orderdetails);
             }
-            string MailSend = "matocdo828@gmail.com";
-            string Password = "0968286296";
+
+            string MailSend = "yengreenliving@gmail.com";
+            string Password = "yenmail@123"; 
             using (MailMessage m = new MailMessage(MailSend, order.Email))
             {
                 m.Subject = "Thank You To Ordered";
-                m.Body = ("Orders will be delivery to the " + order.Address + " within 3 to 4 days");                
+                m.Body = ("Your order's total is: "+ totalprice + " <br /> Your order will be delivery to " + order.Address + " within 3 to 4 days");                
                 //if (emailInfo.Attacment.ContentLength > 0)
                 //{
                 //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);
@@ -105,12 +111,12 @@ namespace myproject.Controllers
                     smtp.Credentials = networkCred;
                     smtp.Port = 587;
                     smtp.Send(m);
-                    ViewBag.Message = "Email sent";
+                    ViewBag.Message = "An email have sent to "  + order.Email +" ! Please check your email";
                 }
             }
             db.SaveChanges();
             cartlist.Clear();
-            return RedirectToAction("", "");
+            return RedirectToAction("Thanks", "Cart");
         }
     }
 }
