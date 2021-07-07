@@ -79,6 +79,7 @@ namespace myproject.Controllers
                 totalprice += items.amount * items.price;
 
             }
+            addorder.Date = DateTime.Now;
             addorder.TotalPrice = totalprice;
             db.Orders.Add(addorder);
             foreach (var item in cartlist)
@@ -94,8 +95,8 @@ namespace myproject.Controllers
             string Password = "yenmail@123"; 
             using (MailMessage m = new MailMessage(MailSend, order.Email))
             {
-                m.Subject = "Thank You To Ordered";
-                m.Body = ("Your order's total is: "+ totalprice + " <br /> Your order will be delivery to " + order.Address + " within 3 to 4 days");                
+                m.Subject = "Thank You For Chosing Us";
+                m.Body = ("Your order's total is: "+ totalprice + " <br /> Your order will be delivery to " + order.Address + " within 3 to 4 days <br />THANKS YOU!");                
                 //if (emailInfo.Attacment.ContentLength > 0)
                 //{
                 //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);
