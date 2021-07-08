@@ -1,4 +1,4 @@
-﻿using myproject.DAL;
+﻿//using myproject.DAL;
 using myproject.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace myproject.Models
 {
     public class Cart
     {
-        private ProductContext db = new ProductContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
         public int productID { get; set; }
         public string productname { get; set; }
         public string description { get; set; }

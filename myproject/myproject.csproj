@@ -181,12 +181,24 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="DAL\ProductContext.cs" />
-    <Compile Include="DAL\ProductInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107080127531_InitialModel.cs" />
+    <Compile Include="Migrations\202107080127531_InitialModel.Designer.cs">
+      <DependentUpon>202107080127531_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107080135529_CreateDatabase.cs" />
+    <Compile Include="Migrations\202107080135529_CreateDatabase.Designer.cs">
+      <DependentUpon>202107080135529_CreateDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107080139034_PullData.cs" />
+    <Compile Include="Migrations\202107080139034_PullData.Designer.cs">
+      <DependentUpon>202107080139034_PullData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -611,6 +623,17 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202107080127531_InitialModel.resx">
+      <DependentUpon>202107080127531_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107080135529_CreateDatabase.resx">
+      <DependentUpon>202107080135529_CreateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107080139034_PullData.resx">
+      <DependentUpon>202107080139034_PullData.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

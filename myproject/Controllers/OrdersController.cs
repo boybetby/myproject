@@ -6,14 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using myproject.DAL;
 using myproject.Models;
 
 namespace myproject.Controllers
 {
     public class OrdersController : Controller
     {
-        private ProductContext db = new ProductContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         [Authorize]
         // GET: Orders

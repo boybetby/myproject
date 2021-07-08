@@ -6,21 +6,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using myproject.DAL;
 using myproject.Models;
 
 namespace myproject.Controllers
 {
     public class ProductsController : Controller
     {
-        private ProductContext db = new ProductContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
         public ActionResult Index()
         {
             var products = from s in db.Products
                            select s;
-            products = products.Where(s =>s.category.ToString() == "product");
+            products = products.Where(s => s.category.ToString() == "product");
 
             return View(products.ToList());
         }

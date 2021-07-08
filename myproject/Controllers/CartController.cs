@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using myproject.Models;
-using myproject.DAL;
 using System.Net.Mail;
 using System.IO;
 
@@ -16,7 +15,7 @@ namespace myproject.Controllers
     public class CartController : Controller
     {
         private Random random = new Random();
-        private ProductContext db = new ProductContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
         public List<Cart> setCart()
         {
             List<Cart> cartlist = Session["Cart"] as List<Cart>;
@@ -92,11 +91,11 @@ namespace myproject.Controllers
             }
 
             string MailSend = "yengreenliving@gmail.com";
-            string Password = "yenmail@123"; 
+            string Password = "yenmail@123";
             using (MailMessage m = new MailMessage(MailSend, order.Email))
             {
                 m.Subject = "Thank You For Chosing Us";
-                m.Body = ("Your order's total is: "+ totalprice + " <br /> Your order will be delivery to " + order.Address + " within 3 to 4 days <br />THANKS YOU!");                
+                m.Body = ("Your order's total is: " + totalprice + " <br /> Your order will be delivery to " + order.Address + " within 3 to 4 days <br />THANKS YOU!");
                 //if (emailInfo.Attacment.ContentLength > 0)
                 //{
                 //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);
@@ -112,7 +111,7 @@ namespace myproject.Controllers
                     smtp.Credentials = networkCred;
                     smtp.Port = 587;
                     smtp.Send(m);
-                    ViewBag.Message = "An email have sent to "  + order.Email +" ! Please check your email";
+                    ViewBag.Message = "An email have sent to " + order.Email + " ! Please check your email";
                 }
             }
             db.SaveChanges();
