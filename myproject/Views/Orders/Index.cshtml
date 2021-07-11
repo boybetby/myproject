@@ -61,14 +61,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
-            <td>
+            <td style="text-align: center">
                 @if (item.Checked)
                 {
-                    <p>Checked <span style="font-weight:900;">&#10003;</span></p>
+                    <span style="font-weight: bold; color: forestgreen;">&#10003;</span>
                 }
                 else
-                {                   
-                        <button style="padding: 5px 10px; border:1px solid black;color:green;" onclick="@Url.Action("Check", "Orders")">Check</button>           
+                {
+                    @Html.ActionLink("Check", "CheckOrderd", new { id = item.OrderID })
                 }
             </td>
             <td>

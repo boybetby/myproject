@@ -115,7 +115,13 @@ namespace myproject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public ActionResult CheckOrderd(string id)
+        {
+                Order order = db.Orders.Find(id);
+                order.Checked = true;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
