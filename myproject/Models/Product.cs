@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace myproject.Models
         product, furniture, workshop
     }
     public class Product
-    { 
+    {
 
         public int productID { get; set; }
         public string productname { get; set; }
@@ -20,6 +21,7 @@ namespace myproject.Models
         public Category? category { get; set; }
         public string image { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-
+       
     }
+
 }

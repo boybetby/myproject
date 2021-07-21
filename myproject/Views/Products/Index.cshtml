@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<myproject.Models.Product>
+@{
+    int page = Convert.ToInt32(Session["page"]) + 1;
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +48,7 @@
                                         </span>
                                     }
                                 </li>
-                                
+
                             </ul>
                         </div>
                     </nav>
@@ -81,8 +84,13 @@
                     </div>
                 }
             </div>
+
             <div style="text-align:center">
-                <button>DISCOVER MORE</button>
+                @using (Html.BeginForm("Index", "Products", new { page = page }, FormMethod.Post))
+                {
+                    <button type="submit">DISCOVER MORE</button>
+                }
+
             </div>
         </div>
 
@@ -90,9 +98,9 @@
             <div style="display: inline;">
                 <h1>
                     CONTACT
-                    <br>+84 946-294-394
-                    <br>Open: 9:30AM - 5:30PM
-                    <br>info@theyenconcept.com
+                    <br />+84 946-294-394
+                    <br />Open: 9:30AM - 5:30PM
+                    <br />info@theyenconcept.com
                 </h1>
             </div>
             <div style="display: inline;margin-left:160px;">

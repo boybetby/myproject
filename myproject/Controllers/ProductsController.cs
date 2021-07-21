@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,11 +18,17 @@ namespace myproject.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = from s in db.Products
-                           select s;
-            products = products.Where(s => s.category.ToString() == "product");
+            Session["page"] = 1;
+            var products = db.Products.OrderBy(p => p.category.ToString() == "Products").Take(8);
+            return View(products);
+        }
 
-            return View(products.ToList());
+        [HttpPost]
+        public ActionResult Index(int page)
+        {
+            Session["page"] = page;
+            var products = db.Products.OrderBy(p => p.category.ToString() == "Products").Take(8*page);
+            return View(products);
         }
 
         // GET: Products/Details/5
