@@ -18,6 +18,7 @@ namespace myproject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public List<Cart> setCart()
         {
+            
             List<Cart> cartlist = Session["Cart"] as List<Cart>;
             if (cartlist == null)
             {
@@ -32,6 +33,7 @@ namespace myproject.Controllers
             List<Cart> cartlist = setCart();
             return View(cartlist);
         }
+
         [HttpPost]
         public ActionResult AddtoCart(int id, int amount)
         {
@@ -42,13 +44,35 @@ namespace myproject.Controllers
             {
                 product = new Cart(id, amount);
                 cartlist.Add(product);
-                return RedirectToAction("Index", "Home");
+                Session["Number"] = cartlist.Count();
+                
+
+                return Redirect(Request.UrlReferrer.PathAndQuery);
+
             }
             else
             {
                 product.amount += amount;
-                return RedirectToAction("Index", "Home");
+                
+                return Redirect(Request.UrlReferrer.PathAndQuery);
             }
+            
+        }
+
+        public ActionResult Remove(int id)
+        {
+            List<Cart> cartlist = setCart();
+            Cart product = cartlist.Find(n => n.productID == id);
+
+            if (product == null)
+            {
+               
+                cartlist.Remove(product);
+                Session["Number"] = cartlist.Count();
+                return View("Cart");
+            }
+           
+            return View("Cart");
         }
 
         public ActionResult Thanks()
@@ -61,8 +85,9 @@ namespace myproject.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SubmitOrder(Order order)
+        public ActionResult Info(Order order)
         {
+            if (ModelState.IsValid) { 
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             string orderID = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
             long totalprice = 0;
@@ -117,6 +142,8 @@ namespace myproject.Controllers
             db.SaveChanges();
             cartlist.Clear();
             return RedirectToAction("Thanks", "Cart");
+            }
+            return View("Info");
         }
     }
 }

@@ -15,7 +15,9 @@ namespace myproject.Models
         [Required(ErrorMessage = "Email is Required")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
         public string Email { get; set; }
+        [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "Phone number is Required")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",ErrorMessage = "Entered phone format is not valid.")]
         public string PhoneNumber { get; set; }
         [Required(ErrorMessage = "Address is Required")]
         public string Address { get; set; }

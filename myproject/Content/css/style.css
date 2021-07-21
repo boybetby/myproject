@@ -342,12 +342,16 @@ nav ul li a {
     font-size: 25px;
 }
 
+.remove a{
+    color: #006666;
+}
+
 .remove a {
     transition: color 1s; /* For modern browsers */
 }
 
 .remove a:hover {
-    color: pink;
+    color: orangered;
 }
 
 .checkout button {
@@ -445,4 +449,117 @@ nav ul li a {
     background-color: black;
     font-family: Lato;
     font-weight: 500;
+}
+
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 400px;
+}
+
+.form__field {
+    text-align: right;
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.3rem;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+    .form__field::placeholder {
+        color: transparent;
+    }
+
+    .form__field:placeholder-shown ~ .form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+
+
+
+
+.form__label {
+    padding-left: 360px;
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.5rem;
+    color: #9b9b9b;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #11998e, #38ef7d);
+    border-image-slice: 1;
+}
+
+    .form__field:focus ~ .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: #11998e;
+        font-weight: 700;
+    }
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+    box-shadow: none;
+}
+
+.workshop img {
+    position: absolute;
+    width: 577px;
+    height: 648px;
+    object-fit: none;
+    object-position: center;
+}
+
+.workshop h1 {
+    font-family: Lato;
+    font-weight: bold;
+    color: black;
+    font-size: 55px;
+}
+
+.workshop button {
+    font-size:20px;
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px 30px;
+    border-radius: 30px;
+}
+
+.badge {
+    margin-top: 40px;
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 20px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: white;
+}
+
+#lblCartCount {
+    font-size: 12px;
+    background: orange;
+    color: black;
+    padding: 1px 6px;
+    vertical-align: top;
+    margin-left: -15px;
 }

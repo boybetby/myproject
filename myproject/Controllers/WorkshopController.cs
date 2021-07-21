@@ -10,21 +10,21 @@ using myproject.Models;
 
 namespace myproject.Controllers
 {
-    public class ProductsController : Controller
+    public class WorkshopController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Products
+        // GET: Workshop
         public ActionResult Index()
         {
             var products = from s in db.Products
                            select s;
-            products = products.Where(s => s.category.ToString() == "product");
+            products = products.Where(s => s.category.ToString() == "workshop");
 
             return View(products.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: Workshop/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,20 +39,13 @@ namespace myproject.Controllers
             return View(product);
         }
 
-
-
-
-
-
-
-
-        // GET: Products/Create
+        // GET: Workshop/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Workshop/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -69,7 +62,7 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        // GET: Workshop/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,7 +77,7 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
+        // POST: Workshop/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -100,7 +93,7 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        // GET: Workshop/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,7 +108,7 @@ namespace myproject.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
+        // POST: Workshop/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

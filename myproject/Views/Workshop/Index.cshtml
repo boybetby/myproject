@@ -1,29 +1,38 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<myproject.Models.Product>
+
+@{
+    int? count = 1;
+   
+}
+
+
+<!DOCTYPE html>
 <html>
 
 <head>
     <title>Yen</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../Content/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../Content/css/website-menu-07/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="@Url.Content("https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js")"></script>
-    <link rel="stylesheet" href="../../Content/css/splide-2.4.21/dist/js/splide.min.js">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="@Url.Content("https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css")">
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         @@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
     </style>
+
 </head>
 <body>
     <main>
         <div>
-            <div class="wrapper" style="background-image: url('../../images/bg1.png');">
+            <div class="wrapper" style="background-image: url('../../images/bg3.jpg');">
                 <header style="padding-left:40px; position: absolute;">
                     <nav>
                         <div class="menu-icon">
@@ -39,87 +48,96 @@
                                 <li>@Html.ActionLink("WORKSHOP", "Index", "Workshop")</li>
                                 <li>@Html.ActionLink("ABOUT US", "About", "Home")</li>
                                 <li style="margin-left:200px;">
-                                    <a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a> @if (Session["Number"] != null)
+                                    <a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a>
+
+                                    @if (Session["Number"] != null)
                                     {
                                         <span class='badge badge-warning' id='lblCartCount'>
                                             @Session["Number"]
                                         </span>
-                                    }
-                                </li>
-                  
+                                     }
+
+                                        
+                                 </li>
+
+
                             </ul>
                         </div>
                     </nav>
                 </header>
                 <div class="sologan">
-                    <h1 style="font-weight:bold;font-size: 50px;margin-bottom:20px;">GREEN LIVING SPACE</h1>
-                    <h1 style="font-size:30px;">Nơi cuộc sống tìm lại giá trị cân bằng</h1>
+
+                    <h1 style="font-weight:bold;font-size: 50px;margin-bottom:20px;">OUR SIGNATURE</h1>
+                    <h1 style="font-size:30px;">Collection 2021</h1>
+
                 </div>
             </div>
-        </div>
-        <div style="text-align: center;margin-top:100px;">
-            <h1 style="font-weight:bold;font-size:40px">Green Furniture Collection</h1>
-            <div class="splide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <li class="splide__slide" style="margin-right:10px;"><img src="../../images/furniture/f_5.png"></li>
-                        <li class="splide__slide" style="margin-right:10px;"><img src="../../images/furniture/f_6.png"></li>
-                        <li class="splide__slide" style="margin-right:10px;"><img src="../../images/furniture/f_7.png"></li>
-                        <li class="splide__slide" style="margin-right:10px;"><img src="../../images/furniture/f_8.png"></li>
-                        <li class="splide__slide" style="margin-right:10px;"><img src="../../images/furniture/f_9.png"></li>
-                        <li class="splide__slide" style="margin-right:10px;"><img src="../../images/furniture/f_10.png"></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h1 style="text-align:center;margin-top:100px;font-weight:bold;margin-bottom:60px;font-size:40px">We have more than just a plant</h1>
-            <div class="bg2">
-                <div style="padding-top:770px;padding-left:50px;">
-                    <h1 style="font-weight:bold;color:white;font-size:40px;">GREEN DECORATION COLLECTION</h1>
-                    <button>DISCOVER NOW</button>
-                </div>
-            </div>
-        </div>
-        <div class="midcontent" style="margin-top: 100px;margin-bottom:100px;text-align:center;">
-            <div class="midbg1" style="background-image: url('../../images/signature_bg.png')">
-                <h1 style="margin-top: 600px;font-weight:bold;">
-                    OUR SIGNATURE
-                </h1>
-                <div style="text-align:left; margin-left: 30px;">
-                    <h2 style="font-size:20px;display: inline;color:white;font-family:Montserrat">
-                        Điều gì khiến bạn khác biệt?
-                    </h2>
-                    <button style="margin-right:15px;">DISCOVER NOW</button>
-                </div>
-            </div>
-            <div class="midbg2" style="background-image: url('../../images/workshop_bg.jpg')">
-                <h1 style="margin-top: 600px;font-weight:bold;">
+            <div class="introduce" style="text-align: center;margin-top:70px;">
+                <h1 style="font-weight: 900;font-size:50px;">
                     WORKSHOP
                 </h1>
-                <div style="text-align:left; margin-left: 30px;">
-                    <h2 style="font-size:20px;display: inline;color:white;font-family:Montserrat">
-                        Kết nối với chính mình
-                    </h2>
-                    <button style="margin-right:40px;">DISCOVER NOW</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg3">
-            <div style="text-align:center;margin-top:500px;font-weight:bold;">
-                <h1>
-                    STORE LOCATION
-                </h1>
-
-                <a href="#"><h2>357 Le Van Luong, District 1, Ho Chi Minh</h2></a>
 
             </div>
         </div>
-        <!--Fotter-->
-        <footer class="viewfooter">
+        <div class="container">
+            <div class="workshop" style="margin-top:50px">
+
+                
+                @foreach (var item in Model)
+                {
+                    long currency = item.price;
+
+                    if (count % 2 == 1)
+                    {
+                        <div class="row" style="margin-top:30px;">
+                            <div class="col">
+                                <a href='@Url.Action("Details", "Products", new { id=item.productID })'><img src="@Html.DisplayFor(modelItem => item.image)"></a>
+                            </div>
+                            <div class="col" style="padding-left:80px;margin-top:320px;">
+
+                                <a href='@Url.Action("Details", "Products", new { id=item.productID })'><h1 class="productname">@Html.DisplayFor(modelItem => item.productname)</h1></a>
+
+
+                                <h1 class="productprice">
+                                    Giá: @Html.DisplayFor(modelItem => item.price)
+                     
+                                </h1>
+                                <button>DISCOVER NOW</button>
+                                <div style="margin-bottom: 100px;"></div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="row">
+                            <div class="col" style="padding-left:80px;margin-top:320px;text-align:right">
+                                <a href='@Url.Action("Details", "Products", new { id=item.productID })'><h1 class="productname">@Html.DisplayFor(modelItem => item.productname)</h1></a>
+
+                                <h1 class="productprice" id="money">
+                                    Giá: @Html.DisplayFor(modelItem => item.price)
+                                </h1>
+                                <button>DISCOVER NOW</button>
+                                <div style="margin-bottom: 100px;"></div>
+                            </div>
+                            <div class="col">
+                                <a href='@Url.Action("Details", "Products", new { id=item.productID })'><img src="@Html.DisplayFor(modelItem => item.image)"></a>
+                            </div>
+                        </div>
+                    }
+                    {
+                        count += 1;
+                    }
+                }
+
+
+                
+
+            </div>
+        </div>
+        <footer style="display: flex;margin-top:200px;margin-left:400px;margin-bottom:140px;">
             <div style="display: inline;">
-                <h1 style="font-size:30px; color:black;">
+                <h1 style="font-size: 30px">
                     CONTACT
                     <br>+84 946-294-394
                     <br>Open: 9:30AM - 5:30PM
@@ -127,7 +145,7 @@
                 </h1>
             </div>
             <div style="display: inline;margin-left:160px;">
-                <h1 style="font-size: 30px; color: black; ">
+                <h1 style="font-size: 30px">
                     FOLLOW US
                 </h1>
                 <div style="display:flex;flex-wrap:wrap">
@@ -149,14 +167,7 @@
                 </div>
             </div>
         </footer>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                new Splide('.splide', {
-                    perPage: 4,
-                    perMove: 1,
-                }).mount();
-            });
-        </script>
     </main>
+
 </body>
 </html>

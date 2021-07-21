@@ -37,8 +37,15 @@
                                 <li>@Html.ActionLink("GREEN PRODUCTION", "Index", "Furniture")</li>
                                 <li>@Html.ActionLink("WORKSHOP", "Index", "Workshop")</li>
                                 <li>@Html.ActionLink("ABOUT US", "About", "Home")</li>
-                                <li style="margin-left:200px;"><a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a></li>
-                                <li><a href="#"><img src="../../images/pngwing.png" style="width:24px;height: 24px;"></a></li>
+                                <li style="margin-left:200px;">
+                                    <a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a> @if (Session["Number"] != null)
+                                    {
+                                        <span class='badge badge-warning' id='lblCartCount'>
+                                            @Session["Number"]
+                                        </span>
+                                    }
+                                </li>
+                                
                             </ul>
                         </div>
                     </nav>
@@ -48,7 +55,20 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid" style="margin-top:200px;">
+
+
+        <form method="get" action="">
+            <div class="form__group field" style="margin:50px 80px 0 auto;">
+                <input type="text" class="form__field" placeholder="Name" name="name" id='name' />
+                <label for="name" class="form__label">Search</label>
+            </div>
+        </form>
+
+
+
+
+
+        <div class="container-fluid" style="margin-top:50px;">
             <div class="row gx-6">
                 @foreach (var item in Model)
                 {
