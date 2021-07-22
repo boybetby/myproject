@@ -18,19 +18,17 @@ namespace myproject.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            Session["page"] = 1;
-            var products = db.Products.OrderBy(p => p.category.ToString() == "Products").Take(8);
-            return View(products);
+            var products = from s in db.Products
+                           select s;
+            products = products.Where(s => s.category.ToString() == "product");
+
+            return View(products.ToList());
         }
 
-        [HttpPost]
-        public ActionResult Index(int page)
-        {
-            Session["page"] = page;
-            var products = db.Products.OrderBy(p => p.category.ToString() == "Products").Take(8*page);
-            return View(products);
-        }
 
+
+
+        
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
