@@ -59,22 +59,41 @@
             </div>
         </div>
 
+        <div style="width:90%; margin: 0 50px 0 50px">
+            <div style="margin-top: 30px;display:inline-block">
+                
+                @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+                {
+                    <select name="sort" id="sort" class="sort" onchange="this.form.submit()">
+                        <option value="" selected disabled hidden>Sort</option>
+                        <option value="LowtoHigh">Price: Low to High</option>
+                        <option value="HightoLow">Price: High to Low</option>
+                    </select>
+                }
+                <script>
 
-        <form method="get" action="">
-            <div class="form__group field" style="margin:50px 80px 0 auto;">
-                <input type="text" class="form__field" placeholder="Name" name="name" id='name' />
-                <label for="name" class="form__label">Search</label>
+                </script>
             </div>
-        </form>
-        <div class="container-fluid" style="margin-top:50px;">
+            
+            <div style="display: inline-block;float:right">
+                @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+                {
+                    <div class="form__group field" style="float:right">
+                        <input type="text" class="form__field" placeholder="Name" name="searchString" id='name' />
+                        <label for="name" class="form__label">Search</label>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="container-fluid" style="margin-top:40px;">
             <div class="row gx-6">
                 @foreach (var item in Model)
                 {
-                    <div class="col-lg-3" style="margin-bottom:130px;justify-content: center;display: none;">
-                        <div style="height:450px;width:350px;">
+                    <div class="col-lg-3" style="margin-bottom:130px;display: none;">
+                        <div style="height: 450px; width: 350px; justify-content: center; padding-left: 25px; ">
                             <a href='@Url.Action("Details", "Products", new { id=item.productID })'><img src="@Html.DisplayFor(modelItem => item.image)"></a>
                             <a href='@Url.Action("Details", "Products", new { id=item.productID })'><p class="productname">@Html.DisplayFor(modelItem => item.productname)</p></a>
-                            <p class="productprice">Giá¡: @Html.DisplayFor(modelItem => item.price)</p>
+                            <p class="productprice">Giá: @Html.DisplayFor(modelItem => item.price)</p>
                         </div>
                     </div>
                 }
@@ -123,65 +142,12 @@
         $(".col-lg-3").slice(0, 8).show();
 
         $(".loadMore").on("click", function () {
-
             $(".col-lg-3:hidden").slice(0, 4).show();
-            loading.show();
+
             if ($(".col-lg-3:hidden").length == 0) {
                 $(".loadMore").fadeOut();
             }
         })
     </script>
-
-
-    <script>
-        $(function () {
-
-            var loadCount = 1;
-            var loading = $("#loading");
-            $("#loadMore").on("click", function (e) {
-
-                e.preventDefault();
-
-                $(document).on({
-
-                    ajaxStart: function () {
-                        loading.show();
-                    },
-                    ajaxStop: function () {
-                        loading.hide();
-                    }
-                });
-
-                var url = "/Products/LoadMoreProduct/";
-                $.ajax({
-                    url: url,
-                    data: { size: loadCount * 4 },
-                    cache: false,
-                    type: "POST",
-                    success: function (data) {
-
-                        if (data.length !== 0) {
-                            $(data.ModelString).insertBefore("#loadMore").hide().fadeIn(2000);
-                        }
-
-                        var ajaxModelCount = data.ModelCount - (loadCount * 4);
-                        if (ajaxModelCount <= 0) {
-                            $("#loadMore").hide().fadeOut(2000);
-                        }
-
-                    },
-                    error: function (xhr, status, error) {
-                        console.log(xhr.responseText);
-                        alert("message : \n" +
-                            "An error occurred, for more info check the js console" +
-                            "\n status : \n" + status + " \n error : \n" + error);
-                    }
-                });
-
-                loadCount = loadCount + 1;
-            });
-        });
-    </script>
-
 </body>
 </html>

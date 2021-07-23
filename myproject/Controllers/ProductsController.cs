@@ -16,12 +16,30 @@ namespace myproject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string searchString,string sort)
         {
+            ViewBag.CurrentSort = sort;
+            ViewBag.CurrentFilter = searchString;
+
             var products = from s in db.Products
                            select s;
-            products = products.Where(s => s.category.ToString() == "product");
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.category.ToString() == "product" && s.productname.ToUpper().Contains(searchString.ToUpper()));
+            }
+            else products = products.Where(s => s.category.ToString() == "product");
 
+            if (!String.IsNullOrEmpty(sort))
+            {
+                if (sort == "HightoLow")
+                {
+                    products = products.OrderByDescending(s => s.price);
+                }
+                else
+                {
+                    products = products.OrderBy(s => s.price);
+                }
+            }
             return View(products.ToList());
         }
 

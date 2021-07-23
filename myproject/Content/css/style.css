@@ -563,3 +563,25 @@ nav ul li a {
     vertical-align: top;
     margin-left: -15px;
 }
+
+.sort {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: Lato;
+    font-weight: bold;
+    color: black;
+    padding-left: 10px;
+    box-shadow: 0 0 1px #006666;
+}
+
+
+.sort option {
+    font-size: 15px;
+    font-family: Lato;
+    font-weight: bold;
+    color: black;
+    margin-top:3px;
+    margin-bottom:3px;
+}
