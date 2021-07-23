@@ -39,7 +39,7 @@
                             <i class="fa fa-bars fa-2x"></i>
                         </div>
                         <div class="logo">
-                            <a href="#"><img src="../../images/yen.png" class="yen"></a>
+                            <a href="@Url.Action("Index", "Home")"><img src="../../images/yen.png" class="yen"></a>
                         </div>
                         <div class="menu">
                             <ul style="display:inline-block">
@@ -55,10 +55,10 @@
                                         <span class='badge badge-warning' id='lblCartCount'>
                                             @Session["Number"]
                                         </span>
-                                     }
+                                    }
 
-                                        
-                                 </li>
+
+                                </li>
 
 
                             </ul>
@@ -82,7 +82,7 @@
         <div class="container">
             <div class="workshop" style="margin-top:50px">
 
-                
+
                 @foreach (var item in Model)
                 {
                     long currency = item.price;
@@ -100,7 +100,7 @@
 
                                 <h1 class="productprice">
                                     Giá: @Html.DisplayFor(modelItem => item.price)
-                     
+
                                 </h1>
                                 <button>DISCOVER NOW</button>
                                 <div style="margin-bottom: 100px;"></div>
@@ -131,7 +131,7 @@
                 }
 
 
-                
+
 
             </div>
         </div>
@@ -167,6 +167,7 @@
                 </div>
             </div>
         </footer>
+        
     </main>
 
 </body>
