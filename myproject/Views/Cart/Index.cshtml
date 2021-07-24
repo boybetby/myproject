@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../Content/css/website-menu-07/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="@Url.Content("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css")" rel="stylesheet" id="bootstrap-css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../../Scripts/bootbox.min.js"></script>
     <style>
         @@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
     </style>
@@ -57,12 +57,12 @@
             <p style="font-family:Montserrat;color:white;font-weight:bold;font-size:50px">YOUR CART</p>
         </div>
     </div>
-    @using (Html.BeginForm("Info","Cart"))
+    @using (Html.BeginForm("Info", "Cart"))
     {
         <main class="cart">
             <div class="container">
                 <div class="row">
-                    <div class="col col-lg-8">
+                    <div class="col col-lg-8" id="datamodel">
                         <div>
                             <p style="margin-top:50px;">YOUR SELECTIONS</p>
                             <p style="border-bottom:  0.001em solid black;"></p>
@@ -84,8 +84,13 @@
                                                     </p>
                                                 </div>
                                                 <div class="remove">
-                                                    @Html.ActionLink("Remove", "Remove","Cart",new { id = item.productID  })                                
+                                                    @Html.ActionLink("Remove", "Remove", new { id = item.productID })
+
+                                                    <a href="#" class="js-remove" data-id="@item.productID">
+                                                        Remove
+                                                    </a>
                                                 </div>
+
                                             </div>
                                             @{
                                                 money += item.price * item.amount;
@@ -169,10 +174,17 @@
                                 </div>
                             </div>
                             <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
-                            <div class="checkout" style="margin-top:50px;">
-                                <button type="submit" style="width: 100%; height:35px;">CHECKOUT</button>
-                            </div>
-
+                            @if (Model.Count() == 0)
+                            {
+                                <div class="checkout" style="margin-top:50px;">
+                                    <button type="submit" style="width: 100%; height:35px;background-color:gray" disabled>CHECKOUT</button>
+                                </div>
+                            }
+                            else
+                            { <div class="checkout" style="margin-top:50px;">
+                                    <button type="submit" style="width: 100%; height:35px;">CHECKOUT</button>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -216,3 +228,31 @@
     </footer>
 </body>
 </html>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".js-remove").click(function (e) {
+                e.preventDefault();
+                var link = $(e.target);
+                bootbox.confirm("Are you sure to remove?",
+                    function () {
+                        $.ajax({
+                            url: "/cart/remove/" + link.attr("data-id"),
+                            method: "GET"
+                        })
+                            .done(function () {
+                                link.parents("div").fadeOut(function () {
+                                    $(this).remove();
+                                });
+                            })
+                            .fail(function () {
+                                alert("Some thing wrong!")
+                            });
+                    });
+            });
+        });
+    </script>
+}
+@Scripts.Render("~/bundles/bootstrap")

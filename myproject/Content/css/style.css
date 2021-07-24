@@ -342,6 +342,11 @@ nav ul li a {
     font-size: 25px;
 }
 
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
 .remove a{
     color: #006666;
 }
@@ -388,11 +393,10 @@ nav ul li a {
 }
 
 .infoform {
-    padding-top: 150px;
+    padding-top: 110px;
     display: flex;
     justify-content: center;
-    height: 1000px;
-    background-image: url('../../images/bg1.jpg');
+    height: 1100px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -406,17 +410,17 @@ nav ul li a {
 
 
 #formsize {
-    padding-top: 50px;
+    padding-top: 30px;
     margin-top: 20px;
     display: flex;
     justify-content: center;
     width: 900px;
-    height: 800px;
+    height: 900px;
     background-color: rgba(255, 255, 255, .7)
 }
 
 #formsize h1 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: center;
     font-family: Lato;
     color: black;
@@ -424,7 +428,7 @@ nav ul li a {
 }
 
 #formsize input {
-    border-radius: 10px;
+    border-radius: 5px;
     border-width: 3px;
     color: black;
     background-color: white;
@@ -441,14 +445,14 @@ nav ul li a {
 
 .infoform button {
     color: white;
-    margin-top: 20px;
+    margin-top: 10px;
     display: block;
     width: 100%;
     height: 45px;
-    border-radius: 20px !important;
+    border-radius: 10px !important;
     background-color: black;
     font-family: Lato;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .form__group {

@@ -389,6 +389,12 @@
     <Content Include="images\workshops\ws_3.jpg" />
     <Content Include="images\workshop_bg.jpg" />
     <Content Include="images\yen.png" />
+    <Content Include="Scripts\bootbox.all.js" />
+    <Content Include="Scripts\bootbox.all.min.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.locales.js" />
+    <Content Include="Scripts\bootbox.locales.min.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\css\icon\free-social-media-icons-vector.eps" />
@@ -546,6 +552,7 @@
     <Content Include="Content\css\website-menu-07\scss\bootstrap\_variables.scss" />
     <Content Include="Content\css\website-menu-07\scss\style.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\code.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

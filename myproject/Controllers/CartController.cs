@@ -64,15 +64,15 @@ namespace myproject.Controllers
             List<Cart> cartlist = setCart();
             Cart product = cartlist.Find(n => n.productID == id);
 
-            if (product == null)
+            if (product != null)
             {
                
                 cartlist.Remove(product);
                 Session["Number"] = cartlist.Count();
-                return View("Cart");
+                return View("Index",cartlist);
             }
-           
-            return View("Cart");
+            
+            return View("Index",cartlist);
         }
 
         public ActionResult Thanks()
