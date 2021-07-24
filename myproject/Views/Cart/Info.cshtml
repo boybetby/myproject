@@ -1,8 +1,5 @@
 ﻿@model myproject.Models.Order
 
-@{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 
@@ -48,15 +45,16 @@
                                 </span>
                             }
                         </li>
-                        
-                       
+
+
                     </ul>
                 </div>
 
             </nav>
         </header>
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Confirm", "Cart", FormMethod.Post))
         {
+            <input type="hidden" name="ShippingFee" id="ShippingFee" value="0" />
             @Html.AntiForgeryToken()
             <main class="infoform">
                 <div id="formsize">
@@ -77,7 +75,7 @@
                                 <div class="col-md-12 form-group">
                                     <label for="email" class="col-form-label">Email</label>
                                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" , @style="margin-left:3px"})
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @style = "margin-left:3px" })
                                 </div>
                             </div>
 
@@ -99,7 +97,7 @@
                                     <select class="form-control" id="district" name="district" onchange="changeFuncDistrict();" style="margin-top:20px">
                                         <option value="" selected>Quận huyện</option>
                                     </select>
-                                    <select class="form-control" id="ward" name="ward" aria-placeholder="Quận huyện" style="margin-top:20px;margin-bottom:20px;">
+                                    <select class="form-control" id="ward" name="ward" aria-placeholder="Quận huyện" style="margin-top:20px;margin-bottom:20px;" onchange="changeFuncWard();">
                                         <option value="" selected>Phường xã</option>
                                     </select>
                                     <script src="~/Scripts/code.js"></script>
@@ -109,10 +107,6 @@
                                     @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger", @style = "margin-left:3px" })
                                 </div>
                             </div>
-
-
-                        
-
 
                             <div class="row">
                                 <div class="col-md-12">
