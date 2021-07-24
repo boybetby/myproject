@@ -85,63 +85,67 @@ namespace myproject.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Info(Order order)
+        public ActionResult Info(Order order,string province, string district, string ward)
         {
             if (ModelState.IsValid) { 
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            string orderID = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
-            long totalprice = 0;
-            List<Cart> cartlist = setCart();
-            Order addorder = new Order();
-            addorder.Name = order.Name;
-            addorder.Email = order.Email;
-            addorder.PhoneNumber = order.PhoneNumber;
-            addorder.Address = order.Address;
-            addorder.OrderID = orderID;
-            foreach (var items in cartlist)
-            {
-                totalprice += items.amount * items.price;
-
-            }
-            addorder.Date = DateTime.Now;
-            addorder.TotalPrice = totalprice;
-            db.Orders.Add(addorder);
-            foreach (var item in cartlist)
-            {
-                OrderDetail orderdetails = new OrderDetail();
-                orderdetails.Order = addorder;
-                orderdetails.ProductID = item.productID;
-                orderdetails.amount = item.amount;
-                db.OrderDetails.Add(orderdetails);
-            }
-
-            string MailSend = "yengreenliving@gmail.com";
-            string Password = "yenmail@123";
-            using (MailMessage m = new MailMessage(MailSend, order.Email))
-            {
-                m.Subject = "Thank You For Chosing Us";
-                m.Body = ("Your order's total is: " + totalprice + " <br /> Your order will be delivery to " + order.Address + " within 3 to 4 days <br />THANKS YOU!");
-                //if (emailInfo.Attacment.ContentLength > 0)
-                //{
-                //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);
-                //    m.Attachments.Add(new Attachment(emailInfo.Attacment.InputStream, filename));
-                //}
-                m.IsBodyHtml = true;
-                using (SmtpClient smtp = new SmtpClient())
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                string orderID = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
+                long totalprice = 0;
+                List<Cart> cartlist = setCart();
+                Order addorder = new Order();
+                addorder.Name = order.Name;
+                addorder.Email = order.Email;
+                addorder.PhoneNumber = order.PhoneNumber;
+                addorder.Address = order.Address;
+                addorder.OrderID = orderID;
+                addorder.Province = province;
+                addorder.District = district;
+                addorder.Ward = ward;
+                foreach (var items in cartlist)
                 {
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.EnableSsl = true;
-                    NetworkCredential networkCred = new NetworkCredential(MailSend, Password);
-                    smtp.UseDefaultCredentials = true;
-                    smtp.Credentials = networkCred;
-                    smtp.Port = 587;
-                    smtp.Send(m);
-                    ViewBag.Message = "An email have sent to " + order.Email + " ! Please check your email";
+                    totalprice += items.amount * items.price;
+
                 }
-            }
-            db.SaveChanges();
-            cartlist.Clear();
-            return RedirectToAction("Thanks", "Cart");
+                addorder.Date = DateTime.Now;
+                addorder.TotalPrice = totalprice;
+                db.Orders.Add(addorder);
+                foreach (var item in cartlist)
+                {
+                    OrderDetail orderdetails = new OrderDetail();
+                    orderdetails.Order = addorder;
+                    orderdetails.ProductID = item.productID;
+                    orderdetails.amount = item.amount;
+                    db.OrderDetails.Add(orderdetails);
+                }
+
+                string MailSend = "yengreenliving@gmail.com";
+                string Password = "yenmail@123";
+                using (MailMessage m = new MailMessage(MailSend, order.Email))
+                {
+                    string youraddress = order.Address + " " + ward + " " + district + " " + province;
+                    m.Subject = "Thank You For Chosing Us";
+                    m.Body = ("Your order's total is: " + totalprice + " <br /> Your order will be delivery to " + youraddress + " within 3 to 4 days <br />THANKS YOU!");
+                    //if (emailInfo.Attacment.ContentLength > 0)
+                    //{
+                    //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);
+                    //    m.Attachments.Add(new Attachment(emailInfo.Attacment.InputStream, filename));
+                    //}
+                    m.IsBodyHtml = true;
+                    using (SmtpClient smtp = new SmtpClient())
+                    {
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.EnableSsl = true;
+                        NetworkCredential networkCred = new NetworkCredential(MailSend, Password);
+                        smtp.UseDefaultCredentials = true;
+                        smtp.Credentials = networkCred;
+                        smtp.Port = 587;
+                        smtp.Send(m);
+                        ViewBag.Message = "An email have sent to " + order.Email + " ! Please check your email";
+                    }
+                }
+                db.SaveChanges();
+                cartlist.Clear();
+                return RedirectToAction("Thanks", "Cart");
             }
             return View("Info");
         }

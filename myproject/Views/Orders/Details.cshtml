@@ -1,11 +1,11 @@
 ﻿@model myproject.Models.Order
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detail";
     Layout = "~/Views/Admin/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detail</h2>
 
 <div>
     <h4>Order</h4>
@@ -41,6 +41,30 @@
 
         <dd>
             @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ward)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ward)
         </dd>
 
         <dt>

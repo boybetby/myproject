@@ -19,6 +19,10 @@ namespace myproject.Models
         [Required(ErrorMessage = "Phone number is Required")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",ErrorMessage = "Entered phone format is not valid.")]
         public string PhoneNumber { get; set; }
+    
+        public string Province { get; set; }
+        public string District { get; set; }
+        public string Ward { get; set; }
         [Required(ErrorMessage = "Address is Required")]
         public string Address { get; set; }
         public long TotalPrice { get; set; }
