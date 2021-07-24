@@ -155,7 +155,8 @@ namespace myproject.Controllers
             string orderID = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
             List<Cart> cartlist = setCart();
             Order addorder = new Order();
-            addorder = Session["Order"];
+
+            addorder = Session["Order"] as Order;
 
             //addorder.Name = order1.Name;
             //addorder.Email = order1.Name;
@@ -180,9 +181,9 @@ namespace myproject.Controllers
 
             string MailSend = "yengreenliving@gmail.com";
             string Password = "yenmail@123";
-            using (MailMessage m = new MailMessage(MailSend, order1.Email))
+            using (MailMessage m = new MailMessage(MailSend, addorder.Email))
             {
-                string youraddress = order1.Address + " " + order1.Ward + " " + order1.District + " " + order1.Province;
+                string youraddress = addorder.Address + " " + addorder.Ward + " " + addorder.District + " " + addorder.Province;
                 m.Subject = "Thank You For Chosing Us";
                 m.Body = ("Your order's total is: " + finalprice + " <br /> Your order will be delivery to " + youraddress + " within 3 to 4 days <br />THANKS YOU!");
                 //if (emailInfo.Attacment.ContentLength > 0)
@@ -200,7 +201,7 @@ namespace myproject.Controllers
                     smtp.Credentials = networkCred;
                     smtp.Port = 587;
                     smtp.Send(m);
-                    ViewBag.Message = "An email have sent to " + order1.Email + " ! Please check your email";
+                    ViewBag.Message = "An email have sent to " + addorder.Email + " ! Please check your email";
                 }
             }
             db.SaveChanges();

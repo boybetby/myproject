@@ -12,7 +12,6 @@
 </p>
 <table class="table">
     <tr>
-        
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -39,7 +38,6 @@
 
 @foreach (var item in Model) {
 <tr>
-
     <td>
         @Html.DisplayFor(modelItem => item.Name)
     </td>
@@ -49,12 +47,9 @@
     <td>
         @Html.DisplayFor(modelItem => item.PhoneNumber)
     </td>
-
     @{
-        string address = item.Address + " " + item.Ward + " " + item.District + " " + item.Province;
+        string address = item.Address + ", " + item.Ward + ", " + item.District + ", " + item.Province;
     }
-
-    @Html.DisplayFor(modelItem => item.Address)
     <td>
         @address
     </td>
@@ -64,7 +59,7 @@
     <td>
         @Html.DisplayFor(modelItem => item.Date)
     </td>
-    <td style="text-align: center">
+    <td style="text-align: left">
         @if (item.Checked)
         {
             <span style="font-weight: bold; color: forestgreen;">&#10003;</span>

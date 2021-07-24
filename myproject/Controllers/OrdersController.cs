@@ -14,11 +14,10 @@ namespace myproject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize]
         // GET: Orders
         public ActionResult Index()
         {
-            return View(db.Orders.ToList());
+            return View(db.Orders.OrderBy(m => m.Checked).ThenBy(n => n.Date).ToList()); 
         }
 
         // GET: Orders/Details/5
@@ -47,7 +46,7 @@ namespace myproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderID,UserID,Name,Email,PhoneNumber,Address,TotalPrice,Date,Checked")] Order order)
+        public ActionResult Create([Bind(Include = "OrderID,UserID,Name,Email,PhoneNumber,Province,District,Ward,Address,TotalPrice,Date,Checked")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +78,7 @@ namespace myproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderID,UserID,Name,Email,PhoneNumber,Address,TotalPrice,Date,Checked")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderID,UserID,Name,Email,PhoneNumber,Province,District,Ward,Address,TotalPrice,Date,Checked")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -115,13 +114,15 @@ namespace myproject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         public ActionResult CheckOrderd(string id)
         {
-                Order order = db.Orders.Find(id);
-                order.Checked = true;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            Order order = db.Orders.Find(id);
+            order.Checked = true;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
