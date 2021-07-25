@@ -102,7 +102,7 @@
                                     Giá: @Html.DisplayFor(modelItem => item.price)
 
                                 </h1>
-                                <button>DISCOVER NOW</button>
+                                <button onclick="location.href='@Url.Action("Details", "Products", new { id=item.productID })'">DISCOVER NOW</button>
                                 <div style="margin-bottom: 100px;"></div>
                             </div>
                         </div>

@@ -110,65 +110,20 @@
                     </div>
                 }
 
-
-
-                <!-- LOOP THIS -->
-                @*<div>
-                        <div class="row" style="margin-top: 50px;">
-                            <div class="col col-sm-4">
-                                <img src="img/furniture/furniture_1.png" style="width:200px;height:300px;">
-                            </div>
-                            <div class="col col-sm-8">
-                                <div class="row">
-                                    <div class="col col-sm-7">
-                                        <p>Ke hinh chu A</p>
-                                        <div style="word-wrap:break-word;width:200px;height:200px;">
-                                            <p style="font-size: 13px;">
-                                                Kệ chữ A bốn tầng lớn đa dụng hơn và có thể bày trí cả trong nhà và ngoài vườn. Đặc biệt, nếu bạn vừa muốn trang trí các vật dụng như sách hay giỏ cho kệ vừa muốn có thể thường xuyên tưới nước cho các chậu cây của mình, thì chiếc hộc của Kệ sẽ là người bạn đồng hành hoàn hảo đó.
-                                            </p>
-                                        </div>
-                                        <div class="remove">
-                                            <a href="#" style="color:black;font-size:14px">Remove</a>
-                                        </div>
-                                    </div>
-                                    <div class="col col-sm-5">
-                                        <div style="display:inline;width:100%">
-                                            <input type="number" value="1" min="1" max="100" step="1" style="background-color:white;width:50px;border:none;" />
-                                            <p style="display:inline;margin-left:15px">1000000</p>
-                                        </div>
-                                    </div>
+                        <div style="height:50px;"></div>
+                    </div>
+                    <div class="col col-lg-4" style="margin-top: 20px;">
+                        <div class="summary" style="margin-top:50px;padding-left:20px;padding-right:20px;background-color:white;height:400px;padding-top:20px">
+                            <p style="color:gray">ORDER SUMMARY</p>
+                            <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
+                            <div>
+                                <div style="display:inline-block;width:100%">
+                                    <p style="float:left;font-size:18px;">Tổng đơn hàng: </p>
+                                    <p style="float:right;font-size:18px;">@money</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div style="margin-top: 50px">
-                            <p style="border-bottom:  0.001em solid #606060;"></p>
-                        </div>
-                    </div>*@
-                <!-- END LOOP -->
-
-
-
-
-                <div style="height:50px;"></div>
-            </div>
-            <div class="col col-lg-4" style="margin-top: 20px;">
-                <div class="summary" style="margin-top:50px;padding-left:20px;padding-right:20px;background-color:white;padding-top:20px">
-                    <p style="color:gray">ORDER SUMMARY</p>
-                    <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
-                    <div>
-                        <div style="display:inline-block;width:100%">
-
-                        </div>
-
-
-                        @foreach (var item in Model)
-                        {
-                            <div style="display:inline-block;width:100%;margin-bottom:10px">
-                                <div style="float:left;">
-                                    <div style="display:inline-block;">
-                                        <p style="font-size:18px;float:left;width:200px" >@Html.DisplayFor(modelItem => item.productname)</p>
-
-                                    </div>
+                                <div style="display:inline-block;width:100%">
+                                    <p style="float:left;font-size:18px;">Phí ship: </p>
+                                    <p style="float:right;font-size:18px;">30000</p>
                                 </div>
                                 @{
                                     long price = item.amount * item.price;
