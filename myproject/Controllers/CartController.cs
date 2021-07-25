@@ -34,6 +34,8 @@ namespace myproject.Controllers
             return View(cartlist);
         }
 
+        
+
         [HttpPost]
         public ActionResult AddtoCart(int id, int amount)
         {
@@ -45,16 +47,18 @@ namespace myproject.Controllers
                 product = new Cart(id, amount);
                 cartlist.Add(product);
                 Session["Number"] = cartlist.Count();
-                
 
-                return Redirect(Request.UrlReferrer.PathAndQuery);
+                TempData["Success"] = "1";
+
+                return RedirectToAction("Details", "Products", new { id = id });
 
             }
             else
             {
+                TempData["Success"] = "2";
                 product.amount += amount;
                 
-                return Redirect(Request.UrlReferrer.PathAndQuery);
+                return RedirectToAction("Details","Products", new { id = id });
             }
             
         }

@@ -50,6 +50,7 @@ namespace myproject.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -59,6 +60,13 @@ namespace myproject.Controllers
             {
                 return HttpNotFound();
             }
+            if (TempData["Success"] != null) 
+            {
+                var success = TempData["Success"].ToString();
+                if (success == "1") ViewBag.Success = "1";
+                if (success == "2") ViewBag.Success = "2";
+            }
+            
             return View(product);
         }
 
