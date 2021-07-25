@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using myproject.Models;
 using PagedList;
-
 namespace myproject.Controllers
 {
     public class AdminController : Controller
@@ -77,11 +77,25 @@ namespace myproject.Controllers
         {
             if (ModelState.IsValid)
             {
+                if ((int)product.category == 0)
+                {
+                    string chuoi = "../../images/products/" + product.image;
+                    product.image = chuoi;
+                }
+                else if ((int)product.category == 1)
+                {
+                    string chuoi = "../../images/furniture/" + product.image;
+                    product.image = chuoi;
+                }
+                else
+                {
+                    string chuoi = "../../images/workshops/" + product.image;
+                    product.image = chuoi;
+                }
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(product);
         }
         [Authorize]

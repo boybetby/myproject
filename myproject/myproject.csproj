@@ -214,6 +214,10 @@
     <Compile Include="Migrations\202107240947234_address.Designer.cs">
       <DependentUpon>202107240947234_address.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107251155547_UpdateModelProduct.cs" />
+    <Compile Include="Migrations\202107251155547_UpdateModelProduct.Designer.cs">
+      <DependentUpon>202107251155547_UpdateModelProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -670,6 +674,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107240947234_address.resx">
       <DependentUpon>202107240947234_address.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107251155547_UpdateModelProduct.resx">
+      <DependentUpon>202107251155547_UpdateModelProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
