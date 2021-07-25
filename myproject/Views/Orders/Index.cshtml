@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
 {
     <p>
-        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @style = "border-radius: 10px; margin-top: 5px;", placeholder = "Search order..." })
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @style = "border-radius: 4px; margin-top: 5px;", placeholder = "Search order..." })
     </p>
 }
 <table class="table">

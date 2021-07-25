@@ -59,109 +59,100 @@
     </div>
     @using (Html.BeginForm("Info", "Cart"))
     {
-<main class="cart">
-    <div class="container">
-        <div class="row">
-            <div class="col col-lg-8" id="datamodel">
-                <div>
-                    <p style="margin-top:50px;">YOUR SELECTIONS</p>
-                    <p style="border-bottom:  0.001em solid black;"></p>
-                </div>
-                @foreach (var item in Model)
-                {
-                    <div>
-                        <div class="row" style="margin-top: 50px;">
-                            <div class="col col-sm-4">
-                                <img src="@Html.DisplayFor(model => item.image)" style="width:200px;height:300px;">
-                            </div>
-                            <div class="col col-sm-8">
-                                <div class="row">
-                                    <div class="col col-sm-7">
-                                        <p class="productname">@Html.DisplayFor(modelItem => item.productname)</p>
-                                        <div style="word-wrap:break-word;width:200px;height:200px;">
-                                            <p style="font-size: 13px;">
-                                                @Html.DisplayFor(modelItem => item.description)
-                                            </p>
-                                        </div>
-                                        <div class="remove">
-                                            @Html.ActionLink("Remove", "Remove", new { id = item.productID })
-
-
-                                        </div>
-
-                                    </div>
-                                    <input type="hidden" name="cost" id="cost" class="cost" value="@item.price" />
-                                    @{
-                                        money += item.price * item.amount;
-                                        long totalitemprice = item.amount * item.price;
-                                    }
-                                    <div class="col col-sm-5">
-                                        <div style="display:inline;width:100%" class="amount" id="amount" name="amount" >
-                                            <input type="number" value="@Html.DisplayFor(modelItem => item.amount)" min="1" max="100" step="1" style="background-color:white;width:40px;border:none;" />
-                                            <p style="display:inline;margin-left:10px" class="totalprice">@totalitemprice</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <main class="cart">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-8" id="datamodel">
+                        <div>
+                            <p style="margin-top:50px;">YOUR SELECTIONS</p>
+                            <p style="border-bottom:  0.001em solid black;"></p>
                         </div>
-                        <div style="margin-top: 50px">
-                            <p style="border-bottom:  0.001em solid #606060;"></p>
-                        </div>
-                    </div>
-                }
-
-                        <div style="height:50px;"></div>
-                    </div>
-                    <div class="col col-lg-4" style="margin-top: 20px;">
-                        <div class="summary" style="margin-top:50px;padding-left:20px;padding-right:20px;background-color:white;height:400px;padding-top:20px">
-                            <p style="color:gray">ORDER SUMMARY</p>
-                            <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
+                        @foreach (var item in Model)
+                        {
                             <div>
-                                <div style="display:inline-block;width:100%">
-                                    <p style="float:left;font-size:18px;">Tổng đơn hàng: </p>
-                                    <p style="float:right;font-size:18px;">@money</p>
-                                </div>
-                                <div style="display:inline-block;width:100%">
-                                    <p style="float:left;font-size:18px;">Phí ship: </p>
-                                    <p style="float:right;font-size:18px;">30000</p>
-                                </div>
-                                @{
-                                    long price = item.amount * item.price;
+                                <div class="row" style="margin-top: 50px;">
+                                    <div class="col col-sm-4">
+                                        <img src="@Html.DisplayFor(model => item.image)" style="width:200px;height:300px;">
+                                    </div>
+                                    <div class="col col-sm-8">
+                                        <div class="row">
+                                            <div class="col col-sm-7">
+                                                <p class="productname">@Html.DisplayFor(modelItem => item.productname)</p>
+                                                <div style="word-wrap:break-word;width:200px;height:200px;">
+                                                    <p style="font-size: 13px;">
+                                                        @Html.DisplayFor(modelItem => item.description)
+                                                    </p>
+                                                </div>
+                                                <div class="remove">
+                                                    @Html.ActionLink("Remove", "Remove", new { id = item.productID })
 
-                                }
-                                <div style="float:right;">
-                                    <p style="font-size:18px">@price</p>
+
+                                                </div>
+
+                                            </div>
+                                            <input type="hidden" name="cost" id="cost" class="cost" value="@item.price" />
+                                            @{
+                                                money += item.price * item.amount;
+                                                long totalitemprice = item.amount * item.price;
+                                            }
+                                            <div class="col col-sm-5">
+                                                <div style="display:inline;width:100%" class="amount" id="amount" name="amount">
+                                                    <input type="number" value="@Html.DisplayFor(modelItem => item.amount)" min="1" max="100" step="1" style="background-color:white;width:40px;border:none;" />
+                                                    <p style="display:inline;margin-left:10px" class="totalprice">@totalitemprice</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 50px">
+                                    <p style="border-bottom:  0.001em solid #606060;"></p>
                                 </div>
                             </div>
                         }
 
-                        <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
-
-                        <div style="display:inline-block;width:100%;margin-top:10px;">
-                            <p style="float:left;font-size:18px;">Tổng cộng: </p>
-                            <p style="float:right;font-size:18px;" class="finalprice">@money</p>
-                        </div>
+                        <div style="height:50px;"></div>
                     </div>
-                    <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
-   
-                    @if (Model.Count() == 0)
-                    {
-                        <div class="checkout" style="margin-top:50px;height:60px">
-                            <button type="submit" style="width: 100%; height:35px;background-color:gray" disabled>CHECKOUT</button>
-                        </div>
-                    }
-                    else
-                    { <div class="checkout" style="margin-top: 50px; height: 60px ">
-                            <button type="submit" style="width: 100%; height:35px;">CHECKOUT</button>
-                        </div>
-                    }
+                    <div class="col col-lg-4" style="margin-top: 20px;">
+                        <div class="summary" style="margin-top:50px;padding-left:20px;padding-right:20px;background-color:white;padding-top:20px">
+                            <p style="color:gray">ORDER SUMMARY</p>
+                            <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
 
+                            @foreach (var item in Model)
+                            {    
+                                <div style="display:inline-block;width:100%;margin-top:10px;">
+                                    <p style="float:left;font-size:18px;">@item.productname</p>
+                                    @{
+                                        long calcu = item.price * item.amount;
+                                    }
+                                    <p style="float:right;font-size:18px;" class="finalprice">@calcu</p>
+                                </div>
+                            }
+                            <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
+                            <div style="display:inline-block;width:100%;margin-top:10px;">
+                                <p style="float:left;font-size:18px;">Tổng cộng: </p>
+                                <p style="float:right;font-size:18px;" class="finalprice">@money</p>
+                            </div>
+
+
+                            @if (Model.Count() == 0)
+                            {
+                                <div class="checkout" style="margin-top:30px;height:60px">
+                                    <button type="submit" style="width: 100%; height:35px;background-color:gray" disabled>CHECKOUT</button>
+                                </div>
+                            }
+                            else
+                            { <div class="checkout" style="margin-top: 30px; height: 60px ">
+                                    <button type="submit" style="width: 100%; height:35px;">CHECKOUT</button>
+                                </div>
+                            }
+                        </div>
+                        
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <script src="~/Scripts/cart.js"></script>
-</main>
+            <script src="~/Scripts/cart.js"></script>
+        </main>
     }
 
 
