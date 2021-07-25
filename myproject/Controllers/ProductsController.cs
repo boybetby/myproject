@@ -43,10 +43,6 @@ namespace myproject.Controllers
             return View(products.ToList());
         }
 
-
-
-
-        
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
@@ -69,13 +65,6 @@ namespace myproject.Controllers
             
             return View(product);
         }
-
-
-
-
-
-
-
 
         // GET: Products/Create
         public ActionResult Create()
@@ -156,7 +145,6 @@ namespace myproject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
