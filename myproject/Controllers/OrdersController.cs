@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using myproject.Models;
-
+using PagedList;
 namespace myproject.Controllers
 {
     public class OrdersController : Controller
@@ -15,11 +15,40 @@ namespace myproject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Orders
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string currentFilter, int? page)
         {
-            return View(db.Orders.OrderBy(m => m.Checked).ThenBy(n => n.Date).ToList()); 
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            var orders = from s in db.Orders
+                         select s;
+            ViewBag.CurrentFilter = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                orders = orders.Where(s =>
+                s.Name.ToUpper().Contains(searchString.ToUpper())
+                ||
+                s.PhoneNumber.ToString().Contains(searchString)
+                ||
+                s.Email.ToUpper().Contains(searchString.ToUpper())
+                ||
+                s.Date.ToString().Contains(searchString)
+                ||
+                s.Province.ToUpper().Contains(searchString.ToUpper())
+                ||
+                s.District.ToUpper().Contains(searchString.ToUpper())
+                ||
+                s.Ward.ToUpper().Contains(searchString.ToUpper()));
+            }
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            return View(orders.OrderBy(m => m.Checked).ThenBy(n => n.Date).ToPagedList(pageNumber, pageSize));
         }
-
         // GET: Orders/Details/5
         public ActionResult Details(string id)
         {
@@ -110,6 +139,10 @@ namespace myproject.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             Order order = db.Orders.Find(id);
+            foreach (var item in db.OrderDetails.Where(s => s.Order.OrderID == id))
+            {
+                db.OrderDetails.Remove(item);
+            }
             db.Orders.Remove(order);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -1,29 +1,37 @@
-﻿@model IEnumerable<myproject.Models.Product>
-
+﻿@model PagedList.IPagedList<myproject.Models.Product>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Admin/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Products List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @style = "border-radius: 10px; margin-top: 5px;", placeholder = "Search product..." })
+    </p>
+}
+<div>
+    <p style="display: inline-block">
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.productname)
+            Product name
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.price)
+            Price
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.category)
+            Category
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.image)
+            Image
         </th>
         <th></th>
     </tr>
@@ -52,3 +60,14 @@
     }
 
 </table>
+<div style="margin-left: 500px;">
+    <br />
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        sortOrder = ViewBag.CurrentSort,
+        currentFilter =
+    ViewBag.CurrentFilter
+    }))
+</div>

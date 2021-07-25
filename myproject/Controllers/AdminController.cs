@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using myproject.Models;
+using PagedList;
 
 namespace myproject.Controllers
 {
@@ -16,9 +17,31 @@ namespace myproject.Controllers
 
         // GET: Admin
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string currentFilter, int? page)
         {
-            return View(db.Products.ToList());
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            var products = from s in db.Products
+                           select s;
+            ViewBag.CurrentFilter = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s =>
+                s.productname.ToUpper().Contains(searchString.ToUpper())
+                ||
+                s.category.ToString().ToUpper().Contains(searchString.ToUpper())
+                ||
+                s.price.ToString().Contains(searchString));
+            }
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            return View(products.OrderBy(p => p.productID).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/Details/5
