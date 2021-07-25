@@ -33,8 +33,17 @@ namespace myproject.Controllers
             List<Cart> cartlist = setCart();
             return View(cartlist);
         }
+  
+        [HttpPost]
+        public ActionResult Index(string name, int amount)
+        {
+            List<Cart> cartlist = setCart();
+            var cart = cartlist.FirstOrDefault(n => n.productname == name);
+            cart.amount = amount;
+            Session["Cart"] = cartlist;
 
-        
+            return View(cartlist);
+        }
 
         [HttpPost]
         public ActionResult AddtoCart(int id, int amount)
@@ -80,11 +89,12 @@ namespace myproject.Controllers
         }
 
         public ActionResult Info()
-        {
+        {     
             return View();
         }
-
         [HttpPost]
+       
+
         public ActionResult Confirm(Order order,string province, string district, string ward, int ShippingFee)
         {
             if (ModelState.IsValid) { 
@@ -208,6 +218,7 @@ namespace myproject.Controllers
                     ViewBag.Message = "An email have sent to " + addorder.Email + " ! Please check your email";
                 }
             }
+            Session.Clear();
             db.SaveChanges();
             return View();
          
