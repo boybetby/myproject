@@ -73,7 +73,7 @@ namespace myproject.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productID,productname,description,price,category,image")] Product product)
+        public ActionResult Create([Bind(Include = "productID,productname,description,price,category,image")] Product product, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -81,16 +81,31 @@ namespace myproject.Controllers
                 {
                     string chuoi = "../../images/products/" + product.image;
                     product.image = chuoi;
+                    if(image.ContentLength > 0)
+                    {
+                        string _path = Path.Combine(Server.MapPath("~/images/products"), Path.GetFileName(image.FileName));
+                        image.SaveAs(_path);
+                    }
                 }
                 else if ((int)product.category == 1)
                 {
                     string chuoi = "../../images/furniture/" + product.image;
                     product.image = chuoi;
+                    if (image.ContentLength > 0)
+                    {
+                        string _path = Path.Combine(Server.MapPath("~/images/furniture"), Path.GetFileName(image.FileName));
+                        image.SaveAs(_path);
+                    }
                 }
                 else
                 {
                     string chuoi = "../../images/workshops/" + product.image;
                     product.image = chuoi;
+                    if (image.ContentLength > 0)
+                    {
+                        string _path = Path.Combine(Server.MapPath("~/images/workshops"), Path.GetFileName(image.FileName));
+                        image.SaveAs(_path);
+                    }
                 }
                 db.Products.Add(product);
                 db.SaveChanges();
