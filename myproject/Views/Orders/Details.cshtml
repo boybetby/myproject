@@ -1,5 +1,8 @@
 ﻿@model myproject.Models.Order
-
+@{ 
+    var list = Session["OrderList"] as List<myproject.Models.OrderDetail>;
+    var products = Session["Products"] as List<myproject.Models.Product>;
+}
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Admin/_Layout.cshtml";
@@ -92,6 +95,48 @@
         </dd>
 
     </dl>
+    <p>Order List</p>
+    @if (list != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Amount
+                </th>
+                <th>
+                    Singele Price
+                </th>
+                <th>
+                    Image
+                </th>
+            </tr>
+
+
+            @foreach (var item in list)
+            {
+
+
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.amount</td>
+            @foreach (var product in products)
+            {
+                if (product.productID == item.ProductID)
+                {
+                    <td>@product.price</td>
+                    <td><img src="@product.image" style="width:50px; height:50px;" /></td>
+                }
+
+            }
+        </tr>
+  
+            }
+        </table>
+    }
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |

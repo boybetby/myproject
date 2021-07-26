@@ -24,7 +24,7 @@
     <main>
         <div>
             <div class="wrapper" style="background-image: url('../../images/bg1.png');">
-                <header style="padding-left:40px; position: absolute;">
+                <header style="padding-left:40px; position: absolute; width:100%">
                     <nav>
                         <div class="menu-icon">
                             <i class="fa fa-bars fa-2x"></i>
@@ -32,13 +32,13 @@
                         <div class="logo">
                             <a href="@Url.Action("Index", "Home")"><img src="../../images/yen.png" class="yen"></a>
                         </div>
-                        <div class="menu">
-                            <ul style="display:inline-block">
+                        <div class="menu" style="width:100%">
+                            <ul style="display:inline-block;width:100%;padding-left:150px;">
                                 <li>@Html.ActionLink("PRODUCT", "Index", "Products")</li>
                                 <li>@Html.ActionLink("GREEN PRODUCTION", "Index", "Furniture")</li>
                                 <li>@Html.ActionLink("WORKSHOP", "Index", "Workshop")</li>
                                 <li>@Html.ActionLink("ABOUT US", "About", "Home")</li>
-                                <li style="margin-left:200px;">
+                                <li style="float:right;">
                                     <a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a> @if (Session["Number"] != null)
                                     {
                                         <span class='badge badge-warning' id='lblCartCount'>
@@ -52,14 +52,14 @@
                     </nav>
                 </header>
                 <div class="sologan">
-                    <h1 style="font-weight:bold;font-size: 50px;margin-bottom:20px;">GREEN LIVING SPACE</h1>
+                    <h1 style="font-weight:900;font-size: 70px;margin-bottom:20px;">GREEN LIVING SPACE</h1>
                     <h1 style="font-size:30px;">Nơi cuộc sống tìm lại giá trị cân bằng</h1>
                 </div>
             </div>
         </div>
         <div style="text-align: center;margin-top:100px;">
             <h1 style="font-weight:bold;font-size:40px">Green Furniture Collection</h1>
-            <div class="splide">
+            <div class="splide" style="height:430px;">
                 <div class="splide__track">
                     <ul class="splide__list">
 
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div>
-            <h1 style="text-align:center;margin-top:100px;font-weight:bold;margin-bottom:60px;font-size:40px">We have more than just a plant</h1>
+            <h1 style="text-align:center;margin-top:100px;font-weight:bold;margin-bottom:60px;font-size:50px">We have more than just a plant</h1>
             <div class="bg2">
                 <div style="padding-top:770px;padding-left:50px;">
                     <h1 style="font-weight:bold;color:white;font-size:40px;">GREEN DECORATION COLLECTION</h1>
@@ -107,7 +107,7 @@
         </div>
 
         <div class="bg3">
-            <div style="text-align:center;margin-top:500px;font-weight:bold;">
+            <div style="text-align:center;margin-top:550px;font-weight:bold;">
                 <h1>
                     STORE LOCATION
                 </h1>

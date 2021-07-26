@@ -15,6 +15,8 @@ namespace myproject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Orders
+
+       
         public ActionResult Index(string searchString, string currentFilter, int? page)
         {
             if (searchString != null)
@@ -57,6 +59,18 @@ namespace myproject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Order order = db.Orders.Find(id);
+            List<OrderDetail> orderdetail = db.OrderDetails.Where(m => m.Order.OrderID == order.OrderID).ToList();
+            List<Product> products = new List<Product>();
+            var productfetch = from s in db.Products
+                         select s;
+            foreach ( var item in orderdetail)
+            {
+                foreach (var product in productfetch)
+                    if (item.ProductID == product.productID)
+                        products.Add(product);
+            }
+            Session["OrderList"] = orderdetail;
+            Session["Products"] = products;
             if (order == null)
             {
                 return HttpNotFound();

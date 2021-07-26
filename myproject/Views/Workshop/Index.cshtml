@@ -33,7 +33,7 @@
     <main>
         <div>
             <div class="wrapper" style="background-image: url('../../images/bg3.jpg');">
-                <header style="padding-left:40px; position: absolute;">
+                <header style="padding-left:40px; position: absolute; width:100%">
                     <nav>
                         <div class="menu-icon">
                             <i class="fa fa-bars fa-2x"></i>
@@ -41,25 +41,20 @@
                         <div class="logo">
                             <a href="@Url.Action("Index", "Home")"><img src="../../images/yen.png" class="yen"></a>
                         </div>
-                        <div class="menu">
-                            <ul style="display:inline-block">
+                        <div class="menu" style="width:100%">
+                            <ul style="display:inline-block;width:100%;padding-left:150px;">
                                 <li>@Html.ActionLink("PRODUCT", "Index", "Products")</li>
                                 <li>@Html.ActionLink("GREEN PRODUCTION", "Index", "Furniture")</li>
                                 <li>@Html.ActionLink("WORKSHOP", "Index", "Workshop")</li>
                                 <li>@Html.ActionLink("ABOUT US", "About", "Home")</li>
-                                <li style="margin-left:200px;">
-                                    <a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a>
-
-                                    @if (Session["Number"] != null)
+                                <li style="float:right;">
+                                    <a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a> @if (Session["Number"] != null)
                                     {
                                         <span class='badge badge-warning' id='lblCartCount'>
                                             @Session["Number"]
                                         </span>
                                     }
-
-
                                 </li>
-
 
                             </ul>
                         </div>
@@ -93,12 +88,12 @@
                             <div class="col">
                                 <a href='@Url.Action("Details", "Products", new { id=item.productID })'><img src="@Html.DisplayFor(modelItem => item.image)"></a>
                             </div>
-                            <div class="col" style="padding-left:80px;margin-top:320px;">
+                            <div class="col" style="padding-left:80px;margin-top:350px;">
 
                                 <a href='@Url.Action("Details", "Products", new { id=item.productID })'><h1 class="productname">@Html.DisplayFor(modelItem => item.productname)</h1></a>
 
 
-                                <h1 class="productprice">
+                                <h1 class="productprice" style="font-size:35px;margin-top:20px;">
                                     Giá: @Html.DisplayFor(modelItem => item.price)
 
                                 </h1>
@@ -111,10 +106,10 @@
                     {
 
                         <div class="row">
-                            <div class="col" style="padding-left:80px;margin-top:320px;text-align:right">
+                            <div class="col" style="padding-left:80px;margin-top:350px;text-align:right">
                                 <a href='@Url.Action("Details", "Products", new { id=item.productID })'><h1 class="productname">@Html.DisplayFor(modelItem => item.productname)</h1></a>
 
-                                <h1 class="productprice" id="money">
+                                <h1 class="productprice" id="money" style="font-size:35px;margin-top:20px;">
                                     Giá: @Html.DisplayFor(modelItem => item.price)
                                 </h1>
                                 <button>DISCOVER NOW</button>

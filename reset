@@ -1,0 +1,205 @@
+[33mcommit a11a7ca5e48118d4ef1820427e27355f4653f70c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Mon Jul 26 12:22:57 2021 +0700
+
+    upload image
+
+[33mcommit 75128012bbaa16b8d236a78b0c6946517defcafe[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Sun Jul 25 22:30:29 2021 +0700
+
+    updateadmin
+
+[33mcommit 8c49512effc00e1e8e9460ef2a1b81befc1a0cd5[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Sun Jul 25 18:09:20 2021 +0700
+
+    DONE
+
+[33mcommit 8c0dd909ce313e459e13bd31af2770ea96e56708[m
+Merge: 434e037 2ccd786
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Sun Jul 25 17:37:38 2021 +0700
+
+    update
+
+[33mcommit 434e037a018982aa83d84842454eb65721bbcbcc[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Sun Jul 25 17:36:28 2021 +0700
+
+    update
+
+[33mcommit 2ccd786b083f11775822845dab9049da2ed1d143[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Sun Jul 25 17:23:25 2021 +0700
+
+    PagedList
+
+[33mcommit e13205ebeca23945fa334eac6c76496a2bdba581[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Sun Jul 25 15:13:28 2021 +0700
+
+    Home button
+
+[33mcommit 30b262b36a6f0d138515dfdc4769cac1f04f4808[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Sun Jul 25 14:21:34 2021 +0700
+
+    view
+
+[33mcommit d27e0d7f02d8c48e165c3d454ee31902722eff5f[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Sat Jul 24 22:18:57 2021 +0700
+
+    ordersdone
+
+[33mcommit b43a53e6be4c471b2600aed1ff2221dda996ddd9[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Sat Jul 24 21:51:50 2021 +0700
+
+    fee api
+
+[33mcommit 93762d88c5ab2bad617c87d272f0cdb3c2a8660f[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Sat Jul 24 17:29:31 2021 +0700
+
+    full order
+
+[33mcommit eb1153ec3594b4325bcc8c1c41b5f093e0130839[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Sat Jul 24 16:05:53 2021 +0700
+
+    province api
+
+[33mcommit abd52838ab26b7a3a755314796f8c8075f193046[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Fri Jul 23 20:55:08 2021 +0700
+
+    done search + sort
+
+[33mcommit 436ce56ba58eedff2fe4e7d8b80a77e9f4909180[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Fri Jul 23 20:26:55 2021 +0700
+
+    search + sort
+
+[33mcommit bfb60e7213889cf9a40962594897f3172ecfc690[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Thu Jul 22 21:12:54 2021 +0700
+
+    loadmore
+
+[33mcommit 297ea18a0ea3a48b216670031c78734cc88de22e[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Wed Jul 21 22:59:32 2021 +0700
+
+    a
+
+[33mcommit ef476cdece6438343871a5bd19e74ff7e7619b99[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Wed Jul 21 20:25:09 2021 +0700
+
+    workshop + remove
+
+[33mcommit 7d30c5ab5c186d76921ee91343ae43d1065e54f3[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Sun Jul 11 20:40:40 2021 +0700
+
+    orders check
+
+[33mcommit 40fac9f62ae4b2758535ab5a36a58a5f8100acae[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Thu Jul 8 13:12:39 2021 +0700
+
+    update view for admin
+
+[33mcommit efe3ddcb09d21053547ce11f83b80b744fef5713[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Thu Jul 8 09:47:08 2021 +0700
+
+    add migrations
+
+[33mcommit 9d6d065708d802bacd74868062d03f42acdcedec[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Wed Jul 7 18:26:06 2021 +0700
+
+    admin
+
+[33mcommit f6a6e457116a3a90d2e9755ce2edb713b5057b36[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Tue Jul 6 20:59:00 2021 +0700
+
+    mail
+
+[33mcommit 66f56b7d68bc88adfd161338c1dc371ec985d6d9[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Tue Jul 6 19:33:31 2021 +0700
+
+    git push
+
+[33mcommit 5882fbd116864d1303288b0ae06371cb6379709e[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Tue Jul 6 09:58:29 2021 +0700
+
+    cart submit
+
+[33mcommit dfa64f3dbdfb6b3fa6777486f224f57b0a3224a1[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Mon Jul 5 20:03:19 2021 +0700
+
+    set key
+
+[33mcommit 24cf1ea68d077540e457f4af557e22e32a3aeaf8[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Fri Jul 2 21:06:45 2021 +0700
+
+    cartdone
+
+[33mcommit 9250e8a952c80a86fbc24e5c59f32e9bb7cc25a9[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Fri Jul 2 18:54:46 2021 +0700
+
+    sdfad
+
+[33mcommit e857aa4a170916ca2975422a068a171334b7926e[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Fri Jul 2 18:30:54 2021 +0700
+
+    af
+
+[33mcommit eb4d7b4fe2e626cc401eff1d5c7e44f3b8a10091[m
+Merge: f051b68 44d9b61
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Fri Jul 2 16:37:56 2021 +0700
+
+    Merge branch 'master' of https://github.com/boybetby/myproject
+
+[33mcommit f051b680b8f222406b34401fdd11a164a24d4e52[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Fri Jul 2 16:37:49 2021 +0700
+
+    c
+
+[33mcommit 44d9b610836c3b418523b6e908b637ffd44383bf[m
+Author: Gia Bảo <noffyns@outlook.com>
+Date:   Thu Jul 1 11:36:34 2021 +0700
+
+    1/4 coming
+
+[33mcommit 71e4cffc0d5abfafd6d409e16c16696624422420[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Tue Jun 29 21:38:32 2021 +0700
+
+    product page done
+
+[33mcommit c541ad2633551076592c2f47ca0ed477550e749e[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Tue Jun 29 19:34:04 2021 +0700
+
+    Add project files.
+
+[33mcommit a91e169bc0d5a3ae532306b1af22657104fa07df[m
+Author: Minh Nguyễn <boybetby@gmail.com>
+Date:   Tue Jun 29 19:34:02 2021 +0700
+
+    Add .gitignore and .gitattributes.
