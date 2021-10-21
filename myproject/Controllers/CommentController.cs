@@ -6,21 +6,12 @@ using System.Web.Mvc;
 
 namespace myproject.Controllers
 {
-    public class HomeController : Controller
+    public class CommentController : Controller
     {
+        // GET: Comment
         public ActionResult Index()
         {
-
             return View();
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        
     }
 }
