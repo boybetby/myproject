@@ -223,6 +223,8 @@
     <Compile Include="Controllers\FurnitureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderDetailsAPIController.cs" />
+    <Compile Include="Controllers\OrdersAPIController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />

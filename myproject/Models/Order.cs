@@ -27,7 +27,7 @@ namespace myproject.Models
         public string Address { get; set; }
         public long TotalPrice { get; set; }
         public DateTime Date { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
         public bool Checked { get; set; } = false;
     }
 }
