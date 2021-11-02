@@ -13,6 +13,8 @@ namespace myproject.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Detail> Details { get; set; }
         public ApplicationDbContext()
             : base("YenConnection", throwIfV1Schema: false)
         {
@@ -22,5 +24,6 @@ namespace myproject.Models
         {
             return new ApplicationDbContext();
         }
+
     }
 }

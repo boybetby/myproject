@@ -219,6 +219,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\FetchController.cs" />
     <Compile Include="Controllers\FurnitureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -255,11 +256,16 @@
     <Compile Include="Migrations\202110120801417_comment.Designer.cs">
       <DependentUpon>202110120801417_comment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111020556444_detail.cs" />
+    <Compile Include="Migrations\202111020556444_detail.Designer.cs">
+      <DependentUpon>202111020556444_detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Detail.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
@@ -724,6 +730,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110120801417_comment.resx">
       <DependentUpon>202110120801417_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111020556444_detail.resx">
+      <DependentUpon>202111020556444_detail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
