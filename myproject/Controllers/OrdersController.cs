@@ -59,7 +59,7 @@ namespace myproject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Order order = db.Orders.Find(id);
-            List<OrderDetail> orderdetail = db.OrderDetails.Where(m => m.Order.OrderID == order.OrderID).ToList();
+            List<Detail> orderdetail = db.Details.Where(m => m.OrderID == order.OrderID).ToList();
             List<Product> products = new List<Product>();
             var productfetch = from s in db.Products
                          select s;

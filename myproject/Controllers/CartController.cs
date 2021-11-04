@@ -186,11 +186,16 @@ namespace myproject.Controllers
             db.Orders.Add(addorder);
             foreach (var item in cartlist)
             {
-                OrderDetail orderdetails = new OrderDetail();
-                orderdetails.Order = addorder;
-                orderdetails.ProductID = item.productID;
-                orderdetails.amount = item.amount;
-                db.OrderDetails.Add(orderdetails);
+                //OrderDetail orderdetails = new OrderDetail();
+                //orderdetails.Order = addorder;
+                //orderdetails.ProductID = item.productID;
+                //orderdetails.amount = item.amount;
+                //db.OrderDetails.Add(orderdetails);
+                Detail detail = new Detail();
+                detail.OrderID = addorder.OrderID;
+                detail.ProductID = item.productID;
+                detail.Amount = item.amount;
+                db.Details.Add(detail);
             }
 
             string MailSend = "yengreenliving@gmail.com";

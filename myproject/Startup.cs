@@ -1,6 +1,5 @@
 ﻿using Microsoft.Owin;
 using Owin;
-
 [assembly: OwinStartupAttribute(typeof(myproject.Startup))]
 namespace myproject
 {
@@ -9,6 +8,8 @@ namespace myproject
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.MapSignalR();
         }
+
     }
 }

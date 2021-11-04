@@ -218,6 +218,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\FetchController.cs" />
@@ -611,6 +612,7 @@
     <Content Include="Content\css\website-menu-07\scss\bootstrap\_utilities.scss" />
     <Content Include="Content\css\website-menu-07\scss\bootstrap\_variables.scss" />
     <Content Include="Content\css\website-menu-07\scss\style.scss" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\code.js" />
@@ -688,6 +690,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Comment\Comment.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
+    <Content Include="Views\Chat\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
