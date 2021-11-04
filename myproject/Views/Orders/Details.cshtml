@@ -1,6 +1,6 @@
 ﻿@model myproject.Models.Order
 @{ 
-    var list = Session["OrderList"] as List<myproject.Models.OrderDetail>;
+    var list = Session["OrderList"] as List<myproject.Models.Detail>;
     var products = Session["Products"] as List<myproject.Models.Product>;
 }
 @{
@@ -121,7 +121,7 @@
 
         <tr>
             <td>@item.ProductID</td>
-            <td>@item.amount</td>
+            <td>@item.Amount</td>
             @foreach (var product in products)
             {
                 if (product.productID == item.ProductID)
