@@ -683,7 +683,7 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Admin\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Furniture\Index.cshtml" />
@@ -691,15 +691,13 @@
     <Content Include="Views\Cart\Info.cshtml" />
     <Content Include="Views\Cart\Thanks.cshtml" />
     <Content Include="Views\Account\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_Layout.cshtml" />
     <Content Include="Views\Admin\_ViewStart.cshtml" />
-    <Content Include="Views\Admin\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
-    <Content Include="Views\Orders\_LoginPartial.cshtml" />
     <Content Include="Views\Workshop\Index.cshtml" />
     <Content Include="Views\Products\LoadMore.cshtml" />
     <Content Include="Views\Cart\Confirm.cshtml" />
@@ -709,12 +707,10 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Comment\Comment.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Chat\Chat.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\Role\_LoginPartial.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Details.cshtml" />
@@ -726,6 +722,8 @@
     <Content Include="Views\Community\Index.cshtml" />
     <Content Include="Views\Community\OurGreen.cshtml" />
     <Content Include="Views\Community\PostCard.cshtml" />
+    <Content Include="Views\Role\_ViewStart.cshtml" />
+    <Content Include="Views\Orders\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
