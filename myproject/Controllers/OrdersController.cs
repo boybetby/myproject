@@ -15,8 +15,6 @@ namespace myproject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Orders
-
-       
         public ActionResult Index(string searchString, string currentFilter, int? page)
         {
             if (searchString != null)

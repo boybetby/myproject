@@ -16,5 +16,11 @@ namespace myproject.Models
             // Add custom user claims here
             return userIdentity;
         }
+        
+    }
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName) : base(roleName) { }
     }
 }

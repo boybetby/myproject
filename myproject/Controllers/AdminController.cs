@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
 using myproject.Models;
 using PagedList;
 namespace myproject.Controllers
@@ -14,7 +15,28 @@ namespace myproject.Controllers
     public class AdminController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationUserManager _userManager;
 
+        public AdminController()
+        {
+        }
+
+        public AdminController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+        }   
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         // GET: Admin
         [Authorize]
         public ActionResult Index(string searchString, string currentFilter, int? page)
@@ -180,6 +202,11 @@ namespace myproject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult EmployeeList()
+        {
+            return View(db.Users.ToList());
         }
     }
 }

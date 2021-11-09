@@ -24,6 +24,5 @@ namespace myproject.Models
         {
             return new ApplicationDbContext();
         }
-
     }
 }
