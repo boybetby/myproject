@@ -1,0 +1,58 @@
+﻿@model myproject.Models.Post
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Post</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PostAuthor)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PostAuthor)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PostDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PostContent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PostContent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PostLike)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PostLike)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

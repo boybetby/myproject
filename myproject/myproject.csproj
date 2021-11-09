@@ -214,12 +214,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Chat\ChatHub.cs" />
+    <Compile Include="App_Start\Chat\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\CommunityController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\FetchController.cs" />
     <Compile Include="Controllers\FurnitureController.cs" />
@@ -266,6 +267,18 @@
     <Compile Include="Migrations\202111080911305_Role.Designer.cs">
       <DependentUpon>202111080911305_Role.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111090906077_postmodellll.cs" />
+    <Compile Include="Migrations\202111090906077_postmodellll.Designer.cs">
+      <DependentUpon>202111090906077_postmodellll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111090925461_postmodel.cs" />
+    <Compile Include="Migrations\202111090925461_postmodel.Designer.cs">
+      <DependentUpon>202111090925461_postmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111090927327_postmodel1.cs" />
+    <Compile Include="Migrations\202111090927327_postmodel1.Designer.cs">
+      <DependentUpon>202111090927327_postmodel1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -277,6 +290,8 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\OrderView.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostComment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -290,6 +305,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\icon\95039-free-social-media-icons_social-media-icons-all.svg" />
     <Content Include="Content\css\icon\95039-free-social-media-icons_social-media-icons-newest-preview.png" />
+    <Content Include="Content\css\social.css" />
     <Content Include="Content\css\splide-2.4.21\.gitignore" />
     <Content Include="Content\css\splide-2.4.21\build\banner.js" />
     <Content Include="Content\css\splide-2.4.21\build\complete\complete.js" />
@@ -703,6 +719,13 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Details.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Community\Create.cshtml" />
+    <Content Include="Views\Community\Delete.cshtml" />
+    <Content Include="Views\Community\Details.cshtml" />
+    <Content Include="Views\Community\Edit.cshtml" />
+    <Content Include="Views\Community\Index.cshtml" />
+    <Content Include="Views\Community\OurGreen.cshtml" />
+    <Content Include="Views\Community\PostCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -751,6 +774,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111080911305_Role.resx">
       <DependentUpon>202111080911305_Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111090906077_postmodellll.resx">
+      <DependentUpon>202111090906077_postmodellll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111090925461_postmodel.resx">
+      <DependentUpon>202111090925461_postmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111090927327_postmodel1.resx">
+      <DependentUpon>202111090927327_postmodel1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

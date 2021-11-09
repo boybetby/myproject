@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@100;1,100&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
 
 body {
@@ -23,6 +23,7 @@ body {
     width: 93px;
 }
 
+
 .splide__track {
     margin-top: 70px;
 }
@@ -35,12 +36,14 @@ body {
     }
 
 .bg2 {
-    background-image: url('../../images/bg2.jpg');
+    background-image: url('../../img/bg2.jpg');
     height: 940px;
     width: auto;
     background-repeat: no-repeat;
     background-position: center;
 }
+
+
 
     .bg2 button {
         background-color: Transparent;
@@ -76,7 +79,7 @@ body {
 
 
 .bg3 {
-    background-image: url('../../images/bg3.png');
+    background-image: url('../img/bg3.png');
     display: table;
     margin: 0 auto;
     width: 100%;
@@ -100,6 +103,54 @@ body {
 .credit h1 {
     font-size: 15px;
 }
+
+
+
+.yen {
+    position: absolute;
+    left: 2.02%;
+    right: 91.04%;
+    top: 21.35%;
+    bottom: 0%;
+    height: 70px;
+    width: 93px;
+}
+
+
+.splide__track {
+    margin-top: 70px;
+}
+
+
+
+    .splide__track img {
+        height: 370.74px;
+        width: 303.68px;
+    }
+
+.bg2 {
+    background-image: url('../../img/bg2.jpg');
+    height: 940px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+    .bg2 button {
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+        border: 2px solid black;
+        border-radius: 23px;
+        color: white;
+        border-color: white;
+        padding: 7px 15px 7px 15px;
+    }
+
+
 
 .content {
     width: 94%;
@@ -144,6 +195,7 @@ nav {
     nav ul li {
         display: inline-block;
         padding: 16px 40px;
+        ;
     }
 
         nav ul li a {
@@ -163,6 +215,9 @@ nav {
     color: #fff;
     display: none;
 }
+
+
+
 
 .wrapper {
     object-fit: cover;
@@ -199,9 +254,14 @@ nav {
     overflow: hidden;
     width: 588px;
     height: 730.17px;
-    background-image: url('../../images/workshop_bg.jpg');
+    background-image: url('../img/workshop_bg.jpg');
     background-repeat: no-repeat;
 }
+
+
+
+
+
 
 .midbg1 h1 {
     margin-left: 30px;
@@ -219,7 +279,7 @@ nav {
 
 .sologan {
     text-align: center;
-    padding-top: 400px;
+    padding-top: 350px;
 }
 
     .sologan h1 {
@@ -228,6 +288,8 @@ nav {
         vertical-align: middle;
     }
 
+
+
 .wrapper_product {
     object-fit: cover;
     height: 520px;
@@ -235,6 +297,9 @@ nav {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+
+
 
 .col-lg-3 img {
     height: 400px;
@@ -263,7 +328,6 @@ nav {
 .introduce h1 {
     font-family: Poppins;
     font-weight: bold;
-    font-size: 30px;
 }
 
 .introduce p {
@@ -271,8 +335,10 @@ nav {
     color: black;
     font-weight: bold;
     margin-top: 20px;
-    font-size: 17px;
 }
+
+
+
 
 .col-md-6 img {
     height: 900px;
@@ -334,6 +400,7 @@ nav {
 .cart {
     margin: 15px;
     background-color: lightgray;
+    background-size: fit;
 }
 
     .cart p {
@@ -342,21 +409,12 @@ nav {
         font-size: 25px;
     }
 
-button:disabled {
-    cursor: not-allowed;
-    pointer-events: all !important;
-}
-
-.remove a {
-    color: #006666;
-}
-
 .remove a {
     transition: color 1s; /* For modern browsers */
 }
 
     .remove a:hover {
-        color: orangered;
+        color: pink;
     }
 
 .checkout button {
@@ -369,34 +427,13 @@ button:disabled {
     border-radius: 10px;
 }
 
-.productname {
-    font-size: 23px;
-    margin-bottom: -8px;
-    color: black;
-    margin-top: 5px;
-    font-family: Montserrat;
-    display: inline-block;
-    font-weight: 600;
-}
-
-.productprice {
-    font-size: 18px;
-    color: black;
-    font-family: Montserrat;
-    margin-top: 8px;
-}
-
-.viewfooter {
-    display: flex;
-    margin-top: 100px;
-    margin-left: 140px;
-}
 
 .infoform {
     padding-top: 150px;
     display: flex;
     justify-content: center;
-    height: 1100px;
+    height: 1000px;
+    background-image: url('../img/bg1.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -405,30 +442,30 @@ button:disabled {
 .box {
     width: 500px;
     height: 800px;
-    box-shadow: 0, 15px, 30px, 0, rgba(255,255,255, 0.2);
+    box-shadow: 0 15px 30px 0 rgba(black, .2);
 }
 
 
 #formsize {
-    padding-top: 30px;
+    padding-top: 50px;
     margin-top: 20px;
     display: flex;
     justify-content: center;
     width: 900px;
-    height: 900px;
+    height: 800px;
     background-color: rgba(255, 255, 255, .7)
 }
 
     #formsize h1 {
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         text-align: center;
         font-family: Lato;
         color: black;
-        font-weight: 900;
+        font-weight: 1000;
     }
 
     #formsize input {
-        border-radius: 5px;
+        border-radius: 10px;
         border-width: 3px;
         color: black;
         background-color: white;
@@ -443,17 +480,200 @@ button:disabled {
         margin-top: 20px;
     }
 
+
 .infoform button {
     color: white;
-    margin-top: 10px;
+    margin-top: 20px;
     display: block;
     width: 100%;
     height: 45px;
-    border-radius: 10px !important;
+    border-radius: 20px;
     background-color: black;
-    font-family: Lato;
-    font-weight: bold;
 }
+
+
+
+/* .togglesearch{
+    display: inline-block;
+    text-align: right;
+    position: absolute;
+    top: 115px;
+    width: 450px;
+    height: 34px;
+    display: none;
+    box-shadow: 15px 5px 10px rgba(0,0,0,0.5);
+ 
+  }
+   
+  
+   
+  .togglesearch input[type="text"]{
+    float:left;
+    height: 30px;
+    width: 350px;
+    padding: 5px 10px;
+    margin-left: 23px;
+    border: 1px solid white;
+    outline: none;
+  }
+   
+  .togglesearch input[type="button"]{
+    float:right;
+    height: 30px;
+    width: 70px;
+    padding: 5px 10px;
+    background: #D80B15;
+    color: #fff;
+    margin-left: 0px;
+    border: 1px solid #D80B15;
+    outline: none;
+    cursor: pointer;
+  }
+
+} */
+
+
+
+:root {
+    --line-thickness: 0.25em;
+    --glass-size: 65%;
+    --icon-height: 4rem;
+    --transition-speed: 0.35s;
+    --timing-function: cubic-bezier(0.66, 1.51, 0.77, 1.13);
+    --icon-color: white;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.search-icon {
+    width: var(--icon-height);
+    height: var(--icon-height);
+    max-width: 30em;
+    transition: all var(--transition-speed) linear, border-color 0s linear var(--transition-speed);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid var(--line-thickness);
+    border-color: rgba(255, 255, 255, 0);
+    border-radius: 100px;
+    padding: 0.25em;
+}
+
+.search-icon__wrapper {
+    width: var(--icon-height);
+    height: var(--icon-height);
+    position: absolute;
+    border-radius: 100px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    transform: rotate(-45deg);
+    transition: all 0 linear;
+}
+
+    .search-icon__wrapper:hover {
+        cursor: pointer;
+    }
+
+.search-icon__input {
+    background: none;
+    text-align: center;
+    outline: none;
+    display: block;
+    border: none;
+    background: rgba(255, 255, 255, 0);
+    width: calc(100% - (var(--icon-height) / 2 + 1rem));
+    margin-right: 6rem;
+    height: 100%;
+    border-radius: 100px;
+    transition: all var(--transition-speed) linear;
+    font-size: 2em;
+    padding: 0 0.5em;
+    color: white;
+}
+
+    .search-icon__input::placeholder {
+        color: rgba(255, 255, 255, .75);
+    }
+
+.search-icon__glass {
+    width: var(--glass-size);
+    height: var(--glass-size);
+    border: solid var(--line-thickness);
+    border-color: var(--icon-color);
+    border-radius: 100px;
+    margin: 0 auto;
+    position: relative;
+    transition: all var(--transition-speed) var(--timing-function) var(--transition-speed), border-color 0s linear var(--transition-speed);
+}
+
+.search-icon__handle {
+    height: calc(100% - var(--glass-size));
+    width: var(--line-thickness);
+    margin: 0 auto;
+    background: var(--icon-color);
+    position: absolute;
+    border-radius: 0 0 100px 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all var(--transition-speed) var(--timing-function);
+    transition-delay: var(--transition-speed);
+}
+
+    .search-icon__handle::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--icon-color);
+        transform: rotate(0deg);
+        transition: all var(--transition-speed) var(--timing-function);
+        transition-delay: 0s;
+    }
+
+.search-icon.open {
+    width: calc(100vw - 1em);
+    border-color: var(--icon-color);
+    transition-delay: var(--transition-speed);
+}
+
+    .search-icon.open .search-icon__input {
+        transition-delay: var(--transition-speed);
+    }
+
+    .search-icon.open .search-icon__glass {
+        width: 100%;
+        height: 100%;
+        transition: all var(--transition-speed) var(--timing-function) 0s, border-color 0s linear var(--transition-speed);
+        border-color: rgba(0, 0, 0, 0);
+    }
+
+    .search-icon.open .search-icon__handle {
+        bottom: calc(50% - (100% - var(--glass-size)) / 2);
+        border-radius: 100px;
+        transition-delay: 0s;
+    }
+
+        .search-icon.open .search-icon__handle::after {
+            transition-delay: var(--transition-speed);
+            transform: rotate(90deg);
+        }
+
+
+
 
 .form__group {
     position: relative;
@@ -490,7 +710,7 @@ button:disabled {
 
 
 .form__label {
-    padding-left: 350px;
+    padding-left: 360px;
     position: absolute;
     top: 0;
     display: block;
@@ -534,58 +754,141 @@ button:disabled {
     font-family: Lato;
     font-weight: bold;
     color: black;
-    font-size: 55px;
+    font-size: 48px;
 }
 
 .workshop button {
-    font-size: 20px;
     margin-top: 20px;
     background-color: white;
-    padding: 10px 30px;
-    border-radius: 30px;
+    padding: 5px 20px;
+    border-radius: 20px;
 }
+
 
 .badge {
     margin-top: 40px;
     padding-left: 9px;
     padding-right: 9px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 20px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 14px;
 }
 
 .label-warning[href],
 .badge-warning[href] {
-    background-color: white;
+    background-color: #c67605;
 }
 
 #lblCartCount {
     font-size: 12px;
-    background: orange;
-    color: black;
-    padding: 1px 6px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
     vertical-align: top;
-    margin-left: -15px;
+    margin-left: -10px;
 }
 
-.sort {
-    width: 150px;
-    height: 30px;
-    border-radius: 5px;
-    font-size: 15px;
-    font-family: Lato;
-    font-weight: bold;
-    color: black;
-    padding-left: 10px;
-    box-shadow: 0 0 1px #006666;
+.commentssection {
+    border-radius: 10px;
+    text-align: center;
+    border-style: outset;
+    border: 1px solid black;
+    margin-top: 100px;
+    width: 1140px;
 }
 
-
-    .sort option {
-        font-size: 15px;
+    .commentssection h1 {
+        margin-top: 20px;
+        font-size: 30px;
         font-family: Lato;
         font-weight: bold;
-        color: black;
-        margin-top: 3px;
-        margin-bottom: 3px;
     }
+
+    .commentssection ul {
+        padding-left: 50px;
+        margin: auto;
+        list-style-type: none;
+    }
+
+    .commentssection li {
+        margin-bottom: 30px;
+    }
+
+    .commentssection p {
+        color: black;
+        font-size: 17px;
+        text-align: left;
+    }
+
+.comment {
+    margin-bottom: 40px;
+    text-align: left;
+    margin-left: 50px;
+}
+
+    .comment button {
+        padding: 1px 15px 1px 15px;
+        border-radius: 5px;
+        background-color: white;
+        color: black;
+    }
+
+#commentbox {
+    width: 1040px;
+    height: 80px;
+    border: solid 1px gray;
+}
+
+/* 
+        Use :not with impossible condition so inputs are only hidden 
+        if pseudo selectors are supported. Otherwise the user would see
+        no inputs and no highlighted stars.
+    */
+.rating input[type="radio"]:not(:nth-of-type(0)) {
+    /* hide visually */
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.rating [type="radio"]:not(:nth-of-type(0)) + label {
+    display: none;
+}
+
+label[for]:hover {
+    cursor: pointer;
+}
+
+.rating .stars label:before {
+    content: "★";
+    font-size: 30px;
+}
+
+.stars label {
+    color: lightgray;
+}
+
+    .stars label:hover {
+        text-shadow: 0 0 1px #000;
+    }
+
+.rating [type="radio"]:nth-of-type(1):checked ~ .stars label:nth-of-type(-n+1),
+.rating [type="radio"]:nth-of-type(2):checked ~ .stars label:nth-of-type(-n+2),
+.rating [type="radio"]:nth-of-type(3):checked ~ .stars label:nth-of-type(-n+3),
+.rating [type="radio"]:nth-of-type(4):checked ~ .stars label:nth-of-type(-n+4),
+.rating [type="radio"]:nth-of-type(5):checked ~ .stars label:nth-of-type(-n+5) {
+    color: orange;
+}
+
+.rating [type="radio"]:nth-of-type(1):focus ~ .stars label:nth-of-type(1),
+.rating [type="radio"]:nth-of-type(2):focus ~ .stars label:nth-of-type(2),
+.rating [type="radio"]:nth-of-type(3):focus ~ .stars label:nth-of-type(3),
+.rating [type="radio"]:nth-of-type(4):focus ~ .stars label:nth-of-type(4),
+.rating [type="radio"]:nth-of-type(5):focus ~ .stars label:nth-of-type(5) {
+    color: darkorange;
+}

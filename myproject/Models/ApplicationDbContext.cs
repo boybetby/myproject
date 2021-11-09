@@ -15,6 +15,9 @@ namespace myproject.Models
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Detail> Details { get; set; }
+
+        public DbSet<Post> Post { get; set; }
+        public DbSet<PostComment> postComment { get; set; }
         public ApplicationDbContext()
             : base("YenConnection", throwIfV1Schema: false)
         {
