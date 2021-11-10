@@ -100,17 +100,20 @@
             <div class="header">
                 Login
             </div>
-            <div class="element">
-                <label for="username">Username</label>
-                <input type="text" id="username">
-            </div>
-            <div class="element">
-                <label for="password">Password</label>
-                <input type="password" id="password">
-            </div>
-            <div class="element">
-                <button>Login</button>
-            </div>
+            @using (Html.BeginForm("Login", "Community", FormMethod.Post))
+            {
+                <div class="element">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class="element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="element">
+                    <button type="submit">Login</button>
+                </div>
+            }
         </div>
     </div>
 
@@ -134,16 +137,32 @@
                     </div>
 
                     <div id="account">
-                        <a href="#" onclick="openLoginForm()">
-                            <div style="color: #009933">
-                                Login
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div>
-                                Sign-up
-                            </div>
-                        </a>
+                        @if (@Session["Id"] != null)
+                        {
+                            <p>
+                                <div style="color: #009933">
+                                    Hello, @Session["FullName"]
+                                </div>
+                            </p>
+                            <a href="@Url.Action("Logout", "Community")">
+                                <div>
+                                    Logout
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="#" onclick="openLoginForm()">
+                                <div style="color: #009933">
+                                    Login
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div>
+                                    Sign-up
+                                </div>
+                            </a>
+                        }
                     </div>
 
                 </div>
