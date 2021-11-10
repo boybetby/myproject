@@ -22,7 +22,25 @@ namespace myproject.Controllers
 
         public ActionResult OurGreen()
         {
-            return View(db.Post.ToList());
+
+            return View(db.Post.OrderByDescending(m => m.PostDate).ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Post(String inputcontent, String imagebase64)
+        {
+            DateTime currentTime = DateTime.Now;
+
+            Post newPost = new Post();
+
+            newPost.PostContent = inputcontent;
+            newPost.PostImage = imagebase64;
+            newPost.PostDate = currentTime;
+
+            db.Post.Add(newPost);
+            db.SaveChanges();
+
+            return RedirectToAction("OurGreen");
         }
 
         // GET: Community/Details/5

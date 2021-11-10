@@ -595,3 +595,62 @@ textarea {
                 margin: 0px !important;
                 border: 2px solid #fff;
             }
+
+
+#addpost {
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 700px;
+    padding: 15px 30px 30px 30px;
+    height: 180px;
+}
+
+    #addpost p {
+        padding-left: 5px;
+        margin: 0 0 10px 0;
+        font-weight: 700;
+    }
+
+    #addpost button {
+        font-family: Lato;
+        font-weight: 600;
+        height: 35px;
+        width: 100%;
+        border: #48b0f7;
+        border-radius: 10px;
+    }
+
+    #addpost input {
+        display: inline-block;
+    }
+
+.input {
+    width: 100%;
+}
+
+#inputcontent {
+    width: 90%;
+    float: left;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+
+#inputimage {
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    top: -2px;
+    left: -700px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding: 0;
+}

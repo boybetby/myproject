@@ -12,7 +12,7 @@ namespace myproject.Models
         public DateTime PostDate { get; set; }
         public String PostContent { get; set; }
         public String PostImage { get; set; }
-        public int PostLike { get; set; }
+        public int PostLike { get; set; } = 0;
         public virtual ICollection<PostComment> PostComment { get; set; }
 
         public Post()

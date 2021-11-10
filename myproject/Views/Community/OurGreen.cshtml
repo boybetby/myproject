@@ -19,6 +19,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <style>
         @@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
     </style>
@@ -28,6 +31,27 @@
             color: orange;
         }
     </style>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        .height(150);
+                    document.getElementById("blah").style.visibility = "visible";
+                    document.getElementById("blah").style.margin = "15px 0 15px 0";
+                    document.getElementById("imagebase64").value = e.target.result;
+                };
+                document.getElementById("addpost").style.height = "330px";
+                reader.readAsDataURL(input.files[0]);
+
+            }
+
+        }
+    </script>
 </head>
 <body>
     <div class="wrapper_product" style="background-image: url('../../images/product_bg1.jpg'); height: 120px;">
@@ -78,83 +102,30 @@
                         <div class="row" style="width:100%">
                             <div class="col-8" id="socialcontent">
 
+                                @using (Html.BeginForm("Post", "Community", FormMethod.Post))
+                                {
+                                    <div id="addpost">
+                                        <p>Share your green</p>
+                                        <div class="input">
+                                            <input type="text" id="inputcontent" placeholder="Tell us about your green place." name="inputcontent">
+                                            <label for="inputimage" style="float: right;">
+                                                <img src="~/images/imageicon.png" height="40px" width="40px" />
+                                            </label>
+                                            <input type="file" id="inputimage" accept="image/*" onchange="readURL(this);">
+                                            <img id="blah" src="#" alt="your image" style="visibility: hidden; height: 0;padding-left: 5px;" />
+                                            <input type="hidden" name="imagebase64" id="imagebase64" value="0" />
+                                        </div>
+                                        <button type="submit">Post</button>
+                                    </div>
+                                }
+
+                                
+
                                 @foreach (var item in Model)
                                 {
                                     {Html.RenderPartial("PostCard", item);}
                                 }
-                                <!-- loop this -->
-                                @*<div id="postcard">
-                                    <div class="info">
-                                        <div id="user">
-                                            <p>Minh Nguyen</p>
-                                        </div>
-                                        <div id="time">
-                                            <p>
-                                                11/08/2021 4:12PM
-                                            </p>
-                                        </div>
 
-                                    </div>
-                                    <div class="post">
-                                        <div id="postcontent">
-                                            <p>
-                                                xin chao
-                                            </p>
-                                        </div>
-                                        <div id="postimg">
-                                            <img src="../../images/bg1.png" />
-                                        </div>
-                                    </div>
-
-                                    <div class="interact">
-                                        <div class="cardbox-base">
-                                            <ul class="float-right">
-                                                <li><a><i class="fa fa-comments"></i></a></li>
-                                                <li><a><em class="mr-5">12</em></a></li>
-                                                <li><a><i class="fa fa-share-alt"></i></a></li>
-                                                <li><a><em class="mr-3">03</em></a></li>
-                                            </ul>
-                                            <ul>
-                                                <li><a><i class="fa fa-thumbs-up"></i></a></li>
-
-                                                <li><a><span>242 Likes</span></a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="comments">
-                                            <div>
-                                                <p style="font-weight: bold;">
-                                                    Nhat Minh
-                                                </p>
-                                                <p>
-                                                    xin chao
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p style="font-weight: bold;">
-                                                    Gia Bao
-                                                </p>
-                                                <p>
-                                                    xin chao
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p style="font-weight: bold;">
-                                                    Gia
-                                                </p>
-                                                <p>
-                                                    xin chao xin chao
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="postcomment">
-                                            <input placeholder="Write a comment" type="text">
-                                        </div>
-
-                                    </div>
-                                </div>*@
-                                <!-- end here -->
                             </div>
                             <div class="col-4" style=" display: flex;justify-content: center;">
                                 <div id="socialchat">
