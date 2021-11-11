@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using myproject.Models;
@@ -36,11 +38,97 @@ namespace myproject.Controllers
             newPost.PostContent = inputcontent;
             newPost.PostImage = imagebase64;
             newPost.PostDate = currentTime;
+            newPost.PostAuthor = Session["FullName"].ToString();
 
             db.Post.Add(newPost);
             db.SaveChanges();
 
             return RedirectToAction("OurGreen");
+        }
+
+        [HttpPost]
+        public ActionResult Signup(String username, String fullname, String password, String confirmpassword)
+        {
+            User newUser = new User();
+            newUser.Username = username;
+            newUser.FullName = fullname;
+            newUser.Password = password;
+            newUser.Confirm = confirmpassword;
+
+            db.userModels.Add(newUser);
+
+            db.SaveChanges();
+
+            var checkUser = db.userModels.SingleOrDefault(u => u.Username == username && u.Password == password);
+            if (checkUser != null)
+            {
+                Session["Id"] = checkUser.Id;
+                Session["FullName"] = checkUser.FullName;
+                int id = (int)Session["Id"];
+                Session["InvalidUser"] = null;
+                return RedirectToAction("OurGreen");
+            }
+
+            return RedirectToAction("OurGreen");
+        }
+
+        [HttpPost]
+        public ActionResult Login(string username, string password)
+        {
+            if (username == null || password == null)
+            {
+                Session["InvalidUser"] = "Username or Password is empty";
+                return RedirectToAction("OurGreen");
+            }
+            else
+            {
+                var checkUser = db.userModels.SingleOrDefault(u => u.Username == username && u.Password == password);
+                if (checkUser != null)
+                {
+                    Session["Id"] = checkUser.Id;
+                    Session["FullName"] = checkUser.FullName;
+                    int id = (int)Session["Id"];
+                    Session["InvalidUser"] = null;
+                    return RedirectToAction("OurGreen");
+                }
+                else
+                {
+                    Session["InvalidUser"] = "Invalid Username or Password";
+                    return RedirectToAction("OurGreen");
+                }
+                    
+            }
+        }
+        public ActionResult Logout()
+        {
+            int id = (int)Session["Id"];
+            var user = db.userModels.Find(id);
+            if (user != null)
+            {
+                Session["Id"] = null;
+                return RedirectToAction("OurGreen");
+            }
+            else
+            {
+                Session["Id"] = null;
+                Session["Username"] = null;
+                return RedirectToAction("OurGreen");
+            }
+        }
+
+        static string GetSHA256(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
 
         // GET: Community/Details/5

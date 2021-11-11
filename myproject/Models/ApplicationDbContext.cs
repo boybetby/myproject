@@ -18,6 +18,8 @@ namespace myproject.Models
 
         public DbSet<Post> Post { get; set; }
         public DbSet<PostComment> postComment { get; set; }
+
+        public DbSet<User> userModels { get; set; }
         public ApplicationDbContext()
             : base("YenConnection", throwIfV1Schema: false)
         {

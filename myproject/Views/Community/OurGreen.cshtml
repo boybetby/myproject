@@ -58,6 +58,16 @@
         function closeLoginForm() {
             document.body.classList.remove("showLoginForm");
         }
+
+        function openSignupForm() {
+            document.body.classList.add("showSignupForm");
+        }
+        function closeSignupForm() {
+            document.body.classList.remove("showSignupForm");
+        }
+
+        
+
     </script>
 </head>
 <body>
@@ -90,29 +100,71 @@
         </header>
     </div>
 
-    <div class="popup-overlay"></div>
-    <div class="popup">
-        <div class="popup-close" onclick="closeLoginForm()">×</div>
-        <div class="form">
+    <!-- login form -->
+        <div class="popup-overlay"></div>
+        <div class="popup">
+            <div class="popup-close" onclick="closeLoginForm()">×</div>
+            <div class="form">
+                <div class="avatar">
+                    <img src="~/images/yen.png" alt="">
+                </div>
+                <div class="header">
+                    Login
+                </div>
+                @using (Html.BeginForm("Login", "Community", FormMethod.Post))
+                {
+                    <div class="element">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required >
+                    </div>
+                    <div class="element">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required >
+                    </div>
+                    <div class="element">
+                        <button type="submit">Login</button>
+                    </div>
+                }
+            </div>
+        </div>
+    <!-- end login form -->
+
+    <!-- Sign-up form -->
+    <div class="popup-signup-overlay"></div>
+    <div class="popup-signup">
+        <div class="popup-close-signup" onclick="closeSignupForm()">×</div>
+        <div class="form-signup">
             <div class="avatar">
                 <img src="~/images/yen.png" alt="">
             </div>
             <div class="header">
-                Login
+
             </div>
-            <div class="element">
-                <label for="username">Username</label>
-                <input type="text" id="username">
-            </div>
-            <div class="element">
-                <label for="password">Password</label>
-                <input type="password" id="password">
-            </div>
-            <div class="element">
-                <button>Login</button>
-            </div>
+            @using (Html.BeginForm("Signup", "Community", FormMethod.Post))
+            {
+                <div class="element">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required >
+                </div>
+                <div class="element">
+                    <label for="fullname">Full name</label>
+                    <input type="text" id="fullname" name="fullname" required >
+                </div>
+                <div class="element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required >
+                </div>
+                <div class="element">
+                    <label for="confirmpassword">Confirm password</label>
+                    <input type="password" id="confirmpassword" name="confirmpassword" required >
+                </div>
+                <div class="element">
+                    <button>Sign-up</button>
+                </div>
+            }
         </div>
     </div>
+    <!-- end signup form-->
 
     <main>
         <div class="">
@@ -134,16 +186,32 @@
                     </div>
 
                     <div id="account">
-                        <a href="#" onclick="openLoginForm()">
-                            <div style="color: #009933">
-                                Login
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div>
-                                Sign-up
-                            </div>
-                        </a>
+                        @if (@Session["Id"] != null)
+                        {
+                            <a>
+                                <div style="color: #009933">
+                                    Hello, @Session["FullName"]
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Logout", "Community")">
+                                <div>
+                                    Logout
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="#" onclick="openLoginForm()">
+                                <div style="color: #009933">
+                                    Login
+                                </div>
+                            </a>
+                            <a href="#" onclick="openSignupForm()">
+                                <div>
+                                    Sign-up
+                                </div>
+                            </a>
+                        }
                     </div>
 
                 </div>
@@ -165,7 +233,14 @@
                                             <img id="blah" src="#" alt="your image" style="visibility: hidden; height: 0;padding-left: 5px;" />
                                             <input type="hidden" name="imagebase64" id="imagebase64" value="0" />
                                         </div>
-                                        <button type="submit">Post</button>
+                                        @if (@Session["Id"] != null)
+                                        {
+                                            <button type="submit">Post</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" disabled>Please login first</button>
+                                        }
                                     </div>
                                 }
 
