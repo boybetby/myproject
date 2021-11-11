@@ -72,7 +72,7 @@
                             <div class="row">
                                 <div class="col-md-12 form-group">
                                     <label for="email" class="col-form-label">Email</label>
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @style = "margin-left:3px" })
                                 </div>
                             </div>
