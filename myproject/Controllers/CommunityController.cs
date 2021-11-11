@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using myproject.Models;
@@ -145,6 +147,51 @@ namespace myproject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [HttpPost]
+        public ActionResult Login(string username, string password)
+        {
+            //user.Password = GetSHA256(user.Password);
+            var checkUser = db.userModels.SingleOrDefault(u => u.Username == username && u.Password == password);
+            if (checkUser != null)
+            {
+                Session["Id"] = checkUser.Id;
+                Session["FullName"] = checkUser.FullName;
+                int id = (int)Session["Id"];
+                return RedirectToAction("OurGreen");
+            }
+            else
+                return ViewBag.LoginFailed = "Sai thông tin đăng nhập.";
+        }
+        public ActionResult Logout()
+        {
+            int id = (int)Session["Id"];
+            var user = db.userModels.Find(id);
+            if (user != null)
+            {
+                Session["Id"] = null;
+                return RedirectToAction("OurGreen");
+            }
+            else
+            {
+                Session["Id"] = null;
+                Session["Username"] = null;
+                return RedirectToAction("OurGreen");
+            }
+        }
+        static string GetSHA256(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 }
