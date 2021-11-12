@@ -13,13 +13,11 @@ namespace myproject.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Comment> Comments { get; set; }
-
         public DbSet<Detail> Details { get; set; }
-
         public DbSet<Post> Post { get; set; }
         public DbSet<PostComment> postComment { get; set; }
-
         public DbSet<User> userModels { get; set; }
+        public DbSet<Event> Event { get; set; }
         public ApplicationDbContext()
             : base("YenConnection", throwIfV1Schema: false)
         {

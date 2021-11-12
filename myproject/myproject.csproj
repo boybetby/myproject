@@ -283,12 +283,17 @@
     <Compile Include="Migrations\202111110853490_usermodel.Designer.cs">
       <DependentUpon>202111110853490_usermodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111120915204_event.cs" />
+    <Compile Include="Migrations\202111120915204_event.Designer.cs">
+      <DependentUpon>202111120915204_event.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Detail.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
@@ -304,6 +309,57 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ajax-loader.gif" />
+    <Content Include="Content\assets\css\animate.css" />
+    <Content Include="Content\assets\css\bootstrap.min.css" />
+    <Content Include="Content\assets\css\default.css" />
+    <Content Include="Content\assets\css\flaticon.css" />
+    <Content Include="Content\assets\css\LineIcons.css" />
+    <Content Include="Content\assets\css\magnific-popup.css" />
+    <Content Include="Content\assets\css\slick.css" />
+    <Content Include="Content\assets\css\style.css" />
+    <Content Include="Content\assets\fonts\Flaticon.svg" />
+    <Content Include="Content\assets\fonts\LineIcons.svg" />
+    <Content Include="Content\assets\images\about.png" />
+    <Content Include="Content\assets\images\client-1.png" />
+    <Content Include="Content\assets\images\client-2.png" />
+    <Content Include="Content\assets\images\client-3.png" />
+    <Content Include="Content\assets\images\client-4.png" />
+    <Content Include="Content\assets\images\client-5.png" />
+    <Content Include="Content\assets\images\dots.jpg" />
+    <Content Include="Content\assets\images\event-1.jpg" />
+    <Content Include="Content\assets\images\event-2.jpg" />
+    <Content Include="Content\assets\images\event-3.jpg" />
+    <Content Include="Content\assets\images\favicon.png" />
+    <Content Include="Content\assets\images\footer.jpg" />
+    <Content Include="Content\assets\images\gallery-1.jpg" />
+    <Content Include="Content\assets\images\gallery-2.jpg" />
+    <Content Include="Content\assets\images\gallery-3.jpg" />
+    <Content Include="Content\assets\images\gallery-4.jpg" />
+    <Content Include="Content\assets\images\gallery-5.jpg" />
+    <Content Include="Content\assets\images\header-bg.jpg" />
+    <Content Include="Content\assets\images\logo.png" />
+    <Content Include="Content\assets\images\pricing-bg.jpg" />
+    <Content Include="Content\assets\images\team-1.jpg" />
+    <Content Include="Content\assets\images\team-2.jpg" />
+    <Content Include="Content\assets\images\team-3.jpg" />
+    <Content Include="Content\assets\images\team-4.jpg" />
+    <Content Include="Content\assets\images\team-5.jpg" />
+    <Content Include="Content\assets\images\team-6.jpg" />
+    <Content Include="Content\assets\images\yen.png" />
+    <Content Include="Content\assets\js\ajax-contact.js" />
+    <Content Include="Content\assets\js\bootstrap.min.js" />
+    <Content Include="Content\assets\js\jquery.countdown.min.js" />
+    <Content Include="Content\assets\js\jquery.counterup.min.js" />
+    <Content Include="Content\assets\js\jquery.easing.min.js" />
+    <Content Include="Content\assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="Content\assets\js\main.js" />
+    <Content Include="Content\assets\js\popper.min.js" />
+    <Content Include="Content\assets\js\scrolling-nav.js" />
+    <Content Include="Content\assets\js\slick.min.js" />
+    <Content Include="Content\assets\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Content\assets\js\vendor\modernizr-3.6.0.min.js" />
+    <Content Include="Content\assets\js\waypoints.min.js" />
+    <Content Include="Content\assets\js\wow.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -641,6 +697,32 @@
     <Content Include="Content\css\website-menu-07\scss\bootstrap\_variables.scss" />
     <Content Include="Content\css\website-menu-07\scss\style.scss" />
     <Content Include="libman.json" />
+    <Content Include="Content\assets\.DS_Store" />
+    <Content Include="Content\assets\contact.php" />
+    <Content Include="Content\assets\css\style.css.map" />
+    <Content Include="Content\assets\fonts\Flaticon.eot" />
+    <Content Include="Content\assets\fonts\Flaticon.ttf" />
+    <Content Include="Content\assets\fonts\Flaticon.woff" />
+    <Content Include="Content\assets\fonts\Flaticon.woff2" />
+    <Content Include="Content\assets\fonts\LineIcons.eot" />
+    <Content Include="Content\assets\fonts\LineIcons.ttf" />
+    <Content Include="Content\assets\fonts\LineIcons.woff" />
+    <Content Include="Content\assets\images\.DS_Store" />
+    <Content Include="Content\assets\scss\style.scss" />
+    <Content Include="Content\assets\scss\_about.scss" />
+    <Content Include="Content\assets\scss\_client.scss" />
+    <Content Include="Content\assets\scss\_common.scss" />
+    <Content Include="Content\assets\scss\_contact.scss" />
+    <Content Include="Content\assets\scss\_counter.scss" />
+    <Content Include="Content\assets\scss\_event-schedule.scss" />
+    <Content Include="Content\assets\scss\_features.scss" />
+    <Content Include="Content\assets\scss\_footer.scss" />
+    <Content Include="Content\assets\scss\_gallery.scss" />
+    <Content Include="Content\assets\scss\_header.scss" />
+    <Content Include="Content\assets\scss\_mixin.scss" />
+    <Content Include="Content\assets\scss\_pricing.scss" />
+    <Content Include="Content\assets\scss\_team.scss" />
+    <Content Include="Content\assets\scss\_variables.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\code.js" />
@@ -729,6 +811,7 @@
     <Content Include="Views\Community\PostCard.cshtml" />
     <Content Include="Views\Role\_ViewStart.cshtml" />
     <Content Include="Views\Orders\_ViewStart.cshtml" />
+    <Content Include="Views\Community\Event.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -789,6 +872,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111110853490_usermodel.resx">
       <DependentUpon>202111110853490_usermodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111120915204_event.resx">
+      <DependentUpon>202111120915204_event.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

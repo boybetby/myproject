@@ -22,6 +22,11 @@ namespace myproject.Controllers
             return View(db.Post.ToList());
         }
 
+        public ActionResult Event()
+        {
+            return View();
+        }
+
         public ActionResult OurGreen()
         {
 
