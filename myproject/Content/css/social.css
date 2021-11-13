@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
 
+
 #menu {
     margin-top: 20px;
     margin-bottom: 30px;
@@ -23,6 +24,16 @@
         height: 40px;
         background-color: white;
     }
+
+    #menu a {
+        text-decoration: none;
+        color: black;
+    }
+
+        #menu a:hover {
+            text-decoration: none;
+            color: hotpink;
+        }
 
 .selected {
     background-color: cadetblue !important;

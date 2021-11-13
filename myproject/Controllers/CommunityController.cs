@@ -24,7 +24,10 @@ namespace myproject.Controllers
 
         public ActionResult Event()
         {
-            return View();
+            Event newEvent = db.Event
+                        .OrderByDescending(p => p.EventDate)
+                       .FirstOrDefault();
+            return View(newEvent);
         }
 
         public ActionResult OurGreen()

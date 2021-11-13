@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@model myproject.Models.Event
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -10,11 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>Eventify - Event and Conference Template</title>
+    <title>Yen</title>
 
     <!--====== Favicon Icon ======-->
-
-    <link rel="shortcut icon" href="~/Content/assets/images/favicon.png" type="image/png">
 
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
@@ -87,16 +86,16 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
                                 <ul class="navbar-nav m-auto">
                                     <li class="nav-item active">
-                                        <a class="page-scroll" href="#home">PRODUCT</a>
+                                        <a class="page-scroll" href="@Url.Action("Index", "Products")">PRODUCT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#event">GREEN PRODUCTION</a>
+                                        <a class="page-scroll" href="@Url.Action("Index", "Furniture")">GREEN PRODUCTION</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#team">WORKSHOP</a>
+                                        <a class="page-scroll" href="@Url.Action("Index", "Workshop")">WORKSHOP</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#gallery">COMMUNITY</a>
+                                        <a class="page-scroll" href="@Url.Action("OurGreen", "Community")">COMMUNITY</a>
                                     </li>
                                
                                 </ul>
@@ -109,19 +108,19 @@
             </div> <!-- container -->
         </div>
 
-        <div id="home" class="header-content-area bg_cover d-flex align-items-center" style="background-image: url(~/Content/assets/images/header-bg.jpg)">
+        <div id="home" class="header-content-area bg_cover d-flex align-items-center" style="background-image: url(../../images/bg1.png)">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div data-countdown="2020/10/01"></div>
                         
                         <div class="header-content text-center">
-                            <h2 class="header-title">25 <sup>th</sup> Designers Meetup</h2>
-                            <h3 class="sub-title">25 September, 2022 in New York</h3>
+                            <h2 class="header-title"> @Html.DisplayFor(model => model.EventName) </h2>
+                            <h3 class="sub-title"> @Model.EventDate.ToString("dd MMMM yyyy hh:mm tt") at @Html.DisplayFor(model => model.EventAddress)</h3>
 
                             <ul class="header-btn">
                                 <li><a class="main-btn main-btn-2" href="#">Register Now</a></li>
-                                <li><a class="main-btn" href="#">Learn More</a></li>
+                                
                             </ul>
                         </div>  <!-- header content -->
                     </div>
@@ -148,8 +147,8 @@
                             <h2 class="title">About Our Meetups</h2>
                         </div> <!-- section title -->
 
-                        <p class="text mt-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. <br> <br> Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                        <p class="date"><span>25<sup>th</sup></span> December’ 19</p>
+                        <p class="text mt-30" style="word-break: normal;">@Html.DisplayFor(model => model.EventAbout)</p>
+                        <p class="date"><span>@Html.DisplayFor(model => model.EventDate.Day) <sup>th</sup></span> @Model.EventDate.ToString("MMMM yyyy")</p>
                     </div> <!-- about content -->
                 </div>
             </div> <!-- row -->
@@ -170,7 +169,7 @@
                             <i class="lni-bulb"></i>
                         </div>
                         <div class="counter-content">
-                            <span class="count counter">800</span>
+                            <span class="count counter">@Html.DisplayFor(model => model.EventSeats) </span>
                             <p class="text">Seats Available</p>
                         </div>
                     </div> <!-- single counter -->
