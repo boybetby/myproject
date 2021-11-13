@@ -1,8 +1,5 @@
 ﻿@model myproject.Models.Order
-
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Yen</title>
@@ -62,7 +59,7 @@
                         <form class="mb-5" method="post" id="contactForm" name="contactForm">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="row">
-                                <div class="col-md-12 form-group">
+                                <div class="col-md-12 form-group" style="margin-bottom:0;">
                                     <label for="name" class="col-form-label">Name</label>
                                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "margin-left:3px" })
@@ -85,7 +82,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-3" style="margin-bottom: 0px !important">
                                 <div class="col-md-12 form-group">
                                     <label for="address" class="col-form-label">Address</label>
 

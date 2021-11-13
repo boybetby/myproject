@@ -12,7 +12,7 @@
     <title>Yen</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../Content/css/style.css">
+    <link rel="stylesheet" href="../../Content/css/oldcss.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../Content/css/website-menu-07/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -117,7 +117,7 @@
                             <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
 
                             @foreach (var item in Model)
-                            {    
+                            {
                                 <div style="display:inline-block;width:100%;margin-top:10px;">
                                     <p style="float:left;font-size:18px;">@item.productname</p>
                                     @{
@@ -128,11 +128,10 @@
                             }
                             <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
                             <div style="display:inline-block;width:100%;margin-top:10px;">
-                                <p style="float:left;font-size:18px;">Tổng cộng: </p>
+                                <p style="float:left;font-size:18px;">Total: </p>
                                 <p style="float:right;font-size:18px;" class="finalprice">@money</p>
                             </div>
-
-
+       
                             @if (Model.Count() == 0)
                             {
                                 <div class="checkout" style="margin-top:30px;height:60px">

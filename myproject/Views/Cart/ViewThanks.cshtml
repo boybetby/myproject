@@ -1,20 +1,14 @@
-﻿@model myproject.Models.Product
-
-@{
-    Layout = null;
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-
 <head>
     <title>Yen</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../Content/css/oldcss.css">
+    <link rel="stylesheet" href="../../Content/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../Content/css/website-menu-07/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="@Url.Content("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css")" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
@@ -22,7 +16,7 @@
     </style>
 </head>
 <body>
-    <div class="wrapper" style="background-image: url('../../images/product_bg1.jpg'); height: 120px;">
+    <div class="wrapper" style="background-image: url('../../images/bg1.png'); height: 600px;">
         <header style="padding-left:40px; position: absolute; width:100%">
             <nav>
                 <div class="menu-icon">
@@ -50,58 +44,24 @@
                 </div>
             </nav>
         </header>
-    </div>
-    <main class="detail">
-        @using (Html.BeginForm("AddtoCart", "Cart", new { id = Model.productID }, FormMethod.Post))
-        {
-            <div style="margin-top:100px;" class="container">
-                <div class="row">
-                    <div class="col col-lg-6">
-                        <img src="@Html.DisplayFor(model => model.image)">
-                    </div>
-                    <div class="col-lg-4" style="margin-left: 80px;padding-top:60px; ">
-                        <div style="height:40px;">
-                            <p style="">
-                                @Html.DisplayFor(model => model.productname)
-                            </p>
-                            <p style="">
-                                @Html.DisplayFor(model => model.price)
-                            </p>
-                        </div>
 
-                        <div class="description" style="width:350px;word-wrap:break-word;margin-top:100px;">
-                            <p>
-                                @Html.DisplayFor(model => model.description)
-                            </p>
-                        </div>
-                        <div style="margin-top:200px;width:230px;">
-                            <input type="number" value="1" min="1" max="100" step="1" name="amount" id="amount" />
-                            <script src="../../Content/scripts/bootstrap-input-spinner.js"></script>
-                            <script>
-                                $("input[type='number']").inputSpinner();
-                            </script>
-                        </div>
-                        <div class="addtocart" style="margin-top: 50px;">
-                            <button type="submit" value="AddtoCart">ADD TO CART</button>
-                        </div>
-
-                        @if (ViewBag.Success  == "1")
-                        {
-                            <p style="color:green;margin-top:20px;">Product added to your cart successfully!</p>
-                        }
-                        @if (ViewBag.Success == "2")
-                        {
-                            <p style="color:green;margin-top:20px;">This product's amount has been updated in your cart!'</p>
-                        }
+        <main class="infoform" style="height:650px;">
+            <div id="formsize" style="height:350px;">
+                <div class="box">
+                    <div class="col-md-12 form-group">
+                        <h1>Thank you for chosing us! We will help you to buy your own green living space.</h1>
                     </div>
+
+                    <button type="button" onclick="location.href='@Url.Action("Index", "Home")'" style="margin-top:50px;color:black;background-color:white;font-weight:bold;font-family:Montserrat">Continue to Shopping</button>
                 </div>
             </div>
-        }
-    </main>
-    <div style="width:800px;display:table;margin:0 auto;"><p class="divided"></p></div>
-    <footer style="display: flex;margin-top:100px;margin-left:220px;margin-bottom:140px;">
+        </main>
+
+    </div>
+
+    <footer style="display: flex;margin-top:100px;margin-left:140px;margin-bottom:140px;">
         <div style="display: inline;">
-            <h1 style="font-size:30px">
+            <h1 style="font-size:30px; color:black;">
                 CONTACT
                 <br>+84 946-294-394
                 <br>Open: 9:30AM - 5:30PM
@@ -109,7 +69,7 @@
             </h1>
         </div>
         <div style="display: inline;margin-left:160px;">
-            <h1 style="font-size:30px">
+            <h1 style="font-size: 30px; color: black; ">
                 FOLLOW US
             </h1>
             <div style="display:flex;flex-wrap:wrap">
@@ -126,9 +86,10 @@
                     </svg>
                 </a>
             </div>
+            <div style="height:200px;">
+
+            </div>
         </div>
     </footer>
-
-
 </body>
 </html>

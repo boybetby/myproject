@@ -29,5 +29,7 @@ namespace myproject.Models
         public DateTime Date { get; set; }
 
         public bool Checked { get; set; } = false;
+
+        public string PaymentMethod { get; set; }
     }
 }

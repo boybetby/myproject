@@ -5,7 +5,7 @@
     <title>Yen</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../Content/css/style.css">
+    <link rel="stylesheet" href="../../Content/css/oldcss.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../Content/css/website-menu-07/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,20 +24,20 @@
     <main>
         <div>
             <div class="wrapper" style="background-image: url('../../images/bg1.png');">
-                <header style="padding-left:40px; position: absolute; width:100%"> 
-                    <nav> 
+                <header style="padding-left:40px; position: absolute; width:100%">
+                    <nav>
                         <div class="menu-icon">
                             <i class="fa fa-bars fa-2x"></i>
                         </div>
                         <div class="logo">
                             <a href="@Url.Action("Index", "Home")"><img src="../../images/yen.png" class="yen"></a>
-                        </div> 
+                        </div>
                         <div class="menu" style="width:100%">
                             <ul style="display:inline-block;width:100%;padding-left:150px;">
                                 <li>@Html.ActionLink("PRODUCT", "Index", "Products")</li>
                                 <li>@Html.ActionLink("GREEN PRODUCTION", "Index", "Furniture")</li>
                                 <li>@Html.ActionLink("WORKSHOP", "Index", "Workshop")</li>
-                                <li>@Html.ActionLink("COMMUNITY", "OurGreen", "Community")</li>
+                                <li>@Html.ActionLink("ABOUT US", "About", "Home")</li>
                                 <li style="float:right;">
                                     <a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a> @if (Session["Number"] != null)
                                     {
@@ -112,7 +112,7 @@
                     STORE LOCATION
                 </h1>
 
-                <a href="https://goo.gl/maps/hMa6PJcEGwhXZrTN8" target="_blank"><h2>357 Le Van Luong, District 7, Ho Chi Minh</h2></a>
+                <a href="https://goo.gl/maps/hMa6PJcEGwhXZrTN8" target="_blank"><h2>357 Le Van Luong, District 1, Ho Chi Minh</h2></a>
 
             </div>
         </div>

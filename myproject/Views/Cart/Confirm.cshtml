@@ -52,7 +52,7 @@
             <p style="font-family:Montserrat;color:white;font-weight:bold;font-size:50px">CONFIRM YOUR ORDER</p>
         </div>
     </div>
-    @using (Html.BeginForm("MomoPayment", "Cart", FormMethod.Post))
+    @using (Html.BeginForm("ProcessPayment", "Cart", FormMethod.Post))
     {
         <main class="cart">
             <div class="container">
@@ -109,7 +109,7 @@
                                             <p style="font-size:18px">@price</p>
                                         </div>
                                     </div>
-                                 }
+                                }
                                 <!-- END LOOP -->
 
                                 <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
@@ -129,6 +129,17 @@
                                     <p style="float:left;font-size:18px;font-weight:700">Total price: </p>
                                     <p style="float:right;font-size:18px;">@finalprice</p>
                                 </div>
+
+                                <div>
+                                    <p style="font-size: 18px">Payment method: </p>
+                                    <input id="methodcod" name="method" type="radio" value="COD" checked />
+                                    <label for="method">COD</label><br>
+                                    <input id="methodmomo" name="method" type="radio" value="momo" />
+                                    <label for="method">MoMo</label>
+                                </div>
+
+
+                                <input name="method" type="hidden" />
                             </div>
                             <div style="width:80px"><p style="border-bottom:  0.001em solid #dcdfe0;"></p></div>
                             <div class="checkout" style="margin-top:50px;text-align:center;">

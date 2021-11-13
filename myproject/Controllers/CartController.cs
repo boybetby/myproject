@@ -35,6 +35,11 @@ namespace myproject.Controllers
             return View(cartlist);
         }
   
+        public ActionResult CheckoutFail()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Index(string name, int amount)
         {
@@ -93,9 +98,8 @@ namespace myproject.Controllers
         {     
             return View();
         }
-        [HttpPost]
-       
 
+        [HttpPost]
         public ActionResult Confirm(Order order,string province, string district, string ward, int ShippingFee)
         {
             if (ModelState.IsValid) { 
@@ -129,6 +133,120 @@ namespace myproject.Controllers
             }
             return View("Info");
         }
+
+        [HttpPost]
+        public ActionResult ProcessPayment(long finalprice, String method)
+        {
+            Order addorder = new Order();
+            addorder = Session["Order"] as Order;
+            addorder.PaymentMethod = method;
+            List<Cart> cartlist = setCart();
+            if (method == "momo") 
+            {
+                //long totalprice = 0;
+                string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+                string partnerCode = "MOMO5RGX20191128";
+                string accessKey = "M8brj9K6E22vXoDB";
+                string serectKey = "nqQiVSgDMy809JoPF6OzP5OdBUB550Y4";
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                string orderId = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
+                string orderInfo = "YenConcept";
+                string returnUrl = "https://localhost:44371/Cart/CheckoutFail";
+                string notifyUrl = "https://localhost:44371/Cart/Thanks";
+                //foreach (var items in cartlist)
+                //{
+                //    totalprice += items.amount * items.price;
+                //}
+                string requestId = Guid.NewGuid().ToString();
+                string extraData = "";
+
+                string rawHash = "partnerCode=" +
+                    partnerCode + "&accessKey=" +
+                    accessKey + "&requestId=" +
+                    requestId + "&amount=" +
+                    finalprice + "&orderId=" +
+                    orderId + "&orderInfo=" +
+                    orderInfo + "&returnUrl=" +
+                    returnUrl + "&notifyUrl=" +
+                    notifyUrl + "&extraData=" +
+                    extraData;
+
+                MoMoSecurity crypto = new MoMoSecurity();
+                string signature = crypto.signSHA256(rawHash, serectKey);
+                JObject message = new JObject
+            {
+                {"partnerCode", partnerCode },
+                {"accessKey", accessKey},
+                {"requestId", requestId },
+                {"amount", finalprice.ToString() },
+                {"orderId", orderId },
+                {"orderInfo", orderInfo },
+                {"returnUrl", returnUrl },
+                {"notifyUrl", notifyUrl },
+                {"requestType", "captureMoMoWallet" },
+                {"signature", signature },
+            };
+                string responseFromMoMo = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
+                JObject jmessage = JObject.Parse(responseFromMoMo);
+                return Redirect(jmessage.GetValue("payUrl").ToString());
+            }
+            else
+            {
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                string orderID = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
+                db.Orders.Add(addorder);
+                foreach (var item in cartlist)
+                {
+                    //OrderDetail orderdetails = new OrderDetail();
+                    //orderdetails.Order = addorder;
+                    //orderdetails.ProductID = item.productID;
+                    //orderdetails.amount = item.amount;
+                    //db.OrderDetails.Add(orderdetails);
+                    Detail detail = new Detail();
+                    detail.OrderID = addorder.OrderID;
+                    detail.ProductID = item.productID;
+                    detail.Amount = item.amount;
+                    db.Details.Add(detail);
+                }
+
+                string MailSend = "yengreenliving@gmail.com";
+                string Password = "yenmail@123";
+                using (MailMessage m = new MailMessage(MailSend, addorder.Email))
+                {
+                    string youraddress = addorder.Address + " " + addorder.Ward + " " + addorder.District + " " + addorder.Province;
+                    m.Subject = "Thank You For Chosing Us";
+                    m.Body = ("Your order's total is: " + finalprice + " <br /> Your order will be delivery to " + youraddress + " within 3 to 4 days <br />THANKS YOU!");
+                    //if (emailInfo.Attacment.ContentLength > 0)
+                    //{
+                    //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);
+                    //    m.Attachments.Add(new Attachment(emailInfo.Attacment.InputStream, filename));
+                    //}
+                    m.IsBodyHtml = true;
+                    using (SmtpClient smtp = new SmtpClient())
+                    {
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.EnableSsl = true;
+                        NetworkCredential networkCred = new NetworkCredential(MailSend, Password);
+                        smtp.UseDefaultCredentials = true;
+                        smtp.Credentials = networkCred;
+                        smtp.Port = 587;
+                        smtp.Send(m);
+                        ViewBag.Message = "An email have sent to " + addorder.Email + " ! Please check your email";
+                    }
+                }
+                Session.Clear();
+                db.SaveChanges();
+                return RedirectToAction("ViewThanks");
+            }
+            
+        }
+
+        public ActionResult ViewThanks()
+        {
+
+            return View();
+        }
+
         [HttpPost]
         public ActionResult MomoPayment(long finalprice)
         {
@@ -143,7 +261,7 @@ namespace myproject.Controllers
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             string orderId = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
             string orderInfo = "YenConcept";
-            string returnUrl = "https://localhost:44371/Cart/Thanks";
+            string returnUrl = "https://localhost:44371/Cart/CheckoutFail";
             string notifyUrl = "https://localhost:44371/Cart/Thanks";
             //foreach (var items in cartlist)
             //{
@@ -182,13 +300,12 @@ namespace myproject.Controllers
             JObject jmessage = JObject.Parse(responseFromMoMo);
             return Redirect(jmessage.GetValue("payUrl").ToString());
         }
-        public ActionResult Thanks(long finalprice)
+        public ActionResult Thanks(long amount)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             string orderID = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
             List<Cart> cartlist = setCart();
             Order addorder = new Order();
-
             addorder = Session["Order"] as Order;
             db.Orders.Add(addorder);
             foreach (var item in cartlist)
@@ -211,7 +328,7 @@ namespace myproject.Controllers
             {
                 string youraddress = addorder.Address + " " + addorder.Ward + " " + addorder.District + " " + addorder.Province;
                 m.Subject = "Thank You For Chosing Us";
-                m.Body = ("Your order's total is: " + finalprice + " <br /> Your order will be delivery to " + youraddress + " within 3 to 4 days <br />THANKS YOU!");
+                m.Body = ("Your order's total is: " + amount + " <br /> Your order will be delivery to " + youraddress + " within 3 to 4 days <br />THANKS YOU!");
                 //if (emailInfo.Attacment.ContentLength > 0)
                 //{
                 //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);

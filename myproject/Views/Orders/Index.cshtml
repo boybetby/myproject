@@ -29,6 +29,9 @@
             Total Price
         </th>
         <th>
+            Payment Method
+        </th>
+        <th>
             Order Date
         </th>
         <th>
@@ -39,44 +42,47 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            @{
-                string address = item.Address + ", " + item.Ward + ", " + item.District + ", " + item.Province;
-            }
-            <td>
-                @address
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td style="text-align: center">
-                @if (item.Checked)
-                {
-                    <span style="font-weight: bold; color: forestgreen;">&#10003;</span>
-                }
-                else
-                {
-                    @Html.ActionLink("Check", "CheckOrderd", new { id = item.OrderID })
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhoneNumber)
+    </td>
+    @{
+        string address = item.Address + ", " + item.Ward + ", " + item.District + ", " + item.Province;
+    }
+    <td>
+        @address
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PaymentMethod)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td style="text-align: center">
+        @if (item.Checked)
+        {
+            <span style="font-weight: bold; color: forestgreen;">&#10003;</span>
+        }
+        else
+        {
+            @Html.ActionLink("Check", "CheckOrderd", new { id = item.OrderID })
+        }
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+    </td>
+</tr>
     }
 </table>
 <div style="margin-left: 500px;">
