@@ -297,9 +297,11 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MoMoSecurity.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\OrderView.cs" />
+    <Compile Include="Models\PaymentRequest.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostComment.cs" />
     <Compile Include="Models\Product.cs" />

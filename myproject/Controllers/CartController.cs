@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using myproject.Models;
 using System.Net.Mail;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace myproject.Controllers
 {
@@ -119,40 +120,6 @@ namespace myproject.Controllers
                 addorder.Date = DateTime.Now;
                 addorder.TotalPrice = totalprice;
                 Session["Order"] = addorder;
-                //foreach (var item in cartlist)
-                //{
-                //    OrderDetail orderdetails = new OrderDetail();
-                //    orderdetails.Order = addorder;
-                //    orderdetails.ProductID = item.productID;
-                //    orderdetails.amount = item.amount;
-                //    db.OrderDetails.Add(orderdetails);
-                //}
-
-                //string MailSend = "yengreenliving@gmail.com";
-                //string Password = "yenmail@123";
-                //using (MailMessage m = new MailMessage(MailSend, order.Email))
-                //{
-                //    string youraddress = order.Address + " " + ward + " " + district + " " + province;
-                //    m.Subject = "Thank You For Chosing Us";
-                //    m.Body = ("Your order's total is: " + totalprice + " <br /> Your order will be delivery to " + youraddress + " within 3 to 4 days <br />THANKS YOU!");
-                //    //if (emailInfo.Attacment.ContentLength > 0)
-                //    //{
-                //    //    string filename = Path.GetFileName(emailInfo.Attacment.FileName);
-                //    //    m.Attachments.Add(new Attachment(emailInfo.Attacment.InputStream, filename));
-                //    //}
-                //    m.IsBodyHtml = true;
-                //    using (SmtpClient smtp = new SmtpClient())
-                //    {
-                //        smtp.Host = "smtp.gmail.com";
-                //        smtp.EnableSsl = true;
-                //        NetworkCredential networkCred = new NetworkCredential(MailSend, Password);
-                //        smtp.UseDefaultCredentials = true;
-                //        smtp.Credentials = networkCred;
-                //        smtp.Port = 587;
-                //        smtp.Send(m);
-                //        ViewBag.Message = "An email have sent to " + order.Email + " ! Please check your email";
-                //    }
-                //}
                 string youraddress = order.Address + ", " + ward + ", " + district + ", " + province;
                 ViewBag.Address = youraddress;
                 ViewBag.Name = order.Name;
@@ -162,7 +129,59 @@ namespace myproject.Controllers
             }
             return View("Info");
         }
-        
+        [HttpPost]
+        public ActionResult MomoPayment(long finalprice)
+        {
+            Order addorder = new Order();
+            addorder = Session["Order"] as Order;
+            List<Cart> cartlist = setCart();
+            //long totalprice = 0;
+            string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+            string partnerCode = "MOMO5RGX20191128";
+            string accessKey = "M8brj9K6E22vXoDB";
+            string serectKey = "nqQiVSgDMy809JoPF6OzP5OdBUB550Y4";
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            string orderId = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
+            string orderInfo = "YenConcept";
+            string returnUrl = "https://localhost:44371/Cart/Thanks";
+            string notifyUrl = "https://localhost:44371/Cart/Thanks";
+            //foreach (var items in cartlist)
+            //{
+            //    totalprice += items.amount * items.price;
+            //}
+            string requestId = Guid.NewGuid().ToString();
+            string extraData = "";
+
+            string rawHash = "partnerCode=" +
+                partnerCode + "&accessKey=" +
+                accessKey + "&requestId=" +
+                requestId + "&amount=" +
+                finalprice + "&orderId=" +
+                orderId + "&orderInfo=" +
+                orderInfo + "&returnUrl=" +
+                returnUrl + "&notifyUrl=" +
+                notifyUrl + "&extraData=" +
+                extraData;
+
+            MoMoSecurity crypto = new MoMoSecurity();
+            string signature = crypto.signSHA256(rawHash, serectKey);
+            JObject message = new JObject
+            {
+                {"partnerCode", partnerCode },
+                {"accessKey", accessKey},
+                {"requestId", requestId },
+                {"amount", finalprice.ToString() },
+                {"orderId", orderId },
+                {"orderInfo", orderInfo },
+                {"returnUrl", returnUrl },
+                {"notifyUrl", notifyUrl },
+                {"requestType", "captureMoMoWallet" },
+                {"signature", signature },
+            };
+            string responseFromMoMo = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
+            JObject jmessage = JObject.Parse(responseFromMoMo);
+            return Redirect(jmessage.GetValue("payUrl").ToString());
+        }
         public ActionResult Thanks(long finalprice)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -171,18 +190,6 @@ namespace myproject.Controllers
             Order addorder = new Order();
 
             addorder = Session["Order"] as Order;
-
-            //addorder.Name = order1.Name;
-            //addorder.Email = order1.Name;
-            //addorder.PhoneNumber = order1.PhoneNumber;
-            //addorder.Address = order1.Address;
-            //addorder.OrderID = orderID;
-            //addorder.Province = order1.Province;
-            //addorder.District = order1.District;
-            //addorder.Ward = order1.Ward;
-                
-            //addorder.Date = DateTime.Now;
-            //addorder.TotalPrice = finalprice;
             db.Orders.Add(addorder);
             foreach (var item in cartlist)
             {
