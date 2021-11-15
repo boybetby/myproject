@@ -40,9 +40,16 @@
 
             @Html.Partial("CommentsSection", Model)
 
-            <div class="postcomment">
+        <div class="postcomment">
+            @if (@Session["Id"] != null)
+            {
                 <input placeholder="Write a comment" type="text">
-            </div>
+            }
+            else
+            {
+                <input placeholder="Please login to comment this post" type="text" disabled>
+            }
+        </div>
 
         </div>
     </div>
