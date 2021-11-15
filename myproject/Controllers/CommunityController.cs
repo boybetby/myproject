@@ -33,13 +33,15 @@ namespace myproject.Controllers
         [HttpPost]
         public ActionResult LikePost(int id)
         {
+            int userid = (int)Session["Id"];
+            var user = db.userModels.Find(userid);
             var post = db.Post.Find(id);
             int getLike = post.PostLike + 1;
             post.PostLike = getLike;
+            user.Posts.Add(post);
             db.SaveChanges();
             return RedirectToAction("OurGreen");
         }
-
         public ActionResult OurGreen()
         {
 

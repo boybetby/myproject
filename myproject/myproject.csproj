@@ -233,6 +233,7 @@
     <Compile Include="Controllers\PostCommentsAPIController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserLikedController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -292,6 +293,10 @@
     <Compile Include="Migrations\202111131321598_momo.cs" />
     <Compile Include="Migrations\202111131321598_momo.Designer.cs">
       <DependentUpon>202111131321598_momo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111151141112_user_postliked.cs" />
+    <Compile Include="Migrations\202111151141112_user_postliked.designer.cs">
+      <DependentUpon>202111151141112_user_postliked.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -892,6 +897,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111131321598_momo.resx">
       <DependentUpon>202111131321598_momo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111151141112_user_postliked.resx">
+      <DependentUpon>202111151141112_user_postliked.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

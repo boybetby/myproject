@@ -14,6 +14,7 @@ namespace myproject.Models
         public String PostImage { get; set; }
         public int PostLike { get; set; } = 0;
         public virtual ICollection<PostComment> PostComment { get; set; }
+        public virtual ICollection<User> Users { get; set; }
 
         public Post()
         {
