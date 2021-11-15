@@ -30,6 +30,16 @@ namespace myproject.Controllers
             return View(newEvent);
         }
 
+        [HttpPost]
+        public ActionResult LikePost(int id)
+        {
+            var post = db.Post.Find(id);
+            int getLike = post.PostLike + 1;
+            post.PostLike = getLike;
+            db.SaveChanges();
+            return RedirectToAction("OurGreen");
+        }
+
         public ActionResult OurGreen()
         {
 

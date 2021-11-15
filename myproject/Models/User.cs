@@ -20,5 +20,7 @@ namespace myproject.Models
         public string Confirm { get; set; }
         [Required]
         public string FullName { get; set; }
+
+        public virtual ICollection<Post> LikedPosts { get; set; }
     }
 }

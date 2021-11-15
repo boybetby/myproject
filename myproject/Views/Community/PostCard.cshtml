@@ -1,71 +1,71 @@
 ﻿@model myproject.Models.Post
 
-<div id="postcard">
-    <div class="info">
-        <div id="user">
-            <p>@Html.DisplayFor(model => model.PostAuthor)</p>
-        </div>
-        <div id="time">
-            <p>
-                @Html.DisplayFor(model => model.PostDate)
-            </p>
-        </div>
-
-    </div>
-    <div class="post">
-        <div id="postcontent">
-            <p>
-                @Html.DisplayFor(model => model.PostContent)
-            </p>
-        </div>
-        <div id="postimg">
-            <img src=" @Html.DisplayFor(model => model.PostImage)" />
-        </div>
-    </div>
-
-    <div class="interact">
-        <div class="cardbox-base">
-            <ul class="float-right">
-                <li><a><i class="fa fa-comments"></i></a></li>
-                <li><a><em class="mr-5">12</em></a></li>
-            </ul>
-            <ul>
-                <li><a href="#"><i class="fa fa-thumbs-up"></i></a></li>
-
-                <li><a><span>@Html.DisplayFor(model => model.PostLike)</span></a></li>
-            </ul>
-        </div>
-
-        <div class="comments">
-            <div>
-                <p style="font-weight: bold;">
-                    Nhat Minh
-                </p>
+    <div id="postcard">
+        <div class="info">
+            <div id="user">
+                <p>@Html.DisplayFor(model => model.PostAuthor)</p>
+            </div>
+            <div id="time">
                 <p>
-                    xin chao
+                    @Html.DisplayFor(model => model.PostDate)
                 </p>
             </div>
-            <div>
-                <p style="font-weight: bold;">
-                    Gia Bao
-                </p>
+
+        </div>
+        <div class="post">
+            <div id="postcontent">
                 <p>
-                    xin chao
+                    @Html.DisplayFor(model => model.PostContent)
                 </p>
             </div>
-            <div>
-                <p style="font-weight: bold;">
-                    Gia
-                </p>
-                <p>
-                    xin chao xin chao
-                </p>
+            <div id="postimg">
+                <img src=" @Html.DisplayFor(model => model.PostImage)" />
             </div>
         </div>
 
-        <div class="postcomment">
-            <input placeholder="Write a comment" type="text">
-        </div>
+        <div class="interact">
 
+            <div class="cardbox-base">
+                <ul class="float-right">
+                    <li><a><i class="fa fa-comments"></i></a></li>
+                    <li><a id="commentcount-@Model.PostID"></a></li>
+                </ul>
+                <ul>
+                    <li><a role="button" tabindex="0" data-abc="true" id="likepost-@Model.PostID" onclick="likepost(this.id)"><i class="fa fa-thumbs-up"></i></a></li>
+
+                    <li><a><span>@Html.DisplayFor(model => model.PostLike)</span></a></li>
+                </ul>
+            </div>
+            <input type="hidden" name="postid" id="postid" value="@Model.PostID" />
+
+            @Html.Partial("CommentsSection", Model)
+
+            <div class="postcomment">
+                <input placeholder="Write a comment" type="text">
+            </div>
+
+        </div>
     </div>
-</div>
+    
+
+<script type="text/javascript">
+
+    function likepost(clicked_id) {
+
+        var thenum = clicked_id.replace(/^\D+/g, '');
+
+        console.log(thenum)
+
+        $.ajax({
+            type: "POST",
+            url: 'https://localhost:44371/Community/LikePost',
+            data: {
+                id: thenum
+            },
+            success: function (data) {
+                console.log("liked");
+                location.reload();
+            },
+        });
+    }
+</script>

@@ -229,6 +229,7 @@
     <Compile Include="Controllers\OrderDetailsAPIController.cs" />
     <Compile Include="Controllers\OrdersAPIController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\PostCommentsAPIController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
@@ -307,6 +308,7 @@
     <Compile Include="Models\PaymentRequest.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostComment.cs" />
+    <Compile Include="Models\PostsAPIController.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\User.cs" />
@@ -821,10 +823,12 @@
     <Content Include="Views\Community\Event.cshtml" />
     <Content Include="Views\Cart\CheckoutFail.cshtml" />
     <Content Include="Views\Cart\ViewThanks.cshtml" />
+    <Content Include="Views\Community\CommentsSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\css\website-menu-07\script\" />
+    <Folder Include="Views\PostComments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
