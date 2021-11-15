@@ -31,7 +31,23 @@
                     <li><a id="commentcount-@Model.PostID"></a></li>
                 </ul>
                 <ul>
-                    <li><a role="button" tabindex="0" data-abc="true" id="likepost-@Model.PostID" onclick="likepost(this.id)"><i class="fa fa-thumbs-up"></i></a></li>
+                    @if (@Session["Id"] != null)
+                    {
+                        if (Model.Users.FirstOrDefault(m => m.Id == (int)@Session["Id"]) != null)
+                        {
+                            <li><a role="button" tabindex="0" data-abc="true" id="likepost-@Model.PostID" onclick="dislikepost(this.id)"><i class="fa fa-thumbs-up" style="color:red"></i></a></li>
+                        }
+                        else
+                        {
+                            <li><a role="button" tabindex="0" data-abc="true" id="likepost-@Model.PostID" onclick="likepost(this.id)"><i class="fa fa-thumbs-up"></i></a></li>
+                        }
+
+                    }
+                    else
+                    {
+                        <li><a role="button" tabindex="0" data-abc="true" id="likepost-@Model.PostID"><i class="fa fa-thumbs-up"></i></a></li>
+                    }
+
 
                     <li><a><span>@Html.DisplayFor(model => model.PostLike)</span></a></li>
                 </ul>
@@ -40,16 +56,19 @@
 
             @Html.Partial("CommentsSection", Model)
 
-        <div class="postcomment">
-            @if (@Session["Id"] != null)
-            {
-                <input placeholder="Write a comment" type="text">
-            }
-            else
-            {
-                <input placeholder="Please login to comment this post" type="text" disabled>
-            }
-        </div>
+            <div class="postcomment">
+                @if (@Session["Id"] != null)
+                { 
+                <form id="comment-@Model.PostID" onsubmit="commentpost(this.id)">
+                    <input placeholder="Write a comment" type="text" id="commentcontent-@Model.PostID">
+                </form>
+                              
+                }
+                else
+                {
+                    <input placeholder="Please login to comment this post" type="text" disabled>
+                }
+            </div>
 
         </div>
     </div>
@@ -58,9 +77,7 @@
 <script type="text/javascript">
 
     function likepost(clicked_id) {
-
         var thenum = clicked_id.replace(/^\D+/g, '');
-
         console.log(thenum)
 
         $.ajax({
@@ -75,4 +92,40 @@
             },
         });
     }
+
+    function dislikepost(clicked_id) {
+        var thenum = clicked_id.replace(/^\D+/g, '');
+        console.log(thenum);
+        $.ajax({
+            type: "POST",
+            url: 'https://localhost:44371/Community/DislikePost',
+            data: {
+                id: thenum
+            },
+            success: function (data) {
+                console.log("liked");
+                location.reload();
+            },
+        });
+    }
+
+
+    function commentpost(comment_id) {
+        var thenum = comment_id.replace(/^\D+/g, '');
+        var commentcontent = document.getElementById("commentcontent-" + thenum).value;
+        console.log(thenum + commentcontent);
+        $.ajax({
+            type: "POST",
+            url: 'https://localhost:44371/Community/Comment',
+            data: {
+                id: thenum,
+                comment: commentcontent
+            },
+            success: function (data) {
+                console.log("commented");
+                location.reload();
+            }
+        });
+    }
+
 </script>

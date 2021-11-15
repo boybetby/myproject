@@ -8,7 +8,6 @@
     $(document).ready(function () {
 
         var id = @Model.PostID;
-        console.log(id);
         var commentcount = document.getElementById("commentcount");
         $.ajax({
             url: "https://localhost:44371/api/PostsAPI/" + id,

@@ -20,6 +20,6 @@ namespace myproject.Models
         public string Confirm { get; set; }
         [Required]
         public string FullName { get; set; }
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Post> PostsLike { get; set; }
     }
 }

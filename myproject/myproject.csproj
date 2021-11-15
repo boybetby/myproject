@@ -298,6 +298,10 @@
     <Compile Include="Migrations\202111151141112_user_postliked.designer.cs">
       <DependentUpon>202111151141112_user_postliked.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111151505446_postlike.cs" />
+    <Compile Include="Migrations\202111151505446_postlike.designer.cs">
+      <DependentUpon>202111151505446_postlike.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -900,6 +904,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111151141112_user_postliked.resx">
       <DependentUpon>202111151141112_user_postliked.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111151505446_postlike.resx">
+      <DependentUpon>202111151505446_postlike.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

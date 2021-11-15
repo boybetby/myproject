@@ -38,8 +38,39 @@ namespace myproject.Controllers
             var post = db.Post.Find(id);
             int getLike = post.PostLike + 1;
             post.PostLike = getLike;
-            user.Posts.Add(post);
+            user.PostsLike.Add(post);
             db.SaveChanges();
+            return RedirectToAction("OurGreen");
+        }
+
+        [HttpPost]
+        public ActionResult DislikePost(int id)
+        {
+            int userid = (int)Session["Id"];
+            var user = db.userModels.Find(userid);
+            var post = db.Post.Find(id);
+            int getLike = post.PostLike - 1;
+            post.PostLike = getLike;
+            user.PostsLike.Remove(post);
+            db.SaveChanges();
+            return RedirectToAction("OurGreen");
+        }
+
+        [HttpPost]
+        public ActionResult Comment(int id, string comment)
+        {
+            PostComment newComment = new PostComment();
+            newComment.PostCommentAuthor = (string)Session["FullName"];
+            newComment.PostCommentContent = comment;
+            DateTime now = DateTime.Now;
+            newComment.PostCommentDate = now.ToString("dd/MM/yyyy HH:mm tt");
+
+            var Post = db.Post.Find(id);
+
+            Post.PostComment.Add(newComment);
+
+            db.SaveChanges();
+
             return RedirectToAction("OurGreen");
         }
         public ActionResult OurGreen()
