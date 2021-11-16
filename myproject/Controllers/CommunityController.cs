@@ -64,13 +64,9 @@ namespace myproject.Controllers
             newComment.PostCommentContent = comment;
             DateTime now = DateTime.Now;
             newComment.PostCommentDate = now.ToString("dd/MM/yyyy HH:mm tt");
-
             var Post = db.Post.Find(id);
-
             Post.PostComment.Add(newComment);
-
             db.SaveChanges();
-
             return RedirectToAction("OurGreen");
         }
         public ActionResult OurGreen()

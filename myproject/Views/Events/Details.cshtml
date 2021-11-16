@@ -1,0 +1,67 @@
+﻿@model myproject.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventAbout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventAbout)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventImageBackground)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventImageBackground)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventSeats)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EventID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

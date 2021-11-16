@@ -34,8 +34,7 @@ namespace myproject.Controllers
                 _roleManager = value;
             }
         }
-        // GET: Role
-        [Authorize(Roles = "Admin")]
+        // GET: Role        
         public ActionResult Index()
         {
             List<RoleViewModel> list = new List<RoleViewModel>();

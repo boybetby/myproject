@@ -223,6 +223,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CommunityController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FetchController.cs" />
     <Compile Include="Controllers\FurnitureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -834,10 +835,16 @@
     <Content Include="Views\Cart\CheckoutFail.cshtml" />
     <Content Include="Views\Cart\ViewThanks.cshtml" />
     <Content Include="Views\Community\CommentsSection.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\css\website-menu-07\script\" />
+    <Folder Include="images\eventsbackground\" />
     <Folder Include="Views\PostComments\" />
   </ItemGroup>
   <ItemGroup>
