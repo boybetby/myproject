@@ -62,6 +62,13 @@
             };
             workshop.ForEach(s => context.Products.Add(s));
             context.SaveChanges();
+
+            var roles = new List<ApplicationRole>
+            {
+                new ApplicationRole{ Id = "39b42767-b4a1-4b66-8f88-18821673bf23", Name ="Admin"},
+            };
+            roles.ForEach(s => context.Roles.Add(s));
+            context.SaveChanges();
         }
     }
 }

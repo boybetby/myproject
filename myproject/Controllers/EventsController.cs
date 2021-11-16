@@ -14,13 +14,13 @@ namespace myproject.Controllers
     public class EventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        [Authorize(Roles = "Admin")]
         // GET: Events
         public ActionResult Index()
         {
             return View(db.Event.ToList());
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Events/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,7 +35,7 @@ namespace myproject.Controllers
             }
             return View(@event);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Events/Create
         public ActionResult Create()
         {
@@ -59,7 +59,7 @@ namespace myproject.Controllers
 
             return View(@event);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Events/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -80,17 +80,18 @@ namespace myproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EventID,EventName,EventAddress,EventDate,EventAbout,EventImageBackground,EventSeats")] Event @event)
+        public ActionResult Edit([Bind(Include = "EventID,EventName,EventAddress,EventDate,EventAbout,EventImageBackground,EventSeats")] Event @event, String imagebase64)
         {
             if (ModelState.IsValid)
             {
+                @event.EventImageBackground = imagebase64;
                 db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(@event);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Events/Delete/5
         public ActionResult Delete(int? id)
         {

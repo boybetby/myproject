@@ -11,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Event</h4>
         <hr />
@@ -19,7 +19,7 @@
         @Html.HiddenFor(model => model.EventID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EventName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EventName,"Event Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EventAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EventAddress, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventAddress, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EventAddress, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EventDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EventDate, "Date", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EventAbout, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EventAbout, "About", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventAbout, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EventAbout, "", new { @class = "text-danger" })
@@ -51,15 +51,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EventImageBackground, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EventImageBackground, "Background", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EventImageBackground, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EventImageBackground, "", new { @class = "text-danger" })
+                <img src="@Model.EventImageBackground" style="width:350px; height:250px;" />
+                <input type="file" id="inputimage" accept="image/*" onchange="readURL(this);">
+                <input type="hidden" name="imagebase64" id="imagebase64" value="0" />
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EventSeats, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EventSeats, "Seats", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventSeats, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EventSeats, "", new { @class = "text-danger" })
@@ -80,4 +81,16 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById("imagebase64").value = e.target.result;
+                    console.log(document.getElementById("imagebase64").value);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 }

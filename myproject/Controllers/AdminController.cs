@@ -206,6 +206,8 @@ namespace myproject.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult EmployeeList()
         {
+            ApplicationRole role = new ApplicationRole();
+            db.Roles.Add(role);
             return View(db.Users.ToList());
         }
     }

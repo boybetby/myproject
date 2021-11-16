@@ -13,7 +13,7 @@ namespace myproject.Controllers
     public class OrdersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        [Authorize(Roles = "Admin")]
         // GET: Orders
         public ActionResult Index(string searchString, string currentFilter, int? page)
         {
@@ -49,6 +49,7 @@ namespace myproject.Controllers
             int pageNumber = (page ?? 1);
             return View(orders.OrderBy(m => m.Checked).ThenBy(n => n.Date).ToPagedList(pageNumber, pageSize));
         }
+        [Authorize(Roles = "Admin")]
         // GET: Orders/Details/5
         public ActionResult Details(string id)
         {
@@ -75,7 +76,7 @@ namespace myproject.Controllers
             }
             return View(order);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Orders/Create
         public ActionResult Create()
         {
@@ -98,7 +99,7 @@ namespace myproject.Controllers
 
             return View(order);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Orders/Edit/5
         public ActionResult Edit(string id)
         {
@@ -129,7 +130,7 @@ namespace myproject.Controllers
             }
             return View(order);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Orders/Delete/5
         public ActionResult Delete(string id)
         {
