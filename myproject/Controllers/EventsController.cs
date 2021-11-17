@@ -18,7 +18,7 @@ namespace myproject.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            return View(db.Event.ToList());
+            return View(db.Event.OrderByDescending(m => m.EventDate).ToList());
         }
         [Authorize(Roles = "Admin")]
         // GET: Events/Details/5
