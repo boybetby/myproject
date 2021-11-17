@@ -302,6 +302,10 @@
     <Compile Include="Migrations\202111151505446_postlike.designer.cs">
       <DependentUpon>202111151505446_postlike.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111170819531_EventSubscriber.cs" />
+    <Compile Include="Migrations\202111170819531_EventSubscriber.designer.cs">
+      <DependentUpon>202111170819531_EventSubscriber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -309,6 +313,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Detail.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventSubscriber.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MoMoSecurity.cs" />
@@ -840,6 +845,7 @@
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Admin\EmployeeList.cshtml" />
+    <Content Include="Views\Admin\EventSubscriberList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -914,6 +920,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111151505446_postlike.resx">
       <DependentUpon>202111151505446_postlike.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111170819531_EventSubscriber.resx">
+      <DependentUpon>202111170819531_EventSubscriber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

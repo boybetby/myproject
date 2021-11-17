@@ -210,5 +210,10 @@ namespace myproject.Controllers
             db.Roles.Add(role);
             return View(db.Users.ToList());
         }
+        [Authorize(Roles = "Admin")]
+        public ActionResult EventSubscriberList()
+        {            
+            return View(db.EventSubscribers.ToList());
+        }
     }
 }

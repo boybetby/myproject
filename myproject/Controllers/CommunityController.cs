@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -21,7 +22,34 @@ namespace myproject.Controllers
         {
             return View(db.Post.ToList());
         }
-
+        [HttpPost]
+        public ActionResult EventSubs(string subsemail, string eventname, string eventaddress, string eventdate)
+        {
+            string MailSend = "yengreenliving@gmail.com";
+            string Password = "yenmail@123";
+            using (MailMessage m = new MailMessage(MailSend, subsemail))
+            {
+                m.Subject = "Thank You For Registered";
+                m.Body = ("You have registered to attend the " + eventname + "event, the event will be held on: <br /> "+ eventdate +" at " + eventaddress);
+                m.IsBodyHtml = true;
+                using (SmtpClient smtp = new SmtpClient())
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    NetworkCredential networkCred = new NetworkCredential(MailSend, Password);
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = networkCred;
+                    smtp.Port = 587;
+                    smtp.Send(m);
+                    ViewBag.Message = "";
+                }
+            }
+            EventSubscriber eventSubscriber = new EventSubscriber();
+            eventSubscriber.SubscriberEmail = subsemail;
+            db.EventSubscribers.Add(eventSubscriber);
+            db.SaveChanges();
+            return RedirectToAction("Event");
+        }
         public ActionResult Event()
         {
             Event newEvent = db.Event
@@ -29,7 +57,6 @@ namespace myproject.Controllers
                        .FirstOrDefault();
             return View(newEvent);
         }
-
         [HttpPost]
         public ActionResult LikePost(int id)
         {
