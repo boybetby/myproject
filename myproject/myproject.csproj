@@ -306,6 +306,10 @@
     <Compile Include="Migrations\202111170819531_EventSubscriber.designer.cs">
       <DependentUpon>202111170819531_EventSubscriber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111170916029_subevent.cs" />
+    <Compile Include="Migrations\202111170916029_subevent.designer.cs">
+      <DependentUpon>202111170916029_subevent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -923,6 +927,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111170819531_EventSubscriber.resx">
       <DependentUpon>202111170819531_EventSubscriber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111170916029_subevent.resx">
+      <DependentUpon>202111170916029_subevent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

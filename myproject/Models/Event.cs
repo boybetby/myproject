@@ -17,11 +17,14 @@ namespace myproject.Models
         public String EventImageBackground { get; set; }
         public int EventSeats { get; set; }
 
+        public virtual ICollection<EventSubscriber> EventSubscribers { get; set; }
+
         public Event()
         {
 
         }
-        public Event(int eventID, string eventName, string eventAddress, DateTime eventDate, string eventAbout, string eventImageBackground, int eventSeats)
+
+        public Event(int eventID, string eventName, string eventAddress, DateTime eventDate, string eventAbout, string eventImageBackground, int eventSeats, ICollection<EventSubscriber> eventSubscribers)
         {
             EventID = eventID;
             EventName = eventName;
@@ -30,6 +33,7 @@ namespace myproject.Models
             EventAbout = eventAbout;
             EventImageBackground = eventImageBackground;
             EventSeats = eventSeats;
+            EventSubscribers = eventSubscribers;
         }
     }
 }

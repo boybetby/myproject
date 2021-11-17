@@ -12,13 +12,13 @@
 
     <!--====== Title ======-->
     <title>Yen</title>
-    <link rel="stylesheet" href="../../Content/css/social.css">
+    <link rel="stylesheet" href="~/Content/css/social.css">
     <!--====== Favicon Icon ======-->
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
 
     <!--====== Flaticon css ======-->
-    <link rel="stylesheet" href="~/Content/assets/css/flaticon.css">
+    <link rel="stylesheet" href=".~/Content/assets/css/flaticon.css">
 
     <!--====== Line Icons css ======-->
     <link rel="stylesheet" href="~/Content/assets/css/LineIcons.css">
@@ -38,6 +38,9 @@
     <!--====== Style css ======-->
     <link rel="stylesheet" href="~/Content/assets/css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
     <script>
         function openEventForm() {
             document.body.classList.add("showLoginForm");
@@ -46,9 +49,33 @@
             document.body.classList.remove("showLoginForm");
         }
     </script>
+    <script>
+
+        showSwal = function (type) {
+            'use strict';
+            if (type === 'success-message') {
+                swal({
+                    title: 'Subscribed!',
+                    text: '',
+                    type: 'success',
+                    button: {
+                        text: "Ok",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary"
+                    }
+                })
+
+            } else {
+                swal("Error occured !");
+            }
+        }
+
+    </script>
 </head>
 
 <body>
+
 
     <!--====== PRELOADER PART START ======-->
     <!--Subcribe event form-->
@@ -72,7 +99,7 @@
                     <input type="hidden" name="eventdate" value="@Model.EventDate" />
                 </div>
                 <div class="element">
-                    <button type="submit">Send me a reminder email</button>
+                    <button type="submit" onclick="showSwal('success-message')">Send me a reminder email</button>
                 </div>
             }
         </div>
@@ -140,11 +167,13 @@
             </div> <!-- container -->
         </div>
 
-        <div id="home" class="header-content-area bg_cover d-flex align-items-center" style="background-image: url(../../images/bg1.png)">
+
+
+        <div id="home" class="header-content-area bg_cover d-flex align-items-center" style="background-image: url(@Model.EventImageBackground)">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div data-countdown="2020/10/01"></div>
+                        <div data-countdown="@Model.EventDate.ToString("yyyy/MM/dd")"></div>
 
                         <div class="header-content text-center">
                             <h2 class="header-title"> @Html.DisplayFor(model => model.EventName) </h2>
@@ -171,7 +200,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-image mt-50 wow fadeInLeft" data-wow-duration="1s">
-                        <img src="@Html.DisplayFor(model => model.EventImageBackground)" alt="About">
+                        <img src="~/Content/assets/images/about.png" alt="About">
                     </div> <!-- about image -->
                 </div>
                 <div class="col-lg-6">
@@ -305,6 +334,10 @@
     <!--====== FEATURES PART ENDS ======-->
     <!--====== BACK TOP TOP PART START ======-->
 
+
+
+
+
     <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
 
     <!--====== BACK TOP TOP PART ENDS ======-->
@@ -345,7 +378,7 @@
     <script src="~/Content/assets/js/scrolling-nav.js"></script>
 
     <!--====== Countdown js ======-->
-    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="~/Content/assets/js/jquery.countdown.min.js"></script>
 
     <!--====== wow js ======-->
     <script src="~/Content/assets/js/wow.min.js"></script>
