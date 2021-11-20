@@ -95,7 +95,15 @@ namespace myproject.Controllers
         }
 
         public ActionResult Info()
-        {     
+        {   
+            if(Session["Id"] != null)
+            {
+                int id = (int)Session["Id"];
+                var user = db.userModels.Find(id);
+                Session["Province"] = user.Province;
+                Session["District"] = user.District;
+                Session["Ward"] = user.Ward;
+            }
             return View();
         }
 

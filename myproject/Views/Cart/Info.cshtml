@@ -1,4 +1,5 @@
 ﻿@model myproject.Models.Order
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,7 +135,7 @@
                             }
                         </li>
 
-                    </ul>                   
+                    </ul>
                 </div>
             </nav>
         </header>
@@ -147,60 +148,69 @@
                     <div class="box">
                         <h1>Please enter your shipping information</h1>
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <form class="mb-5" method="post" id="contactForm" name="contactForm">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="row">
-                                <div class="col-md-12 form-group" style="margin-bottom:0;">
-                                    <label for="name" class="col-form-label">Name</label>
-                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "margin-left:3px" })
-                                </div>
+                    <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-12 form-group" style="margin-bottom:0;">
+                                <label for="name" class="col-form-label">Name</label>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "margin-left:3px" })
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12 form-group">
-                                    <label for="email" class="col-form-label">Email</label>
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @style = "margin-left:3px" })
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="email" class="col-form-label">Email</label>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @style = "margin-left:3px" })
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12 form-group">
-                                    <label for="phonenumber" class="col-form-label">Phone number</label>
-                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger", @style = "margin-left:3px" })
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="phonenumber" class="col-form-label">Phone number</label>
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger", @style = "margin-left:3px" })
                             </div>
-
-                            <div class="row mb-3" style="margin-bottom: 0px !important">
-                                <div class="col-md-12 form-group">
-                                    <label for="address" class="col-form-label">Address</label>
-
-                                    <select class="form-control" id="province" name="province" onchange="changeFunc();" style="margin-top:10px">
-                                        <option value="" selected>----</option>
-                                    </select>
-                                    <select class="form-control" id="district" name="district" onchange="changeFuncDistrict();" style="margin-top:20px">
-                                        <option value="" selected>Quận huyện</option>
-                                    </select>
-                                    <select class="form-control" id="ward" name="ward" aria-placeholder="Quận huyện" style="margin-top:20px;margin-bottom:20px;" onchange="changeFuncWard();">
-                                        <option value="" selected>Phường xã</option>
-                                    </select>
-                                    <script src="~/Scripts/code.js"></script>
+                        </div>
 
 
-                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Your address number. ect: 357 Le Van Luong..." } })
-                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger", @style = "margin-left:3px" })
-                                </div>
+                        @if (Session["Id"] != null)
+                        {
+                            <input type="hidden" name="userprovince" id="userprovince" value="@Session["Province"].ToString()" />
+                            <input type="hidden" name="userdistrict" id="userdistrict" value="@Session["District"].ToString()" />
+                            <input type="hidden" name="userward" id="userward" value="@Session["Ward"].ToString()" />
+                        }
+
+
+                        <div class="row mb-3" style="margin-bottom: 0px !important">
+                            <div class="col-md-12 form-group">
+                                <label for="address" class="col-form-label">Address</label>
+
+                                <select class="form-control" id="province" name="province" onchange="changeFunc();" style="margin-top:10px">
+                                    <option value="" selected>----</option>
+                                </select>
+                                <select class="form-control" id="district" name="district" onchange="changeFuncDistrict();" style="margin-top:20px">
+                                    <option value="" selected>Quận huyện</option>
+                                </select>
+                                <select class="form-control" id="ward" name="ward" aria-placeholder="Quận huyện" style="margin-top:20px;margin-bottom:20px;" onchange="changeFuncWard();">
+                                    <option value="" selected>Phường xã</option>
+                                </select>
+                                <script src="~/Scripts/code.js"></script>
+
+
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Your address number. ect: 357 Le Van Luong..." } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger", @style = "margin-left:3px" })
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button type="submit" value="Confirm" class="btn btn-block btn-primary rounded-0 py-2 px-4">Confirm</button>
-                                    <span class="submitting"></span>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" value="Confirm" class="btn btn-block btn-primary rounded-0 py-2 px-4">Confirm</button>
+                                <span class="submitting"></span>
                             </div>
-                        </form>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </main>

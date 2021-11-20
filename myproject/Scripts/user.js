@@ -136,49 +136,8 @@ function changeFuncDistrict() {
             }
         }
 
-
+       
     });
 }
 
-
-function changeFuncWard() {
-    var selectProvince = document.getElementById("province");
-    var selectedValueProvince = selectProvince.options[selectProvince.selectedIndex].getAttribute('data-province');
-    console.log(selectedValueProvince);
-
-    var selectDistrict = document.getElementById("district");
-    var selectedValueDistrict = selectDistrict.options[selectDistrict.selectedIndex].getAttribute('data-district');
-    console.log(selectedValueDistrict);
-
-    var selectWard = document.getElementById("ward");
-    var selectedValueWard = selectWard.options[selectWard.selectedIndex].getAttribute('data-ward');
-    console.log(selectedValueWard);
-    $.ajax({
-        url: "https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee",
-        headers: {
-            'token': '33103c88-ec46-11eb-9388-d6e0030cbbb7'
-        },
-        data: {
-            "service_id": 53321,
-            "insurance_value": 1000000,
-            "coupon": null,
-            "from_province_id": 202,
-            "from_district_id": 1449,
-            "to_province_id": selectedValueProvince,
-            "to_district_id": selectedValueDistrict,
-            "to_ward_code": selectedValueWard,
-            "height": 30,
-            "length": 20,
-            "weight": 5000,
-            "width": 20
-        },
-        method: 'GET',
-        dataType: 'json',
-        success: function (response) {
-            console.log('success: ');
-            console.log(response.data.total);
-            document.getElementById("ShippingFee").value = response.data.total;
-        }
-    });
-}
 

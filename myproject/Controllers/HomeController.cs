@@ -16,7 +16,12 @@ namespace myproject.Controllers
         }
         public ActionResult Users()
         {
-            if(Session["Id"] == null)
+            if(TempData["SavedSuccessfully"] != null)
+            {
+                ViewBag.SavedSuccessfully = TempData["SavedSuccessfully"].ToString();
+            }
+            
+            if (Session["Id"] == null)
             {
                 return RedirectToAction("Index");
             }
@@ -37,6 +42,8 @@ namespace myproject.Controllers
             user.District = district;
             user.Ward = ward;
             db.SaveChanges();
+            TempData["SavedSuccessfully"] = "1";
+            
             return RedirectToAction("Users");
         }
         [HttpPost]
