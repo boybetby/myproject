@@ -1,0 +1,276 @@
+﻿@model myproject.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Yen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../Content/css/style.css">
+    <link rel="stylesheet" href="../../Content/css/social.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/website-menu-07/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        .height(150);
+                    document.getElementById("blah").style.visibility = "visible";
+                    document.getElementById("blah").style.margin = "15px 0 15px 0";
+                    document.getElementById("imagebase64").value = e.target.result;
+                };
+                document.getElementById("addpost").style.height = "330px";
+                reader.readAsDataURL(input.files[0]);
+
+            }
+
+        }
+
+        function openLoginForm() {
+            document.body.classList.add("showLoginForm");
+        }
+        function closeLoginForm() {
+            document.body.classList.remove("showLoginForm");
+        }
+
+        function openSignupForm() {
+            document.body.classList.add("showSignupForm");
+        }
+        function closeSignupForm() {
+            document.body.classList.remove("showSignupForm");
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <div class="wrapper_product" style="background-image: url('../../images/product_bg1.jpg'); height: 120px;">
+        <header style="padding-left:40px; position: absolute;width: 100%;">
+            <nav>
+                <div class="menu-icon">
+                    <i class="fa fa-bars fa-2x"></i>
+                </div>
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Home")"><img src="../../images/yen.png" class="yen"></a>
+                </div>
+                <div class="menu">
+                    <ul style="display:inline-block; width: 100%;">
+                        <li>@Html.ActionLink("PRODUCT", "Index", "Products")</li>
+                        <li>@Html.ActionLink("GREEN PRODUCTION", "Index", "Furniture")</li>
+                        <li>@Html.ActionLink("WORKSHOP", "Index", "Workshop")</li>
+                        <li>@Html.ActionLink("COMMUNITY", "OurGreen", "Community")</li>
+                        <li style="float:right;">
+                            <a href='@Url.Action("Index", "Cart")' style="color:white;"><img src="../../images/carticon.png" style="width:40px;height: 40px;"></a> @if (Session["Number"] != null)
+                            {
+                                <span class='badge badge-warning' id='lblCartCount'>
+                                    @Session["Number"]
+                                </span>
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- login form -->
+    <div class="popup-overlay"></div>
+    <div class="popup">
+        <div class="popup-close" onclick="closeLoginForm()">×</div>
+        <div class="form">
+            <div class="avatar">
+                <img src="~/images/yen.png" alt="">
+            </div>
+            <div class="header">
+                Login
+            </div>
+            @using (Html.BeginForm("Login", "Community", FormMethod.Post))
+            {
+                <div class="element">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="element">
+                    <button type="submit">Login</button>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- end login form -->
+    <!-- Sign-up form -->
+    <div class="popup-signup-overlay"></div>
+    <div class="popup-signup">
+        <div class="popup-close-signup" onclick="closeSignupForm()">×</div>
+        <div class="form-signup">
+            <div class="avatar">
+                <img src="~/images/yen.png" alt="">
+            </div>
+            <div class="header">
+
+            </div>
+            @using (Html.BeginForm("Signup", "Community", FormMethod.Post))
+            {
+                <div class="element">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="element">
+                    <label for="fullname">Full name</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                </div>
+                <div class="element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="element">
+                    <label for="confirmpassword">Confirm password</label>
+                    <input type="password" id="confirmpassword" name="confirmpassword" required>
+                </div>
+                <div class="element">
+                    <button>Sign-up</button>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- end signup form-->
+
+    <main>
+        <div class="">
+            <div class="row" style="padding-left:40px">
+                <div class="col-2">
+
+                    <div id="menu" style="height:fit-content">
+                        <a href="@Url.Action("Information", "Community")">
+                            <div class="selected">
+                                Your Information
+                            </div>
+                        </a>
+                        <a href="@Url.Action("YourPost", "Community")">
+                            <div>
+                                @Session["FullName"]'s Post
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="col-10">
+                    <div class="cart" style="margin-left: 30px; margin-right:30px; border-radius: 10px;">
+                        <div style="width:100%">
+                            <div id="socialcontent">
+
+
+                                @using (Html.BeginForm("Confirm", "Cart", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="ShippingFee" id="ShippingFee" value="0" />
+                                    @Html.AntiForgeryToken()
+                                    <main class="infoform" style="padding-top:0">
+                                        <div id="formsize">
+                                            <div class="box">
+                                                <h1>Please fill your information </h1>
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                    <div class="row">
+                                                        <div class="col-md-12 form-group" style="margin-bottom:0;">
+                                                            <label for="name" class="col-form-label">Full Name</label>
+                                                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" }, @Value = Model.FullName })
+                                                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger", @style = "margin-left:3px" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12 form-group">
+                                                            <label for="email" class="col-form-label">Email</label>
+                                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @style = "margin-left:3px" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12 form-group">
+                                                            <label for="phonenumber" class="col-form-label">Phone number</label>
+                                                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger", @style = "margin-left:3px" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-3" style="margin-bottom: 0px !important">
+                                                        <div class="col-md-12 form-group">
+                                                            <label for="address" class="col-form-label">Address</label>
+
+                                                            <select class="form-control" id="province" name="province" onchange="changeFunc();" style="margin-top:10px">
+                                                                <option value="" selected>----</option>
+                                                            </select>
+                                                            <select class="form-control" id="district" name="district" onchange="changeFuncDistrict();" style="margin-top:20px">
+                                                                <option value="" selected>Quận huyện</option>
+                                                            </select>
+                                                            <select class="form-control" id="ward" name="ward" aria-placeholder="Quận huyện" style="margin-top:20px;margin-bottom:20px;" onchange="changeFuncWard();">
+                                                                <option value="" selected>Phường xã</option>
+                                                            </select>
+                                                            <script src="~/Scripts/code.js"></script>
+
+
+                                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Your address number. ect: 357 Le Van Luong..." } })
+                                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger", @style = "margin-left:3px" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button type="submit" value="Confirm" class="btn btn-block btn-primary rounded-0 py-2 px-4">Save</button>
+                                                            <span class="submitting"></span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </main>
+                                }
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

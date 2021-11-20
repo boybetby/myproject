@@ -20,7 +20,6 @@ namespace myproject.Controllers
         // GET: api/Fetch
         public IQueryable<Product> GetProducts()
         {
-
             return db.Products;
         }
 
