@@ -1,0 +1,95 @@
+﻿@model IEnumerable<myproject.Models.Guide>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GuideTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuideDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guide_Light)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guide_Water)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guide_Petfriendly)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guide_Level)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guide_Tip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clade_hashtag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.family_hasttag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.difficulty_hashtag)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuideTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuideDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Guide_Light)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Guide_Water)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Guide_Petfriendly)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Guide_Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Guide_Tip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.clade_hashtag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.family_hasttag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.difficulty_hashtag)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

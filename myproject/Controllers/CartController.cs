@@ -122,6 +122,7 @@ namespace myproject.Controllers
                 Order addorder = new Order();
                 addorder.Name = order.Name;
                 addorder.Email = order.Email;
+                addorder.UserID = (int)Session["Id"];
                 addorder.PhoneNumber = order.PhoneNumber;
                 addorder.Address = order.Address;
                 addorder.OrderID = orderID;
@@ -246,7 +247,9 @@ namespace myproject.Controllers
                         ViewBag.Message = "An email have sent to " + addorder.Email + " ! Please check your email";
                     }
                 }
-                Session.Clear();
+                Session.Remove("Cart");
+                Session.Remove("Number");
+                Session.Remove("Order");
                 db.SaveChanges();
                 return RedirectToAction("ViewThanks");
             }
@@ -359,7 +362,9 @@ namespace myproject.Controllers
                     ViewBag.Message = "An email have sent to " + addorder.Email + " ! Please check your email";
                 }
             }
-            Session.Clear();
+            Session.Remove("Cart");
+            Session.Remove("Number");
+            Session.Remove("Order");
             db.SaveChanges();
             return View();
          
