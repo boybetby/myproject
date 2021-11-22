@@ -19,6 +19,7 @@ namespace myproject.Models
         public DbSet<User> userModels { get; set; }
         public DbSet<Event> Event { get; set; }
         public DbSet<EventSubscriber> EventSubscribers { get; set; }
+        public DbSet<Guide> Guides { get; set; }
         public ApplicationDbContext()
             : base("YenConnection", throwIfV1Schema: false)
         {

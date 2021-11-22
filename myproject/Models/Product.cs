@@ -11,6 +11,23 @@ namespace myproject.Models
     {
         product, furniture, workshop
     }
+
+
+    public enum Clade
+    {
+        Tracheophytes, Angiosperms, Eudicots, Rosids, Monocots, Commelinids
+    }
+
+    public enum Family
+    {
+        Strelitziaceae, Moraceae, Malvaceae, Asparagaceae
+    }
+
+    public enum Difficulty
+    {
+        easy, standard, expert
+    }
+
     public class Product
     {
         public int productID { get; set; }
@@ -25,7 +42,10 @@ namespace myproject.Models
         [DataType(DataType.Upload)]
         public string image { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-       
+
+        public string clade_hashtag { get; set; }       
+        public string family_hasttag { get; set; }
+        public string difficulty_hashtag { get; set; }
     }
 
 }
