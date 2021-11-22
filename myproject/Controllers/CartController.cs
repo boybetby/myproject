@@ -103,6 +103,10 @@ namespace myproject.Controllers
                 Session["Province"] = user.Province;
                 Session["District"] = user.District;
                 Session["Ward"] = user.Ward;
+                Session["Name"] = user.FullName;
+                Session["Email"] = user.Email;
+                Session["Phone"] = user.PhoneNumber;
+                Session["Address"] = user.Address;
             }
             return View();
         }

@@ -153,7 +153,7 @@
                         <div class="row">
                             <div class="col-md-12 form-group" style="margin-bottom:0;">
                                 <label for="name" class="col-form-label">Name</label>
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" , @Value = @Session["Name"]} })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "margin-left:3px" })
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="email" class="col-form-label">Email</label>
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @Value = @Session["Email"] } })
                                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @style = "margin-left:3px" })
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="phonenumber" class="col-form-label">Phone number</label>
-                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @Value = @Session["Phone"] } })
                                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger", @style = "margin-left:3px" })
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                                 <script src="~/Scripts/code.js"></script>
 
 
-                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Your address number. ect: 357 Le Van Luong..." } })
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Your address number. ect: 357 Le Van Luong...", @Value = @Session["Address"] } })
                                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger", @style = "margin-left:3px" })
                             </div>
                         </div>
