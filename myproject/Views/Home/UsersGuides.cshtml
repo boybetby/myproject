@@ -43,9 +43,9 @@
                     <img src="~/images/yen.png" alt="">
                 </div>
                 <div class="header">
-                    Please Login First
+                    Login
                 </div>
-                @using (Html.BeginForm("LoginToUsersGuides", "Home", FormMethod.Post))
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
                 {
                     <div class="element">
                         <label for="username">Username</label>
@@ -125,22 +125,30 @@
                     <div class="col-9">
                         <div class="guide">
                             <div style="margin-bottom: 40px;">
-                                <h1>Guides</h1>
+                                <h1>Your Recommend Guides</h1>
                             </div>
                             <div>
 
-                                @foreach (var item in Model)
+                                @if (Session["Id"] != null)
                                 {
-                                    <a href="@Url.Action("Details", "Guides", new { id=item.Id })" style="text-decoration:none">
-                                        <div class="guide-content">
-                                            <p style="font-weight: 700; font-size: 26px;">@Html.DisplayFor(modelItem => item.GuideTitle)</p>
-                                            <p style="font-weight: 400;">Family: @Html.DisplayFor(modelItem => item.family_hasttag)</p>
-                                            <p style="font-style: italic;">Difficulty: @Html.DisplayFor(modelItem => item.difficulty_hashtag)</p>
-                                            <p style="margin-top: 10px;">@Html.DisplayFor(modelItem => item.GuideDescription)</p>
-                                        </div>
-                                    </a>
+                                    foreach (var item in Model)
+                                    {
+                                        <a href="@Url.Action("Details", "Guides", new { id = item.Id })" style="text-decoration:none">
+                                            <div class="guide-content">
+                                                <p style="font-weight: 700; font-size: 26px;">@Html.DisplayFor(modelItem => item.GuideTitle)</p>
+                                                <p style="font-weight: 400;">Family: @Html.DisplayFor(modelItem => item.family_hasttag)</p>
+                                                <p style="font-style: italic;">Difficulty: @Html.DisplayFor(modelItem => item.difficulty_hashtag)</p>
+                                                <p style="margin-top: 10px;">@Html.DisplayFor(modelItem => item.GuideDescription)</p>
+                                            </div>
+                                        </a>
 
+                                    }
                                 }
+                                else
+                                {
+                                    <p>Please Login First!</p>
+                                }
+
 
 
                                 <!-- guide -->
@@ -154,11 +162,11 @@
                         <div class="yourguide" style="margin-bottom: 20px;">
                             @if (Session["Id"] != null)
                             {
-                                <a href="@Url.Action("UsersGuides", "Home")"><p>Check Your Recommened Guides Based On Your Purchase Here!</p></a>
+                                <a><p>Recommended Guides for @Session["FullName"]</p></a>
                             }
                             else
                             {
-                                <a href="#" onclick="openLoginForm()"><p>Check Your Recommened Guides Based On Your Purchase Here!</p></a>
+                                <a href="#" onclick="openLoginForm()"><p>Please Login To See Your Recommend Guides</p></a>
                             }
                         </div>
                         <div class="guide-filter">

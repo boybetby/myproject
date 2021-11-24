@@ -100,6 +100,33 @@ namespace myproject.Controllers
 
             }
         }
+
+        public ActionResult LoginToUsersGuides(string username, string password)
+        {
+            if (username == null || password == null)
+            {
+                Session["InvalidUser"] = "Username or Password is empty";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var checkUser = db.userModels.SingleOrDefault(u => u.Username == username && u.Password == password);
+                if (checkUser != null)
+                {
+                    Session["Id"] = checkUser.Id;
+                    Session["FullName"] = checkUser.FullName;
+                    int id = (int)Session["Id"];
+                    Session["InvalidUser"] = null;
+                    return RedirectToAction("UsersGuides");
+                }
+                else
+                {
+                    Session["InvalidUser"] = "Invalid Username or Password";
+                    return RedirectToAction("Index");
+                }
+            }
+        }
+
         public ActionResult Logout()
         {
             int id = (int)Session["Id"];
@@ -116,14 +143,19 @@ namespace myproject.Controllers
                 return RedirectToAction("Index");
             }
         }
+
         public ActionResult Guides()
+        {
+            return View(db.Guides.ToList());
+        }
+
+        public ActionResult UsersGuides()
         {
             int Id = (int)Session["Id"];
 
             List<Detail> userProducts = getProducts(Id);
             List<Guide> Guide = getGuide(userProducts);
             
-
             return View(Guide);
         }
 
