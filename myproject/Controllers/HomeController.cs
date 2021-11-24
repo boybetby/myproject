@@ -154,7 +154,7 @@ namespace myproject.Controllers
             foreach(var product in userProducts)
             {
                 var findproduct = db.Products.Find(product.ProductID);
-                if (Products.Contains(findproduct))
+                if (Products.Any(m => m.productID == findproduct.productID))
                 {
 
                 }
@@ -171,13 +171,14 @@ namespace myproject.Controllers
             {
                 Guide productguide = new Guide();
 
-                String[] hashtag_clade = product.clade_hashtag.Split();
+                String[] hashtag_clade = product.clade_hashtag.Split(' ');
 
                 guides = db.Guides.Where(m => m.family_hasttag.Contains(product.family_hasttag)).ToList();
-              
+                int max = 0;
+                
                 foreach (var guide in guides)
                 {
-                    int max = 0;
+                    
                     int matchcount = 0;
                     foreach (String clade in hashtag_clade)
                     {
@@ -186,14 +187,14 @@ namespace myproject.Controllers
 
                     if (matchcount == hashtag_clade.Length)
                     {
-                        if (userGuide.Contains(guide))
+                        if (userGuide.Any(m => m.Id == guide.Id))
                         {
-                            
+                            productguide = guide;
                         }
                         else
                         {
+                            productguide = guide;
                             userGuide.Add(guide);
-
                         }
                         break;
                     }
@@ -206,7 +207,7 @@ namespace myproject.Controllers
                         }
                     }
                 }
-                if (userGuide.Contains(productguide))
+                if (userGuide.Any(m => m.Id == productguide.Id))
                 {
 
                 }
