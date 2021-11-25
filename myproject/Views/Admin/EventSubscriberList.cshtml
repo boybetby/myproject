@@ -1,36 +1,45 @@
 ﻿@model IEnumerable<myproject.Models.EventSubscriber>
 
 @{
-    ViewBag.Title = "EventSubscriberList";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Event Subscribers List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Subscriber List</h2>
-
+<!-- Page Heading -->
 @using (Html.BeginForm("SendEventMail", "Community"))
 {
-    <div>
-        <input name="youtubelink" placeholder="Youtube live link"/>
-        <button type="submit">Send email for subscriber</button>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+        <input style="border-radius: 10px" name="youtubelink" placeholder="Youtube live link" />
+        <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Send email for subscriber
+        </button>
     </div>
 }
-
-<table class="table">
-    <tr>
-        <th>
-            Subscriber Email
-        </th>
-
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubscriberEmail)
-            </td>
-
-        </tr>
-    }
-
-</table>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Event Subscribers List</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Subscriber Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubscriberEmail)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

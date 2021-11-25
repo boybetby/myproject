@@ -24,7 +24,7 @@ namespace myproject.Controllers
         public AdminController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
-        }   
+        }
 
         public ApplicationUserManager UserManager
         {
@@ -37,51 +37,22 @@ namespace myproject.Controllers
                 _userManager = value;
             }
         }
-        // GET: Admin
+        [ActionName("Index")]
         [Authorize]
-        public ActionResult Index(string searchString, string currentFilter, int? page)
+        public ActionResult Dashboard()
         {
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-            var products = from s in db.Products
-                           select s;
-            ViewBag.CurrentFilter = searchString;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                products = products.Where(s =>
-                s.productname.ToUpper().Contains(searchString.ToUpper())
-                ||
-                s.category.ToString().ToUpper().Contains(searchString.ToUpper())
-                ||
-                s.price.ToString().Contains(searchString));
-            }
-            int pageSize = 7;
-            int pageNumber = (page ?? 1);
-            return View(products.OrderBy(p => p.productID).ToPagedList(pageNumber, pageSize));
+            return View();
         }
-
-        // GET: Admin/Details/5
         [Authorize]
-        public ActionResult Details(int? id)
+        public ActionResult ProductsList()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
+            return View(db.Products.ToList());
         }
-
+        [Authorize]
+        public ActionResult OrdersList()
+        {
+            return View(db.Orders.OrderBy(m => m.Checked).ThenBy(n => n.Date).ToList());
+        }
         // GET: Admin/Create
         [Authorize]
         public ActionResult Create()
@@ -89,9 +60,7 @@ namespace myproject.Controllers
             return View();
         }
 
-        // POST: Admin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //POST: Admin/Create
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -103,7 +72,7 @@ namespace myproject.Controllers
                 {
                     string chuoi = "../../images/products/" + product.image;
                     product.image = chuoi;
-                    if(image.ContentLength > 0)
+                    if (image.ContentLength > 0)
                     {
                         string _path = Path.Combine(Server.MapPath("~/images/products"), Path.GetFileName(image.FileName));
                         image.SaveAs(_path);
@@ -135,9 +104,9 @@ namespace myproject.Controllers
             }
             return View(product);
         }
-        [Authorize]
-        // GET: Admin/Edit/5
-        public ActionResult Edit(int? id)
+        [ActionName("Edit")]
+        // GET: Products1/Edit/5
+        public ActionResult ProductEdit(int? id)
         {
             if (id == null)
             {
@@ -150,49 +119,31 @@ namespace myproject.Controllers
             }
             return View(product);
         }
-
-        // POST: Admin/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Products1/Edit/5
+        [ActionName("Edit")]
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "productID,productname,description,price,category,image")] Product product)
+        public ActionResult ProductEdit([Bind(Include = "productID,productname,description,price,category,image,clade_hashtag,family_hasttag,difficulty_hashtag")] Product product, String imagebase64)
         {
             if (ModelState.IsValid)
             {
+                product.image = imagebase64;
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit");
             }
             return View(product);
         }
 
-        // GET: Admin/Delete/5
-        [Authorize]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        // POST: Admin/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteProduct(int id)
         {
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductsList");
         }
 
         protected override void Dispose(bool disposing)
@@ -212,7 +163,7 @@ namespace myproject.Controllers
         }
         [Authorize(Roles = "Admin")]
         public ActionResult EventSubscriberList()
-        {            
+        {
             return View(db.EventSubscribers.ToList());
         }
     }

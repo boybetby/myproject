@@ -121,8 +121,11 @@ namespace myproject.Controllers
                 List<Cart> cartlist = setCart();
                 Order addorder = new Order();
                 addorder.Name = order.Name;
-                addorder.Email = order.Email;
-                addorder.UserID = (int)Session["Id"];
+                addorder.Email = order.Email;            
+                if(Session["Id"] != null)
+                {
+                    addorder.UserID = (int)Session["Id"];
+                }
                 addorder.PhoneNumber = order.PhoneNumber;
                 addorder.Address = order.Address;
                 addorder.OrderID = orderID;

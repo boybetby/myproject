@@ -1,143 +1,65 @@
 ﻿@model myproject.Models.Order
-@{ 
+@{
+    ViewBag.Title = "Orders Management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var list = Session["OrderList"] as List<myproject.Models.Detail>;
     var products = Session["Products"] as List<myproject.Models.Product>;
 }
-@{
-    ViewBag.Title = "Details";
-}
 
-<h2>Details</h2>
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">OrderID: @Html.DisplayFor(model => model.OrderID)</h1>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="row">
+            <div class="col-lg-4">
+                <h6>Customer name: @Html.DisplayFor(model => model.Name)</h6>
+                <h6>Phone number: @Html.DisplayFor(model => model.PhoneNumber)</h6>
+            </div>
+            <div class="col-lg-5">
+                <h6>Total Price: @Html.DisplayFor(model => model.TotalPrice)</h6>
+                <h6>Buy Date: @Html.DisplayFor(model => model.Date)</h6>
+            </div>
+            <div class="col-lg-3">
+                <h6>Payment method: @Html.DisplayFor(model => model.PaymentMethod)</h6>
+                <h6>Status: @Html.DisplayFor(model => model.Checked)</h6>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Amout</th>
+                        <th>Single Price</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Province)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Province)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.District)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.District)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ward)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ward)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalPrice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Checked)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Checked)
-        </dd>
-
-    </dl>
-    <p>Order List</p>
-    @if (list != null)
-    {
-        <table class="table">
-            <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Amount
-                </th>
-                <th>
-                    Singele Price
-                </th>
-                <th>
-                    Image
-                </th>
-            </tr>
-
-
-            @foreach (var item in list)
-            {
-
-
-        <tr>
-            <td>@item.ProductID</td>
-            <td>@item.Amount</td>
-            @foreach (var product in products)
-            {
-                if (product.productID == item.ProductID)
-                {
-                    <td>@product.price</td>
-                    <td><img src="@product.image" style="width:50px; height:50px;" /></td>
-                }
-
-            }
-        </tr>
-  
-            }
-        </table>
-    }
-
+                    @foreach (var item in list)
+                    {
+                        <tr>
+                            <td>
+                                @item.ProductID
+                            </td>
+                            <td>
+                                @item.Amount
+                            </td>
+                            @foreach (var product in products)
+                            {
+                                if (product.productID == item.ProductID)
+                                {
+                                    <td>@product.price</td>
+                                    <td><img src="@product.image" style="width:50px; height:50px;" /></td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

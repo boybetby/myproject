@@ -1,96 +1,121 @@
 ﻿@model myproject.Models.Event
 
 @{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Event Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
-
+<h1 class="h3 mb-2 text-gray-800">Event Edit</h1>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Event</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.EventID)
+        <div class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.EventID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventName,"Event Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-10 mb-5">
+                                <img class="card-img-top mb-5 mb-md-0" src="@Model.EventImageBackground" />
+                                @Html.EditorFor(model => model.EventImageBackground, new { htmlAttributes = new { @class = "form-control", @type = "file", @accept = "image/*", @onchange = "readURL(this);" } })
+                                <input type="hidden" name="imagebase64" id="imagebase64" value="0" />
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventAddress, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EventAddress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EventAddress, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-10 mb-5">
+                                @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventDate, "Date", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 mb-5">
+                                @Html.EditorFor(model => model.EventAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EventAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventAbout, "About", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EventAbout, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EventAbout, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 mb-5">
+                                @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventImageBackground, "Background", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <img src="@Model.EventImageBackground" style="width:350px; height:250px;" />
-                <input type="file" id="inputimage" accept="image/*" onchange="readURL(this);">
-                <input type="hidden" name="imagebase64" id="imagebase64" value="0" />
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventSeats, "Seats", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EventSeats, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EventSeats, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                        <div class="form-group">
+                            <div class="col-md-10 mb-5">
+                                @Html.EditorFor(model => model.EventAbout, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EventAbout, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 mb-5">
+                                @Html.EditorFor(model => model.EventSeats, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EventSeats, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="d-flex">
+                            <button class="btn btn-outline-dark flex-shrink-0 mx-lg-5 mx-3" type="submit">
+                                <i class="bi-cart-fill me-1"></i>
+                                Save changes
+                            </button>
+                            <button class="btn btn-outline-dark flex-shrink-0 mx-lg-5" type="button" data-toggle="modal" data-target="#deletetModal">
+                                <i class="bi-cart-fill me-1"></i>
+                                Delete this
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<!-- Delete Modal-->
+<div class="modal fade" id="deletetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete this event?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Delete" below if you want to delete this.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                @using (Html.BeginForm("Delete", "Events", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-primary" type="submit">Delete</button>
+                    <input type="hidden" name="id" value="@Model.EventID" />
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById("imagebase64").value = e.target.result;
-                    console.log(document.getElementById("imagebase64").value);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("imagebase64").value = e.target.result;
+                console.log(document.getElementById("imagebase64").value);
+            };
+            reader.readAsDataURL(input.files[0]);
         }
-    </script>
-}
+    }
+</script>
