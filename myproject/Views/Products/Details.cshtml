@@ -38,6 +38,73 @@
     </script>
 </head>
 <body>
+    <div class="popup-overlay"></div>
+    <div class="popup">
+        <div class="popup-close" onclick="closeLoginForm()">×</div>
+        <div class="form">
+            <div class="avatar">
+                <img src="~/images/yen.png" alt="">
+            </div>
+            <div class="header">
+                Login
+            </div>
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                <div class="element">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="element">
+                    <button type="submit">Login</button>
+                </div>
+            }
+            <a href="#" onclick="openSignupForm(); closeLoginForm()">
+                <p style="text-align:center;margin-top:5px; color:green">Create new account.</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="popup-signup-overlay"></div>
+    <div class="popup-signup">
+        <div class="popup-close-signup" onclick="closeSignupForm()">×</div>
+        <div class="form-signup">
+            <div class="avatar">
+                <img src="~/images/yen.png" alt="">
+            </div>
+            <div class="header">
+
+            </div>
+            @using (Html.BeginForm("Signup", "Home", FormMethod.Post))
+            {
+                <div class="element">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="element">
+                    <label for="fullname">Full name</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                </div>
+                <div class="element">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="element">
+                    <label for="confirmpassword">Confirm password</label>
+                    <input type="password" id="confirmpassword" name="confirmpassword" required>
+                </div>
+                <div class="element">
+                    <button>Sign-up</button>
+                </div>
+            }
+            <a href="#" onclick="openLoginForm(); closeSignupForm()">
+                <p style="text-align:center;margin-top:5px; color:green">Already had account? Login here.</p>
+            </a>
+        </div>
+    </div>
     <div class="wrapper" style="background-image: url('../../images/product_bg1.jpg'); height: 120px;">
         <header style="padding-left:40px; position: absolute; width:100%">
             <nav>
@@ -50,78 +117,12 @@
                 <div class="menu" style="width:100%">
                     @Html.Partial("_Menu")
                     <!-- LoginForm -->
-                    <div class="popup-overlay"></div>
-                    <div class="popup">
-                        <div class="popup-close" onclick="closeLoginForm()">×</div>
-                        <div class="form">
-                            <div class="avatar">
-                                <img src="~/images/yen.png" alt="">
-                            </div>
-                            <div class="header">
-                                Login
-                            </div>
-                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-                            {
-                                <div class="element">
-                                    <label for="username">Username</label>
-                                    <input type="text" id="username" name="username" required>
-                                </div>
-                                <div class="element">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" name="password" required>
-                                </div>
-                                <div class="element">
-                                    <button type="submit">Login</button>
-                                </div>
-                            }
-                            <a href="#" onclick="openSignupForm(); closeLoginForm()">
-                                <p style="text-align:center;margin-top:5px; color:green">Create new account.</p>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="popup-signup-overlay"></div>
-                    <div class="popup-signup">
-                        <div class="popup-close-signup" onclick="closeSignupForm()">×</div>
-                        <div class="form-signup">
-                            <div class="avatar">
-                                <img src="~/images/yen.png" alt="">
-                            </div>
-                            <div class="header">
-
-                            </div>
-                            @using (Html.BeginForm("Signup", "Home", FormMethod.Post))
-                            {
-                                <div class="element">
-                                    <label for="username">Username</label>
-                                    <input type="text" id="username" name="username" required>
-                                </div>
-                                <div class="element">
-                                    <label for="fullname">Full name</label>
-                                    <input type="text" id="fullname" name="fullname" required>
-                                </div>
-                                <div class="element">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" name="password" required>
-                                </div>
-                                <div class="element">
-                                    <label for="confirmpassword">Confirm password</label>
-                                    <input type="password" id="confirmpassword" name="confirmpassword" required>
-                                </div>
-                                <div class="element">
-                                    <button>Sign-up</button>
-                                </div>
-                            }
-                            <a href="#" onclick="openLoginForm(); closeSignupForm()">
-                                <p style="text-align:center;margin-top:5px; color:green">Already had account? Login here.</p>
-                            </a>
-                        </div>
-                    </div>
                     <!-- EndLogin -->
                 </div>
             </nav>
         </header>
     </div>
+
     <main class="detail">
         @using (Html.BeginForm("AddtoCart", "Cart", new { id = Model.productID }, FormMethod.Post))
         {
@@ -156,7 +157,7 @@
                             <button type="submit" value="AddtoCart">ADD TO CART</button>
                         </div>
 
-                        @if (ViewBag.Success  == "1")
+                        @if (ViewBag.Success == "1")
                         {
                             <p style="color:green;margin-top:20px;">Product added to your cart successfully!</p>
                         }
