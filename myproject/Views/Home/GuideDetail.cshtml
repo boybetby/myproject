@@ -1,0 +1,52 @@
+﻿@model myproject.Models.Guide
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../Content/css/style.css">
+    <link rel="stylesheet" href="../../Content/css/guidedetail.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/css/website-menu-07/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
+    </style>
+</head>
+<body>
+    <div class="guidedetailbackground" style="background-image: url('../../images/bg3.jpg'); height: 100%;">
+        <div class="wrapper_product" style="height: 160px;">
+            <header style="padding-left:40px; position: absolute;width: 100%;">
+                <nav>
+                    <div class="menu-icon">
+                        <i class="fa fa-bars fa-2x"></i>
+                    </div>
+                    <div class="logo">
+                        <a href="#"><img src="../../images/yen.png" class="yen"></a>
+                    </div>
+                    <div class="menu">
+                        @Html.Partial("_Menu")
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+        <main class="detail-main">
+            <div class="detail-content">
+                <h1>@Html.DisplayFor(modelItem => Model.GuideTitle)</h1>
+                <div class="detail-description">
+                    <p>@Html.DisplayFor(modelItem => Model.GuideDescription)</p>
+                    <p><b>Light: </b> @Html.DisplayFor(modelItem => Model.Guide_Light)</p>
+                    <p><b>Water: </b> @Html.DisplayFor(modelItem => Model.Guide_Water)</p>
+                    <p><b>Pet friendly: </b> @Html.DisplayFor(modelItem => Model.Guide_Petfriendly)</p>
+                    <p><b>Plant parent level: </b> @Html.DisplayFor(modelItem => Model.Guide_Level)</p>
+                    <p><b>Pro tip: </b> @Html.DisplayFor(modelItem => Model.Guide_Tip)</p>
+                    <p style="font-family: Montserrat;"><i><b>This guide is for:</b>@Html.DisplayFor(modelItem => Model.clade_hashtag)</i> </p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

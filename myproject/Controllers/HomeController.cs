@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -144,9 +145,53 @@ namespace myproject.Controllers
             }
         }
 
-        public ActionResult Guides()
+        public ActionResult Guides(string name, string family, string difficulty, string clade1, string clade2)
         {
-            return View(db.Guides.ToList());
+            var guides = from s in db.Guides
+                           select s;
+
+            if (!String.IsNullOrEmpty(name))
+            {
+                guides = guides.Where(s => s.GuideTitle.ToUpper().Contains(name.ToUpper()) || s.GuideDescription.ToUpper().Contains(name.ToUpper()) || s.Guide_Level.ToUpper().Contains(name.ToUpper()) || s.difficulty_hashtag.ToUpper().Contains(name.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(family))
+            {
+                guides = guides.Where(s => s.family_hasttag.ToUpper().Contains(family.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(difficulty))
+            {
+                guides = guides.Where(s => s.difficulty_hashtag.ToUpper().Contains(difficulty.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(clade1))
+            {
+                guides = guides.Where(s => s.clade_hashtag.ToUpper().Contains(clade1.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(clade2))
+            {
+                guides = guides.Where(s => s.clade_hashtag.ToUpper().Contains(clade2.ToUpper())); 
+            }
+            
+
+            return View(guides.ToList());
+        }
+
+        public ActionResult GuideDetail(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Guide guide = db.Guides.Find(id);
+            if (guide == null)
+            {
+                return HttpNotFound();
+            }
+            return View(guide);
         }
 
         public ActionResult UsersGuides()

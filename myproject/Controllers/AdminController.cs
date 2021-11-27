@@ -41,6 +41,29 @@ namespace myproject.Controllers
         [Authorize]
         public ActionResult Dashboard()
         {
+            int currentMonth = DateTime.Now.Month;
+            int currentYear = DateTime.Now.Year;
+            var data_monthly = db.Orders.Where(m => m.Date.Month == currentMonth && m.Date.Year == currentYear).ToList();
+            var data_annual = db.Orders.Where(m => m.Date.Year == currentYear).ToList();
+           
+            var pendding_orders = db.Orders.Count(t => t.Checked == false);
+
+            double earningmonthly = 0;
+            double earningannual = 0;
+
+            foreach (Order order in data_monthly)
+            {
+                earningmonthly += order.TotalPrice;
+            }
+
+            foreach (Order order in data_annual)
+            {
+                earningannual += order.TotalPrice;
+            }
+
+            Session["earningmonthly"] = earningmonthly;
+            Session["earningannual"] = earningannual;
+            Session["pendding_orders"] = pendding_orders;
             return View();
         }
         [Authorize]

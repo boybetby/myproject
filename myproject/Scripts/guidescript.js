@@ -1,12 +1,13 @@
 ﻿var filterdiv1 = `
-    <select name="family2" onchange="" onclick="return false;" id="">
-    <option value="1">Tracheophytes</option>
-    <option value="2">Angiosperms</option>
-    <option value="3">Eudicots</option>
-    <option value="3">Monocots</option>
-    <option value="3">Strelitziaceae</option>
-    <option value="3">Commelinids</option>
-    <option value="3">Rosids</option>
+    <select name="clade2" onchange="" onclick="" id="">
+     <option value="">Select clade</option>
+    <option value="Tracheophytes">Tracheophytes</option>
+    <option value="Angiosperms">Angiosperms</option>
+    <option value="Eudicots">Eudicots</option>
+    <option value="Monocots">Monocots</option>
+    <option value="Strelitziaceae">Strelitziaceae</option>
+    <option value="Commelinids">Commelinids</option>
+    <option value="Rosids">Rosids</option>
     </select>
 `;
 

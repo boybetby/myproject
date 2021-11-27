@@ -133,7 +133,7 @@
                                 {
                                     foreach (var item in Model)
                                     {
-                                        <a href="@Url.Action("Details", "Guides", new { id = item.Id })" style="text-decoration:none">
+                                        <a href="@Url.Action("GuideDetail", "Home", new { id=item.Id })" style="text-decoration:none">
                                             <div class="guide-content">
                                                 <p style="font-weight: 700; font-size: 26px;">@Html.DisplayFor(modelItem => item.GuideTitle)</p>
                                                 <p style="font-weight: 400;">Family: @Html.DisplayFor(modelItem => item.family_hasttag)</p>
@@ -169,7 +169,7 @@
                                 <a href="#" onclick="openLoginForm()"><p>Please Login To See Your Recommend Guides</p></a>
                             }
                         </div>
-                        <div class="guide-filter">
+                        <!--<div class="guide-filter">
                             <div style="margin-bottom: 20px;">
                                 <h1>Guide Filter</h1>
                             </div>
@@ -182,10 +182,10 @@
                                         <option value="2">Moraceae</option>
                                         <option value="3">Malvaceae</option>
                                         <option value="3">Asparagaceae</option>
-                                    </select>
+                                    </select>-->
 
                                     <!-- function -->
-                                    <div class="row" style="margin-top: 10px;">
+                                    <!--<div class="row" style="margin-top: 10px;">
                                         <div class="col-6">
                                             <select name="family1" onchange="" onclick="return false;" id="">
                                                 <option value="">Select Clade</option>
@@ -207,12 +207,12 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <!-- endfucntion -->
-                                    <button type="submit" id="btn-filtersubmit">Search</button>
+                                    <!--<button type="submit" id="btn-filtersubmit">Search</button>
                                 </form>
                             </div>
-                        </div>
+                        </div>-->
 
 
                     </div>

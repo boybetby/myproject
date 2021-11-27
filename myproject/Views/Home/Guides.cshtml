@@ -33,7 +33,6 @@
     </script>
 </head>
 <body>
-    <body>
         <!-- LoginForm -->
         <div class="popup-overlay"></div>
         <div class="popup">
@@ -103,6 +102,7 @@
             </div>
         </div>
         <!-- EndLogin -->
+
         <div class="wrapper_product" style="background-image: url('../../images/bg3.jpg'); height: 120px;">
             <header style="padding-left:40px; position: absolute;width: 100%;">
                 <nav>
@@ -131,7 +131,7 @@
 
                                 @foreach (var item in Model)
                                 {
-                                    <a href="@Url.Action("Details", "Guides", new { id=item.Id })" style="text-decoration:none">
+                                    <a href="@Url.Action("GuideDetail", "Home", new { id=item.Id })" style="text-decoration:none">
                                         <div class="guide-content">
                                             <p style="font-weight: 700; font-size: 26px;">@Html.DisplayFor(modelItem => item.GuideTitle)</p>
                                             <p style="font-weight: 400;">Family: @Html.DisplayFor(modelItem => item.family_hasttag)</p>
@@ -167,27 +167,32 @@
                             </div>
                             <div>
                                 <form>
-                                    <input type="text" class="searchTerm" placeholder="Search for guide name.">
-                                    <select name="" onchange="" onclick="return false;" id="filter-family">
+                                    <input type="text" class="searchTerm" name="name" placeholder="Search for guide name.">
+                                    <select name="family" onchange="" onclick="" id="filter-family">
                                         <option value="">Select Plant Family</option>
-                                        <option value="1">Strelitziaceae</option>
-                                        <option value="2">Moraceae</option>
-                                        <option value="3">Malvaceae</option>
-                                        <option value="3">Asparagaceae</option>
+                                        <option value="Strelitziaceae">Strelitziaceae</option>
+                                        <option value="Moraceae">Moraceae</option>
+                                        <option value="Malvaceae">Malvaceae</option>
+                                        <option value="Asparagaceae">Asparagaceae</option>
                                     </select>
-
+                                    <select name="difficulty" onchange="" onclick="" id="filter-family">
+                                        <option value="">Select Difficulty</option>
+                                        <option value="Easy">Easy</option>
+                                        <option value="Standard">Standard</option>
+                                        <option value="Expert">Expert</option>
+                                    </select>
                                     <!-- function -->
                                     <div class="row" style="margin-top: 10px;">
                                         <div class="col-6">
-                                            <select name="family1" onchange="" onclick="return false;" id="">
+                                            <select name="clade1" onchange="" onclick="" id="">
                                                 <option value="">Select Clade</option>
-                                                <option value="1">Tracheophytes</option>
-                                                <option value="2">Angiosperms</option>
-                                                <option value="3">Eudicots</option>
-                                                <option value="3">Monocots</option>
-                                                <option value="3">Strelitziaceae</option>
-                                                <option value="3">Commelinids</option>
-                                                <option value="3">Rosids</option>
+                                                <option value="Tracheophytes">Tracheophytes</option>
+                                                <option value="Angiosperms">Angiosperms</option>
+                                                <option value="Eudicots">Eudicots</option>
+                                                <option value="Monocots">Monocots</option>
+                                                <option value="Strelitziaceae">Strelitziaceae</option>
+                                                <option value="Commelinids">Commelinids</option>
+                                                <option value="Rosids">Rosids</option>
                                             </select>
                                         </div>
                                         <div class="col-6" id="secondfilter">
