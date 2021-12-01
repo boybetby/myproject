@@ -210,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CustomAuthorizeAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -2677,16 +2678,12 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Furniture\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Info.cshtml" />
     <Content Include="Views\Cart\Thanks.cshtml" />
-    <Content Include="Views\Account\_ViewStart.cshtml" />
-    <Content Include="Views\Admin\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
@@ -2715,7 +2712,6 @@
     <Content Include="Views\Community\OurGreen.cshtml" />
     <Content Include="Views\Community\PostCard.cshtml" />
     <Content Include="Views\Role\_ViewStart.cshtml" />
-    <Content Include="Views\Orders\_ViewStart.cshtml" />
     <Content Include="Views\Community\Event.cshtml" />
     <Content Include="Views\Cart\CheckoutFail.cshtml" />
     <Content Include="Views\Cart\ViewThanks.cshtml" />
@@ -2733,6 +2729,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_UserPartial.cshtml" />
     <Content Include="Views\Home\GuideDetail.cshtml" />
+    <Content Include="Views\Shared\AuthorizeFailed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

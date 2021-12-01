@@ -167,7 +167,7 @@ namespace myproject.Controllers
                 const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                 string orderId = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
                 string orderInfo = "YenConcept";
-                string returnUrl = "https://localhost:44371/Cart/CheckoutFail";
+                string returnUrl = "https://localhost:44371/Cart/Thanks"; 
                 string notifyUrl = "https://localhost:44371/Cart/Thanks";
                 //foreach (var items in cartlist)
                 //{
@@ -258,68 +258,17 @@ namespace myproject.Controllers
             }
             
         }
-
         public ActionResult ViewThanks()
         {
-
             return View();
         }
-
-        [HttpPost]
-        public ActionResult MomoPayment(long finalprice)
-        {
-            Order addorder = new Order();
-            addorder = Session["Order"] as Order;
-            List<Cart> cartlist = setCart();
-            //long totalprice = 0;
-            string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
-            string partnerCode = "MOMO5RGX20191128";
-            string accessKey = "M8brj9K6E22vXoDB";
-            string serectKey = "nqQiVSgDMy809JoPF6OzP5OdBUB550Y4";
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            string orderId = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
-            string orderInfo = "YenConcept";
-            string returnUrl = "https://localhost:44371/Cart/CheckoutFail";
-            string notifyUrl = "https://localhost:44371/Cart/Thanks";
-            //foreach (var items in cartlist)
-            //{
-            //    totalprice += items.amount * items.price;
-            //}
-            string requestId = Guid.NewGuid().ToString();
-            string extraData = "";
-
-            string rawHash = "partnerCode=" +
-                partnerCode + "&accessKey=" +
-                accessKey + "&requestId=" +
-                requestId + "&amount=" +
-                finalprice + "&orderId=" +
-                orderId + "&orderInfo=" +
-                orderInfo + "&returnUrl=" +
-                returnUrl + "&notifyUrl=" +
-                notifyUrl + "&extraData=" +
-                extraData;
-
-            MoMoSecurity crypto = new MoMoSecurity();
-            string signature = crypto.signSHA256(rawHash, serectKey);
-            JObject message = new JObject
+        
+        public ActionResult Thanks(long amount, string errorCode)
+        {           
+            if (errorCode == "49")
             {
-                {"partnerCode", partnerCode },
-                {"accessKey", accessKey},
-                {"requestId", requestId },
-                {"amount", finalprice.ToString() },
-                {"orderId", orderId },
-                {"orderInfo", orderInfo },
-                {"returnUrl", returnUrl },
-                {"notifyUrl", notifyUrl },
-                {"requestType", "captureMoMoWallet" },
-                {"signature", signature },
-            };
-            string responseFromMoMo = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
-            JObject jmessage = JObject.Parse(responseFromMoMo);
-            return Redirect(jmessage.GetValue("payUrl").ToString());
-        }
-        public ActionResult Thanks(long amount)
-        {
+                return View("CheckoutFail");
+            }
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             string orderID = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
             List<Cart> cartlist = setCart();
@@ -370,7 +319,6 @@ namespace myproject.Controllers
             Session.Remove("Order");
             db.SaveChanges();
             return View();
-         
         }
     }
 }

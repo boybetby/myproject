@@ -153,7 +153,7 @@ namespace myproject.Controllers
         public ActionResult Register()
         {
             List<SelectListItem> list = new List<SelectListItem>();
-            foreach (var role in RoleManager.Roles)
+            foreach (var role in RoleManager.Roles.Where(s => s.Name == "Admin"))
                 list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
             ViewBag.Roles = list;
             return View();
@@ -168,7 +168,8 @@ namespace myproject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                string username = model.Email.Split('@')[0];
+                var user = new ApplicationUser { UserName = username, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -187,6 +188,10 @@ namespace myproject.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles.Where(s => s.Name == "Admin"))
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            ViewBag.Roles = list;
             return View(model);
         }
 

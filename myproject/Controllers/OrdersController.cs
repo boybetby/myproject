@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using myproject.App_Start;
 using myproject.Models;
 using PagedList;
 namespace myproject.Controllers
@@ -13,13 +14,13 @@ namespace myproject.Controllers
     public class OrdersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         // GET: Orders
         public ActionResult Index()
         {
             return View(db.Orders.OrderBy(m => m.Checked).ThenBy(n => n.Date).ToList());
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         // GET: Orders/Details/5
         public ActionResult Details(string id)
         {
@@ -46,7 +47,7 @@ namespace myproject.Controllers
             }
             return View(order);
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         // GET: Orders/Create
         public ActionResult Create()
         {
@@ -69,7 +70,7 @@ namespace myproject.Controllers
 
             return View(order);
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         // GET: Orders/Edit/5
         public ActionResult Edit(string id)
         {
@@ -100,7 +101,7 @@ namespace myproject.Controllers
             }
             return View(order);
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         // GET: Orders/Delete/5
         public ActionResult Delete(string id)
         {

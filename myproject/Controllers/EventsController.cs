@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using myproject.App_Start;
 using myproject.Models;
 
 namespace myproject.Controllers
@@ -14,13 +15,13 @@ namespace myproject.Controllers
     public class EventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Event Manager")]
         // GET: Events
         public ActionResult Index()
         {
             return View(db.Event.OrderByDescending(m => m.EventDate).ToList());
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Event Manager")]
         // GET: Events/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,7 +36,7 @@ namespace myproject.Controllers
             }
             return View(@event);
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Event Manager")]
         // GET: Events/Create
         public ActionResult Create()
         {
@@ -59,7 +60,7 @@ namespace myproject.Controllers
 
             return View(@event);
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Event Manager")]
         // GET: Events/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -91,7 +92,7 @@ namespace myproject.Controllers
             }
             return View(@event);
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Event Manager")]
         // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

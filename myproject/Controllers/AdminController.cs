@@ -7,7 +7,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using myproject.App_Start;
 using myproject.Models;
 using PagedList;
 namespace myproject.Controllers
@@ -16,6 +18,7 @@ namespace myproject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public AdminController()
         {
@@ -45,7 +48,7 @@ namespace myproject.Controllers
             int currentYear = DateTime.Now.Year;
             var data_monthly = db.Orders.Where(m => m.Date.Month == currentMonth && m.Date.Year == currentYear).ToList();
             var data_annual = db.Orders.Where(m => m.Date.Year == currentYear).ToList();
-           
+
             var pendding_orders = db.Orders.Count(t => t.Checked == false);
 
             double earningmonthly = 0;
@@ -66,12 +69,12 @@ namespace myproject.Controllers
             Session["pendding_orders"] = pendding_orders;
             return View();
         }
-        [Authorize]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         public ActionResult ProductsList()
         {
             return View(db.Products.ToList());
         }
-        [Authorize]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         public ActionResult OrdersList()
         {
             return View(db.Orders.OrderBy(m => m.Checked).ThenBy(n => n.Date).ToList());
@@ -85,42 +88,13 @@ namespace myproject.Controllers
 
         //POST: Admin/Create
         [HttpPost]
-        [Authorize]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productID,productname,description,price,category,image")] Product product, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "productID,productname,description,price,category,image")] Product product, String imagebase64)
         {
             if (ModelState.IsValid)
             {
-                if ((int)product.category == 0)
-                {
-                    string chuoi = "../../images/products/" + product.image;
-                    product.image = chuoi;
-                    if (image.ContentLength > 0)
-                    {
-                        string _path = Path.Combine(Server.MapPath("~/images/products"), Path.GetFileName(image.FileName));
-                        image.SaveAs(_path);
-                    }
-                }
-                else if ((int)product.category == 1)
-                {
-                    string chuoi = "../../images/furniture/" + product.image;
-                    product.image = chuoi;
-                    if (image.ContentLength > 0)
-                    {
-                        string _path = Path.Combine(Server.MapPath("~/images/furniture"), Path.GetFileName(image.FileName));
-                        image.SaveAs(_path);
-                    }
-                }
-                else
-                {
-                    string chuoi = "../../images/workshops/" + product.image;
-                    product.image = chuoi;
-                    if (image.ContentLength > 0)
-                    {
-                        string _path = Path.Combine(Server.MapPath("~/images/workshops"), Path.GetFileName(image.FileName));
-                        image.SaveAs(_path);
-                    }
-                }
+                product.image = imagebase64;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -128,6 +102,7 @@ namespace myproject.Controllers
             return View(product);
         }
         [ActionName("Edit")]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         // GET: Products1/Edit/5
         public ActionResult ProductEdit(int? id)
         {
@@ -161,6 +136,7 @@ namespace myproject.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [CustomAuthorize(Roles = "Admin, Product & Order Manager")]
         public ActionResult DeleteProduct(int id)
         {
             Product product = db.Products.Find(id);
@@ -177,14 +153,27 @@ namespace myproject.Controllers
             }
             base.Dispose(disposing);
         }
-        [Authorize(Roles = "Admin")]
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult EmployeeList()
         {
-            ApplicationRole role = new ApplicationRole();
-            db.Roles.Add(role);
-            return View(db.Users.ToList());
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles.Where(s => s.Name != "Admin"))
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            ViewBag.ManagerRole = list;
+            return View();
         }
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin, Event Manager")]
         public ActionResult EventSubscriberList()
         {
             return View(db.EventSubscribers.ToList());

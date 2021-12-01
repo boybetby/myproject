@@ -80,6 +80,8 @@
             var roles = new List<ApplicationRole>
             {
                 new ApplicationRole{ Id = "39b42767-b4a1-4b66-8f88-18821673bf23", Name ="Admin"},
+                new ApplicationRole{ Id = "1283913f-asda-eeas-xxx3-dadasdasd333", Name ="Product & Order Manager"},
+                new ApplicationRole{ Id = "mooo3llj-bmol-dasd-asdd-dasdasd33333", Name ="Event Manager"},
             };
             roles.ForEach(s => context.Roles.Add(s));
             context.SaveChanges();
